@@ -77,3 +77,11 @@ description='''${mod_description}'''
 # stop your mod loading on the server for example.
 #[features.${mod_id}]
 #openGLVersion="[3.2,)"
+
+[[dependencies.${mod_id}]]
+    # GregTech CEu Modern is the required common dependency of this addon.
+    modId="gtceu" #mandatory
+    mandatory=true #mandatory
+    versionRange="${gtceu_version_range}" #mandatory
+    ordering="AFTER"
+    side="BOTH"

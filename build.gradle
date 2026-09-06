@@ -104,7 +104,10 @@ minecraft {
             workingDirectory project.file('run-data')
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', mod_id, '--all',
+                    '--output', file('src/generated/resources/'),
+                    '--existing', file('src/main/resources/'),
+                    '--existing-mod', 'gtceu'
         }
     }
 }
@@ -116,11 +119,55 @@ repositories {
     // Put repositories for dependencies here
     // ForgeGradle automatically adds the Forge maven and Maven Central for you
 
-    // If you have mod jar dependencies in ./libs, you can declare them as a repository like so.
-    // See https://docs.gradle.org/current/userguide/declaring_repositories.html#sub:flat_dir_resolver
-    // flatDir {
-    //     dir 'libs'
-    // }
+    // GregTech CEu Modern and its published artifacts
+    maven {
+        name = 'GTCEu Maven'
+        url = 'https://maven.gtceu.com/'
+        content {
+            includeGroup 'com.gregtechceu.gtceu'
+        }
+    }
+    maven {
+        name = 'Sleeping Town'
+        url = 'https://repo.sleeping.town/'
+        content {
+            includeGroup 'dev.emi'
+        }
+    }
+    maven {
+        name = 'CurseMaven'
+        url = 'https://www.cursemaven.com'
+        content {
+            includeGroup 'curse.maven'
+        }
+    }
+}
+
+configurations {
+    gtceuEmbedded
+}
+
+def embeddedDependencyDir = layout.buildDirectory.dir('embedded-dependencies')
+def extractGtceuEmbeddedDependencies = tasks.register('extractGtceuEmbeddedDependencies', Copy) {
+    outputs.upToDateWhen { false }
+    from({ zipTree(configurations.gtceuEmbedded.singleFile) }) {
+        include 'META-INF/jarjar/ldlib-forge-*.jar'
+        include 'META-INF/jarjar/Registrate-*.jar'
+        // MixinExtras is jar-jarred by GTCEu (nested inside its Forge wrapper
+        // jar) and self-registers at runtime, so our code may use its
+        // helpers without bundling another copy. Extract the inner
+        // core jar as the compile classpath entry.
+        include 'META-INF/jarjar/mixinextras-forge-*.jar'
+        eachFile { details -> details.path = details.name }
+        includeEmptyDirs = false
+    }
+    from({ zipTree(zipTree(configurations.gtceuEmbedded.singleFile)
+            .matching { include 'META-INF/jarjar/mixinextras-forge-*.jar' }.singleFile) }) {
+        include 'META-INF/jars/MixinExtras-*.jar'
+        eachFile { details -> details.path = details.name }
+        includeEmptyDirs = false
+    }
+    into embeddedDependencyDir
 }
 
 dependencies {
@@ -130,6 +177,75 @@ dependencies {
     // If the group id is "net.minecraft" and the artifact id is one of ["client", "server", "joined"],
     // then special handling is done to allow a setup of a vanilla dependency without the use of an external repository.
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    // GregTech CEu Modern is a required common dependency. The full artifact
+    // contains the libraries that GTCEu publishes as Jar-in-Jar dependencies.
+    implementation fg.deobf("com.gregtechceu.gtceu:gtceu-${minecraft_version}:${gtceu_version}")
+    gtceuEmbedded("com.gregtechceu.gtceu:gtceu-${minecraft_version}:${gtceu_version}") {
+        transitive = false
+    }
+
+    // GTCEu embeds LDLib at runtime but does not expose it transitively to
+    // addons. Extract its exact embedded copy for the addon compile classpath.
+    compileOnly files(embeddedDependencyDir.map { it.file("ldlib-forge-${minecraft_version}-1.0.40.b.jar") })
+    compileOnly files(embeddedDependencyDir.map { it.file('Registrate-MC1.20-1.3.11.jar') })
+    compileOnly files(embeddedDependencyDir.map { it.file('MixinExtras-0.5.3.jar') })
+
+    // The mod is required on dedicated servers too, so development server
+    // runs must be able to boot. Client-only dev aids (EMI, JECh, Modern UI)
+    // crash a dedicated server during mod construction; mount them only when
+    // the invocation targets a client run. Jade has a common side and stays
+    // mounted everywhere.
+    def mountClientDevAids = gradle.startParameter.taskNames.any { it.toLowerCase().contains('client') }
+
+    // EMI is only a development runtime aid for browsing content in test clients.
+    // It is never required at runtime and stays mounted only in client dev runs.
+    if (mountClientDevAids) {
+        runtimeOnly fg.deobf("dev.emi:emi-forge:${emi_version}")
+    }
+
+    // Jade is a development runtime aid for inspecting machines in client runs.
+    // It remains optional for published builds and is not declared in mods.toml.
+    runtimeOnly(fg.deobf("curse.maven:jade-324717:${jade_file_id}")) { transitive = false }
+
+    // JECh adds Chinese pinyin matching to search fields in the development client.
+    // It is client-only tooling and is not included in published artifacts.
+    if (mountClientDevAids) {
+        runtimeOnly(fg.deobf("curse.maven:just-enough-characters-250702:${jech_file_id}")) {
+            transitive = false
+        }
+    }
+
+    // Sophisticated Backpacks / Storage plus their prerequisites (Puzzles Lib,
+    // Sophisticated Core) exist only so the test client can exercise machine
+    // container checks against placeable backpacks and storage containers
+    // in-game. They are not dependencies of the addon and are not declared in
+    // mods.toml.
+    runtimeOnly(fg.deobf("curse.maven:puzzles-lib-495476:${puzzles_file_id}")) { transitive = false }
+    runtimeOnly(fg.deobf("curse.maven:sophisticated-core-618298:${sophisticated_core_file_id}")) { transitive = false }
+    runtimeOnly(fg.deobf("curse.maven:sophisticated-backpacks-422301:${sophisticated_backpacks_file_id}")) { transitive = false }
+    runtimeOnly(fg.deobf("curse.maven:sophisticated-storage-619320:${sophisticated_storage_file_id}")) { transitive = false }
+
+    // Modern UI re-skins vanilla and modded GUIs in the development client so
+    // machine screens can be checked under a global UI overhaul. It is not a
+    // dependency of the addon and is not declared in mods.toml. Its client
+    // bootstrap touches the window during mod construction, so it is only
+    // mounted for client runs (see mountClientDevAids above).
+    if (mountClientDevAids) {
+        runtimeOnly(fg.deobf("curse.maven:modern-ui-352491:${modernui_file_id}")) { transitive = false }
+    }
+
+    // GTM Things mounts third-party GTCEu addon machines in the development
+    // client for cross-addon checks (recipe viewers, Jade, appearance overlap
+    // with this addon's machines). Its mods.toml hard-requires AE2 >= 15.4.2,
+    // and this AE2 version requires GuideME >= 20.1.7. CurseMaven does not
+    // resolve these mod dependencies automatically. All three stay
+    // development-only and are not declared in mods.toml.
+    if (mountClientDevAids) {
+        runtimeOnly(fg.deobf("curse.maven:applied-energistics-2-223794:${ae2_file_id}")) { transitive = false }
+        runtimeOnly(fg.deobf("curse.maven:guideme-1173950:${guideme_file_id}")) { transitive = false }
+        runtimeOnly(fg.deobf("curse.maven:gtmthings-1104310:${gtmthings_file_id}")) { transitive = false }
+    }
 
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
@@ -156,6 +272,7 @@ tasks.named('processResources', ProcessResources).configure {
             minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
             forge_version: forge_version, forge_version_range: forge_version_range,
             loader_version_range: loader_version_range,
+            gtceu_version_range: gtceu_version_range,
             mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
             mod_authors: mod_authors, mod_description: mod_description,
     ]
@@ -204,5 +321,6 @@ publishing {
 }
 
 tasks.withType(JavaCompile).configureEach {
+    dependsOn tasks.named('extractGtceuEmbeddedDependencies')
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }

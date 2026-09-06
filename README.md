@@ -2,7 +2,7 @@
 
 基于 Minecraft 1.20.1 Forge 的食品方向扩展附属模组，规划围绕 GregTech CEu Modern 展开玩法设计。
 
-> **⚠ 立项阶段（骨架）**：项目刚完成初始化，当前仓库只包含可编译的工程骨架（构建脚本、模组入口与开发环境），尚无任何可游玩内容，也尚未接入 GregTech CEu Modern 依赖。玩法方向、机器清单、数值与资源 ID 均未定案，设计文档将随内容立项逐步补入 `docs/design/`。
+> **⚠ 立项阶段（骨架）**：项目刚完成初始化，当前仓库只包含可编译的工程骨架（构建脚本、模组入口与开发环境），尚无任何可游玩内容。玩法方向、机器清单、数值与资源 ID 均未定案，设计文档将随内容立项逐步补入 `docs/design/`。
 >
 > **⚠ 本项目大量使用 AI 辅助开发**：代码、设计文档、语言条目与部分贴图资源均在 AI 协助下完成，全部产出经人工审核后合入。AI 生成的数值、结构规则与接口约定一律以设计文档中标注为"已定案"的章节为准，未标注的内容不代表最终设计。欢迎审阅源码与反馈问题。
 
@@ -24,7 +24,10 @@
 | Minecraft | 1.20.1 |
 | Forge | 47.4.20 |
 | Java | 17 |
+| GregTech CEu Modern | 7.5.3（必需前置） |
 | Gradle | 8.1.1（项目 Wrapper） |
+
+EMI、Jade、JECh（拼音搜索）、精妙背包/存储、Modern UI、GTM Things（连同其必需的 AE2 和 AE2 的前置 GuideME）仅作为开发客户端测试工具由 Gradle 运行时加载，不是本模组前置，也不会打包进发布 JAR。
 
 ## 开始开发
 
@@ -47,3 +50,7 @@
 ## 致谢
 
 工程骨架与开发流程沿用姊妹项目 [Greg Steam Expansion](https://github.com/MinazukiGear/gregsteamexpansion) 与 [Greg ULV Expansion](https://github.com/MinazukiGear/gregulvexpansion)。其余设计参考将随内容定案补充。
+
+## 已知上游问题
+
+开发客户端同时加载 GTCEu 内嵌 LDLib 与 EMI 时可能遇到 Mixin 初始化竞态（`MixinTargetAlreadyLoadedException` / `EmiPlugin was loaded too early`），参见 [GregTechCEu/GregTech#2917](https://github.com/GregTechCEu/GregTech/issues/2917)；不影响未安装 EMI 的环境。
