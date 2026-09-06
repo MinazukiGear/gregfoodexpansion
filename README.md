@@ -45,7 +45,13 @@ EMI、Jade、JECh（拼音搜索）、精妙背包/存储、Modern UI、GTM Thin
 - Mod ID：`gregfoodexpansion`
 - 入口类：`net.mgear.gregfoodexpansion.GregFoodExpansion`
 - 当前版本：`0.1-Alpha-1.20.1`（未发布）
-- 许可：All Rights Reserved
+
+## 许可证
+
+本模组采用双许可：
+
+- **代码**：[LGPL-3.0](LICENSE)（GNU Lesser General Public License v3.0），见 `LICENSE`
+- **素材**（贴图、模型、音效、语言文件等非代码资源）：[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)，全文见 `LICENSE.assets`
 
 ## 致谢
 
