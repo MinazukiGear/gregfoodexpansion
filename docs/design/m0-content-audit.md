@@ -144,3 +144,20 @@
 - §5-F:罐头容器方案(流体容器 vs 专属配方类型)待专项定案;
 - §7.2:modid `solcarrot`、API、接入要点已确认;
 - §10:新增 UUM 供给、罐头容器方案两项待确认;M0 两项审计标记完成。
+
+## 7. 补充查证(2026-09-07,M0 后续,证据同 §1)
+
+| 查证项 | 结论 | 证据 |
+| --- | --- | --- |
+| 石膏(豆腐凝固剂候选) | **确认存在** | 【jar】`material.gtceu.gypsum` = "Gypsum"/"石膏" |
+| 氯化镁(豆腐凝固剂候选) | **确认存在** | 【jar】`material.gtceu.magnesium_chloride` = "Magnesium Chloride"/"氯化镁"(另有氧化镁/菱镁矿等镁系材料) |
+| 氨(化肥氮路线) | **确认存在** | 【jar】`material.gtceu.ammonia` = "Ammonia"/"氨";氯化铵、甲酸铵亦在 |
+| 磷系(化肥磷路线) | **确认存在全链** | 磷灰石 `apatite`(含专属矿脉 `gtceu.jei.ore_vein.apatite_vein`)、磷 `phosphorus`、磷酸盐 `phosphate`、磷酸 `phosphoric_acid`、五氧化二磷、磷酸三钙 |
+| 肥料 | **GTCEu 已有肥料物品** | 【jar】`item.gtceu.fertilizer` = "Fertilizer"/"肥料" |
+| rice/tea 命名冲突 | **无冲突** | 【jar】lang 与【src】GTMaterials.java 均无 rice/tea 材料/物品(唯一命中为紫色饮料风味文本 "Ice Tea") |
+
+**设计含义**:
+
+1. 大豆线:凝固剂两个候选均可落地——卤水可由氯化镁 + 水(搅拌机)制取为消耗型流体,石膏直接消耗粉尘,两品类并行成立;
+2. 温室:化肥无需自建基础物品——可直接复用 GTCEu 肥料;"有机肥料"升级变种(豆粕/豆渣路线)留待温室定案时决策;
+3. 作物基座:`rice`、`tea` 命名安全,无需避让。
