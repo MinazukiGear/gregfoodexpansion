@@ -10,10 +10,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 /**
- * 食材形态物品(dishes-and-gains.md §4 首批名录,M1 原料可达部分):
+ * 食材形态物品(dishes-and-gains.md §4 首批名录):
  * 肉类形态按种类区分、以原版生肉为源;非肉形态来自首批作物与原版蔬果。
- * 未注册项及原因:蒜末/米粉(大蒜、米粉团 M1 无原料)、土豆丁(与薯条坯同源
- * 同电路冲突,见 food-processor.md §10)、烘焙切分 3 项(随烘焙工业化批次)。
+ * 2026-09-08 决议:蒜末直接注册(配方待大蒜原料落地,P2);土豆丁由薯条坯二次切配。
+ * 未注册项:米粉(米粉团 M1 无原料)、烘焙切分 3 项(随烘焙工业化批次)。
  * 食材中间品不带品质档(food-processor.md §6)。
  */
 public final class GFEFormItems {
@@ -63,8 +63,10 @@ public final class GFEFormItems {
     public static final RegistryObject<Item> ONION_DICED = form("onion_diced");
     public static final RegistryObject<Item> FRIES_BLANK = form("fries_blank");
     public static final RegistryObject<Item> CHILI_DICED = form("chili_diced");
+    public static final RegistryObject<Item> POTATO_DICED = form("potato_diced");
     // ---- 非肉:绞碎/研磨/剥皮 ----
     public static final RegistryObject<Item> ONION_MINCED = form("onion_minced");
+    public static final RegistryObject<Item> GARLIC_MINCED = form("garlic_minced");
     public static final RegistryObject<Item> CHILI_POWDER = form("chili_powder");
     public static final RegistryObject<Item> APPLE_FLESH = form("apple_flesh");
     // ---- 非肉:压延 ----
@@ -79,8 +81,8 @@ public final class GFEFormItems {
             FISH_SLICE, FISH_CUBE, FISH_SURIMI,
             CHILI_RING, POTATO_SLICE, APPLE_SLICE, TOMATO_SLICE,
             POTATO_STRIP, CARROT_STRIP, CABBAGE_STRIP, CHILI_STRIP,
-            TOMATO_DICED, ONION_DICED, FRIES_BLANK, CHILI_DICED,
-            ONION_MINCED, CHILI_POWDER, APPLE_FLESH, NOODLE, DOUGH_SHEET);
+            TOMATO_DICED, ONION_DICED, FRIES_BLANK, CHILI_DICED, POTATO_DICED,
+            ONION_MINCED, GARLIC_MINCED, CHILI_POWDER, APPLE_FLESH, NOODLE, DOUGH_SHEET);
 
     public static final List<RegistryObject<Item>> MEAT_SLICES = List.of(
             BEEF_SLICE, PORK_SLICE, MUTTON_SLICE, CHICKEN_SLICE, FISH_SLICE);

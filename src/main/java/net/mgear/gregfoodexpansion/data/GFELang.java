@@ -102,7 +102,9 @@ public final class GFELang {
         add("item.gregfoodexpansion.onion_diced", "Diced Onion");
         add("item.gregfoodexpansion.fries_blank", "Raw Fries");
         add("item.gregfoodexpansion.chili_diced", "Diced Chili");
+        add("item.gregfoodexpansion.potato_diced", "Diced Potato");
         add("item.gregfoodexpansion.onion_minced", "Minced Onion");
+        add("item.gregfoodexpansion.garlic_minced", "Minced Garlic");
         add("item.gregfoodexpansion.chili_powder", "Chili Powder");
         add("item.gregfoodexpansion.apple_flesh", "Peeled Apple");
         add("item.gregfoodexpansion.noodle", "Noodles");

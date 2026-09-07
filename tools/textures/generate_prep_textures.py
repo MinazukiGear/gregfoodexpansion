@@ -37,6 +37,7 @@ PALETTES = {
     "apple": {"K": "#6E5A20", "M": "#F2E3A8", "L": "#FAF2CE", "D": "#D9C070"},
     "onion": {"K": "#5C5260", "M": "#E8E0EC", "L": "#F7F3F8", "D": "#C9BECF"},
     "dough": {"K": "#8A6E3E", "M": "#E8D9A8", "L": "#F5ECCB", "D": "#C9B478"},
+    "garlic": {"K": "#6E6A5A", "M": "#F2EFE2", "L": "#FAF8EE", "D": "#D9D4BE"},
 }
 
 # (id, 模板, 配色源)
@@ -61,7 +62,8 @@ FORMS = [
     ("cabbage_strip", "strips", "cabbage"), ("chili_strip", "strips", "chili"),
     ("tomato_diced", "diced", "tomato"), ("onion_diced", "diced", "onion"),
     ("fries_blank", "fries", "potato"), ("chili_diced", "diced", "chili"),
-    ("onion_minced", "minced", "onion"),
+    ("potato_diced", "diced", "potato"),
+    ("onion_minced", "minced", "onion"), ("garlic_minced", "minced", "garlic"),
     ("chili_powder", "powder", "chili"),
     ("apple_flesh", "flesh", "apple"),
     ("noodle", "noodle", "dough"), ("dough_sheet", "sheet", "dough"),

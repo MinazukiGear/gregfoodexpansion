@@ -56,6 +56,8 @@ public final class GFEPrepRecipes {
         prep(provider, 3, 40, 4, GFECropItems.ONION.get(), GFEFormItems.ONION_DICED.get());
         prep(provider, 3, 40, 4, Items.POTATO, GFEFormItems.FRIES_BLANK.get());
         prep(provider, 3, 40, 4, GFECropItems.CHILI.get(), GFEFormItems.CHILI_DICED.get());
+        // 土豆丁 = 薯条坯二次切配(2026-09-08 决议,规避同源同电路冲突)
+        prep(provider, 3, 40, 4, GFEFormItems.FRIES_BLANK.get(), GFEFormItems.POTATO_DICED.get());
 
         // ---- c4 绞碎:60 tick / 4 EU/t ----
         prep(provider, 4, 60, 4, Items.BEEF, GFEFormItems.BEEF_MINCED.get());
