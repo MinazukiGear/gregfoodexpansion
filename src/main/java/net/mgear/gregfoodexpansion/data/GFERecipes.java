@@ -99,10 +99,10 @@ public final class GFERecipes {
                 sandwichBase(), Items.EGG);
         VanillaRecipeHelper.addShapelessRecipe(provider, id("beef_sandwich"),
                 new net.minecraft.world.item.ItemStack(GFEDishes.BEEF_SANDWICH.get()),
-                sandwichBase(), GFEFormItems.BEEF_SLICE.get());
+                sandwichBase(), GFEFormItems.COOKED_BEEF_SLICE.get());
         VanillaRecipeHelper.addShapelessRecipe(provider, id("chicken_sandwich"),
                 new net.minecraft.world.item.ItemStack(GFEDishes.CHICKEN_SANDWICH.get()),
-                sandwichBase(), GFEFormItems.CHICKEN_SLICE.get());
+                sandwichBase(), GFEFormItems.COOKED_CHICKEN_SLICE.get());
         VanillaRecipeHelper.addShapelessRecipe(provider, id("beef_burger"),
                 new net.minecraft.world.item.ItemStack(GFEDishes.BEEF_BURGER.get()),
                 burgerBase(), GFEFormItems.COOKED_BEEF_PATTY.get(), GFEFormItems.TOMATO_SLICE.get());

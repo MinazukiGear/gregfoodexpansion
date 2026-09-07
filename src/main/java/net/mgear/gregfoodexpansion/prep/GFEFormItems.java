@@ -86,6 +86,12 @@ public final class GFEFormItems {
     // ---- 肉饼链(dishes-and-gains.md §5 装配与肉饼链):馅 → 冲压 → 生肉饼 → 煎/烤 → 熟肉饼 ----
     public static final RegistryObject<Item> RAW_BEEF_PATTY = form("raw_beef_patty");
     public static final RegistryObject<Item> COOKED_BEEF_PATTY = cookedPatty("cooked_beef_patty", 6, 0.6F);
+    // ---- 熟肉切片(2026-09-08 独立口径):熟肉切片电路产出,装配类三明治使用熟片 ----
+    public static final RegistryObject<Item> COOKED_BEEF_SLICE = cookedForm("cooked_beef_slice");
+    public static final RegistryObject<Item> COOKED_PORK_SLICE = cookedForm("cooked_pork_slice");
+    public static final RegistryObject<Item> COOKED_MUTTON_SLICE = cookedForm("cooked_mutton_slice");
+    public static final RegistryObject<Item> COOKED_CHICKEN_SLICE = cookedForm("cooked_chicken_slice");
+    public static final RegistryObject<Item> COOKED_FISH_SLICE = cookedForm("cooked_fish_slice");
     // ---- 烘焙切分(dishes-and-gains.md §4):切片电路承载,三明治/汉堡与蒜香法棍的原料 ----
     public static final RegistryObject<Item> BREAD_SLICE = form("bread_slice");
     public static final RegistryObject<Item> BAGUETTE_SLICE = form("baguette_slice");
@@ -125,6 +131,15 @@ public final class GFEFormItems {
             CHICKEN_DICED, CHICKEN_CUTS, FISH_CUBE);
     public static final List<RegistryObject<Item>> MINCED_MEATS = List.of(
             BEEF_MINCED, PORK_MINCED, MUTTON_MINCED, CHICKEN_MINCED, FISH_SURIMI);
+
+    // 熟制形态可少量直接食用(同熟鸡肉丝口径),无增益
+    private static RegistryObject<Item> cookedForm(String name) {
+        return ITEMS.register(name, () -> new Item(new Item.Properties().food(
+                new net.minecraft.world.food.FoodProperties.Builder()
+                        .nutrition(3)
+                        .saturationMod(0.3F)
+                        .build())));
+    }
 
     private static RegistryObject<Item> form(String name) {
         return ITEMS.register(name, () -> new Item(new Item.Properties()));

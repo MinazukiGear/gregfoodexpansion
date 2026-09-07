@@ -33,6 +33,13 @@ public final class GFEPrepRecipes {
         prep(provider, 1, 40, 4, Items.CHICKEN, GFEFormItems.CHICKEN_SLICE.get());
         prep(provider, 1, 40, 4, Items.COD, GFEFormItems.FISH_SLICE.get());
         prep(provider, 1, 40, 4, Items.SALMON, GFEFormItems.FISH_SLICE.get());
+        // 熟肉切片(2026-09-08 独立口径):熟肉切片电路,生熟分品
+        prep(provider, 1, 40, 4, Items.COOKED_BEEF, GFEFormItems.COOKED_BEEF_SLICE.get());
+        prep(provider, 1, 40, 4, Items.COOKED_PORKCHOP, GFEFormItems.COOKED_PORK_SLICE.get());
+        prep(provider, 1, 40, 4, Items.COOKED_MUTTON, GFEFormItems.COOKED_MUTTON_SLICE.get());
+        prep(provider, 1, 40, 4, Items.COOKED_CHICKEN, GFEFormItems.COOKED_CHICKEN_SLICE.get());
+        prep(provider, 1, 40, 4, Items.COOKED_COD, GFEFormItems.COOKED_FISH_SLICE.get());
+        prep(provider, 1, 40, 4, Items.COOKED_SALMON, GFEFormItems.COOKED_FISH_SLICE.get());
         prep(provider, 1, 40, 4, Items.POTATO, GFEFormItems.POTATO_SLICE.get());
         prep(provider, 1, 40, 4, Items.APPLE, GFEFormItems.APPLE_SLICE.get());
         prep(provider, 1, 40, 4, GFECropItems.TOMATO.get(), GFEFormItems.TOMATO_SLICE.get());

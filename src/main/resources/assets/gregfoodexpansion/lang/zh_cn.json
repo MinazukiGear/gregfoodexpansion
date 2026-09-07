@@ -203,5 +203,10 @@
   "item.gregfoodexpansion.chicken_tender": "鸡柳",
   "item.gregfoodexpansion.mutton_ribs": "羊排骨",
   "item.gregfoodexpansion.chicken_feet": "鸡爪",
-  "item.gregfoodexpansion.fish_bones": "鱼骨"
+  "item.gregfoodexpansion.fish_bones": "鱼骨",
+  "item.gregfoodexpansion.cooked_beef_slice": "熟牛肉片",
+  "item.gregfoodexpansion.cooked_pork_slice": "熟猪肉片",
+  "item.gregfoodexpansion.cooked_mutton_slice": "熟羊肉片",
+  "item.gregfoodexpansion.cooked_chicken_slice": "熟鸡肉片",
+  "item.gregfoodexpansion.cooked_fish_slice": "熟鱼片"
 }
