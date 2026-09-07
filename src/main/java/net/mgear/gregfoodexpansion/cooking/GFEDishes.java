@@ -70,6 +70,17 @@ public final class GFEDishes {
     public static final RegistryObject<Item> CHICKEN_CUTLET = fried("chicken_cutlet", 6, 0.7F);
     public static final RegistryObject<Item> CHICKEN_TENDER = fried("chicken_tender", 5, 0.7F);
 
+    // ---- 烧烤口味串(烹饪机 c6,精制档烤口径:急迫 I 5min + 饱和瞬时);酱烤(待酱油)/孜然烤(待孜然)后补 ----
+    public static final RegistryObject<Item> GRILLED_LAMB_SKEWER = baked("grilled_lamb_skewer", 6, 0.6F);
+    public static final RegistryObject<Item> GRILLED_BEEF_SKEWER = baked("grilled_beef_skewer", 6, 0.6F);
+    public static final RegistryObject<Item> GRILLED_CHICKEN_SKEWER = baked("grilled_chicken_skewer", 5, 0.6F);
+    public static final RegistryObject<Item> SALT_GRILLED_LAMB = baked("salt_grilled_lamb_skewer", 6, 0.6F);
+    public static final RegistryObject<Item> SALT_GRILLED_BEEF = baked("salt_grilled_beef_skewer", 6, 0.6F);
+    public static final RegistryObject<Item> SALT_GRILLED_CHICKEN = baked("salt_grilled_chicken_skewer", 5, 0.6F);
+    public static final RegistryObject<Item> CHILI_GRILLED_LAMB = baked("chili_grilled_lamb_skewer", 6, 0.6F);
+    public static final RegistryObject<Item> CHILI_GRILLED_BEEF = baked("chili_grilled_beef_skewer", 6, 0.6F);
+    public static final RegistryObject<Item> CHILI_GRILLED_CHICKEN = baked("chili_grilled_chicken_skewer", 5, 0.6F);
+
     // ---- 基础档(手工,dishes-and-gains.md §2/§5):急迫 I 15 s 微效果,无主增益 ----
     public static final RegistryObject<Item> FRUIT_PLATTER = hand("fruit_platter", 4, 0.3F);
     public static final RegistryObject<Item> SUGAR_TOMATO = hand("sugar_tomato", 3, 0.3F);
@@ -125,7 +136,10 @@ public final class GFEDishes {
             VEGETABLE_SANDWICH, EGG_SANDWICH, BEEF_SANDWICH, CHICKEN_SANDWICH,
             BEEF_BURGER, CHICKEN_BURGER,
             CAMPFIRE_LAMB_SKEWER, CAMPFIRE_BEEF_SKEWER, CAMPFIRE_CHICKEN_SKEWER,
-            CAMPFIRE_CHILI_SKEWER, IRON_LAMB_SKEWER, IRON_BEEF_ROLL_SKEWER);
+            CAMPFIRE_CHILI_SKEWER, IRON_LAMB_SKEWER, IRON_BEEF_ROLL_SKEWER,
+            GRILLED_LAMB_SKEWER, GRILLED_BEEF_SKEWER, GRILLED_CHICKEN_SKEWER,
+            SALT_GRILLED_LAMB, SALT_GRILLED_BEEF, SALT_GRILLED_CHICKEN,
+            CHILI_GRILLED_LAMB, CHILI_GRILLED_BEEF, CHILI_GRILLED_CHICKEN);
 
     private static RegistryObject<Item> dish(String name, FoodProperties food) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(food)));

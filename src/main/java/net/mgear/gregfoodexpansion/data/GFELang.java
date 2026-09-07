@@ -206,6 +206,17 @@ public final class GFELang {
         add("item.gregfoodexpansion.campfire_chili_skewer", "Campfire Chili Skewer");
         add("item.gregfoodexpansion.iron_lamb_skewer", "Iron-Skewered Fatty Mutton Roll");
         add("item.gregfoodexpansion.iron_beef_roll_skewer", "Iron-Skewered Fatty Beef Roll");
+
+        // ---- 烧烤口味串(c6,精制档) ----
+        add("item.gregfoodexpansion.grilled_lamb_skewer", "Plain Grilled Lamb Skewer");
+        add("item.gregfoodexpansion.grilled_beef_skewer", "Plain Grilled Beef Skewer");
+        add("item.gregfoodexpansion.grilled_chicken_skewer", "Plain Grilled Chicken Skewer");
+        add("item.gregfoodexpansion.salt_grilled_lamb_skewer", "Salt-Grilled Lamb Skewer");
+        add("item.gregfoodexpansion.salt_grilled_beef_skewer", "Salt-Grilled Beef Skewer");
+        add("item.gregfoodexpansion.salt_grilled_chicken_skewer", "Salt-Grilled Chicken Skewer");
+        add("item.gregfoodexpansion.chili_grilled_lamb_skewer", "Chili-Grilled Lamb Skewer");
+        add("item.gregfoodexpansion.chili_grilled_beef_skewer", "Chili-Grilled Beef Skewer");
+        add("item.gregfoodexpansion.chili_grilled_chicken_skewer", "Chili-Grilled Chicken Skewer");
         add("gregfoodexpansion.multiblock.tunnel_oven.preheating", "Oven preheating...");
 
         // ---- 基础档手工菜肴(dishes-and-gains.md §5,LV 前兜底) ----

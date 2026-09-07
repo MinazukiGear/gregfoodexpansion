@@ -117,6 +117,12 @@ FORMS = [
     ("campfire_lamb_skewer", "fries", "mutton"), ("campfire_beef_skewer", "fries", "beef"),
     ("campfire_chicken_skewer", "fries", "chicken"), ("campfire_chili_skewer", "fries", "chili"),
     ("iron_lamb_skewer", "fries", "mutton"), ("iron_beef_roll_skewer", "fries", "beef"),
+    ("grilled_lamb_skewer", "fries", "baked"), ("grilled_beef_skewer", "fries", "beef"),
+    ("grilled_chicken_skewer", "fries", "chicken"),
+    ("salt_grilled_lamb_skewer", "fries", "baked"), ("salt_grilled_beef_skewer", "fries", "beef"),
+    ("salt_grilled_chicken_skewer", "fries", "chicken"),
+    ("chili_grilled_lamb_skewer", "fries", "chili"), ("chili_grilled_beef_skewer", "fries", "chili"),
+    ("chili_grilled_chicken_skewer", "fries", "chili"),
     # ---- 切好件(切片拼装) ----
     ("sliced_bread", "slices", "baked"), ("sliced_baguetted", "fries", "toast_brown"),
     ("sliced_burger_bun", "plate", "dish_cream"),

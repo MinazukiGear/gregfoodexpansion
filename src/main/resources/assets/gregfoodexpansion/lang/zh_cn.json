@@ -220,5 +220,14 @@
   "item.gregfoodexpansion.campfire_chicken_skewer": "营火鸡肉串",
   "item.gregfoodexpansion.campfire_chili_skewer": "营火辣椒串",
   "item.gregfoodexpansion.iron_lamb_skewer": "铁签肥羊卷",
-  "item.gregfoodexpansion.iron_beef_roll_skewer": "铁签肥牛卷"
+  "item.gregfoodexpansion.iron_beef_roll_skewer": "铁签肥牛卷",
+  "item.gregfoodexpansion.grilled_lamb_skewer": "原味烤羊肉串",
+  "item.gregfoodexpansion.grilled_beef_skewer": "原味烤牛肉串",
+  "item.gregfoodexpansion.grilled_chicken_skewer": "原味烤鸡肉串",
+  "item.gregfoodexpansion.salt_grilled_lamb_skewer": "盐烤羊肉串",
+  "item.gregfoodexpansion.salt_grilled_beef_skewer": "盐烤牛肉串",
+  "item.gregfoodexpansion.salt_grilled_chicken_skewer": "盐烤鸡肉串",
+  "item.gregfoodexpansion.chili_grilled_lamb_skewer": "辣烤羊肉串",
+  "item.gregfoodexpansion.chili_grilled_beef_skewer": "辣烤牛肉串",
+  "item.gregfoodexpansion.chili_grilled_chicken_skewer": "辣烤鸡肉串"
 }

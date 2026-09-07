@@ -203,6 +203,35 @@ public final class GFECookingRecipes {
                 .inputFluids(GTMaterials.SeedOil, 20)
                 .outputItems(GFEDishes.GARLIC_BAGUETTE.get()));
 
+        // ---- c6 烧烤:口味串(生串 + 调味料;200 tick / 16 EU/t,精制档) ----
+        cook(provider, "grilled_lamb_skewer", 6, 200, 16, b -> b
+                .inputItems(GFEFormItems.RAW_LAMB_SKEWER.get())
+                .outputItems(GFEDishes.GRILLED_LAMB_SKEWER.get()));
+        cook(provider, "grilled_beef_skewer", 6, 200, 16, b -> b
+                .inputItems(GFEFormItems.RAW_BEEF_SKEWER.get())
+                .outputItems(GFEDishes.GRILLED_BEEF_SKEWER.get()));
+        cook(provider, "grilled_chicken_skewer", 6, 200, 16, b -> b
+                .inputItems(GFEFormItems.RAW_CHICKEN_SKEWER.get())
+                .outputItems(GFEDishes.GRILLED_CHICKEN_SKEWER.get()));
+        cook(provider, "salt_grilled_lamb_skewer", 6, 200, 16, b -> b
+                .inputItems(GFEFormItems.RAW_LAMB_SKEWER.get()).inputItems(GTMaterials.Salt, 1)
+                .outputItems(GFEDishes.SALT_GRILLED_LAMB.get()));
+        cook(provider, "salt_grilled_beef_skewer", 6, 200, 16, b -> b
+                .inputItems(GFEFormItems.RAW_BEEF_SKEWER.get()).inputItems(GTMaterials.Salt, 1)
+                .outputItems(GFEDishes.SALT_GRILLED_BEEF.get()));
+        cook(provider, "salt_grilled_chicken_skewer", 6, 200, 16, b -> b
+                .inputItems(GFEFormItems.RAW_CHICKEN_SKEWER.get()).inputItems(GTMaterials.Salt, 1)
+                .outputItems(GFEDishes.SALT_GRILLED_CHICKEN.get()));
+        cook(provider, "chili_grilled_lamb_skewer", 6, 200, 16, b -> b
+                .inputItems(GFEFormItems.RAW_LAMB_SKEWER.get()).inputItems(GFEFormItems.CHILI_POWDER.get())
+                .outputItems(GFEDishes.CHILI_GRILLED_LAMB.get()));
+        cook(provider, "chili_grilled_beef_skewer", 6, 200, 16, b -> b
+                .inputItems(GFEFormItems.RAW_BEEF_SKEWER.get()).inputItems(GFEFormItems.CHILI_POWDER.get())
+                .outputItems(GFEDishes.CHILI_GRILLED_BEEF.get()));
+        cook(provider, "chili_grilled_chicken_skewer", 6, 200, 16, b -> b
+                .inputItems(GFEFormItems.RAW_CHICKEN_SKEWER.get()).inputItems(GFEFormItems.CHILI_POWDER.get())
+                .outputItems(GFEDishes.CHILI_GRILLED_CHICKEN.get()));
+
         // ---- c6 烧烤(铁签串):200 tick / 16 EU/t,精制档 ----
         cook(provider, "iron_lamb_skewer", 6, 200, 16, b -> b
                 .inputItems(GFEFormItems.FATTY_MUTTON_ROLL.get())
