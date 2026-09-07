@@ -22,7 +22,9 @@ import net.minecraft.world.level.ItemLike;
 /**
  * 通用烹饪机电路配方(universal-cooker.md §3/§4/§5 草案数值,基准;
  * 菜肴名录 dishes-and-gains.md §5,M1 原料可达 32 道):
- * c1 煮(水/奶介质)/ c2 蒸 / c3 炒(食用油 10 mB)/ c4 炸(食用油 20-30 mB)。
+ * c1 煮(水/奶介质)/ c2 蒸 / c3 炒(食用油 20 mB)/ c4 炸(食用油 100-200 mB)。
+ * 用油口径(2026-09-08 现实化调整,1 mB = 1 mL):炒按每盘 15-30 mL 取 20;炸为油浴操作,
+ * 现实一次装填 1-2 L 且重复使用,每批按吸收与劣化分摊计 100-200(挂糊类吸收高取上限)。
  * 食用油 v1 口径 = GTCEu 种子油(seed oil),`#forge:cooking_oil` 标签已建,待自建食用油精炼链后迁移。
  * 经 IGTAddon#addRecipes 走 GTCEu 动态数据包注册。
  */
@@ -30,6 +32,9 @@ public final class GFECookingRecipes {
     private GFECookingRecipes() {}
 
     // ② 层 forge 形态标签:任意肉丝(compatibility-boundary.md §3)
+    /** 炒菜用油:现实一盘炒菜约 15-30 mL(1 mB = 1 mL)。 */
+    private static final int STIRFRY_OIL = 20;
+
     private static final TagKey<Item> ANY_MEAT_STRIPS = TagKey.create(net.minecraft.core.registries.Registries.ITEM,
             net.minecraft.resources.ResourceLocation.fromNamespaceAndPath("forge", "meat_strips"));
 
@@ -122,28 +127,28 @@ public final class GFECookingRecipes {
                 .outputItems(GFEDishes.BEEF_CHOW_FUN.get()));
 
         // ---- c4 炸:160-200 tick / 24-28 EU/t + 食用油 20-30 mB ----
-        fry(provider, "fries", 160, 24, 20, b -> b
+        fry(provider, "fries", 160, 24, 100, b -> b
                 .inputItems(GFEFormItems.FRIES_BLANK.get())
                 .outputItems(GFEDishes.FRIES.get()));
-        fry(provider, "potato_chips", 160, 24, 20, b -> b
+        fry(provider, "potato_chips", 160, 24, 100, b -> b
                 .inputItems(GFEFormItems.POTATO_SLICE.get(), 2)
                 .outputItems(GFEDishes.POTATO_CHIPS.get(), 2));
-        fry(provider, "fried_chicken_cuts", 200, 28, 30, b -> b
+        fry(provider, "fried_chicken_cuts", 200, 28, 150, b -> b
                 .inputItems(GFEFormItems.CHICKEN_CUTS.get())
                 .outputItems(GFEDishes.FRIED_CHICKEN_CUTS.get()));
-        fry(provider, "fried_peanuts", 160, 24, 20, b -> b
+        fry(provider, "fried_peanuts", 160, 24, 100, b -> b
                 .inputItems(GFECropItems.PEANUT.get(), 2)
                 .outputItems(GFEDishes.FRIED_PEANUTS.get(), 2));
-        fry(provider, "fried_fish_fillet", 200, 28, 30, b -> b
+        fry(provider, "fried_fish_fillet", 200, 28, 200, b -> b
                 .inputItems(GFEFormItems.FISH_SLICE.get())
                 .outputItems(GFEDishes.FRIED_FISH_FILLET.get()));
-        fry(provider, "onion_rings", 160, 24, 20, b -> b
+        fry(provider, "onion_rings", 160, 24, 150, b -> b
                 .inputItems(GFECropItems.ONION.get())
                 .outputItems(GFEDishes.ONION_RINGS.get(), 2));
-        fry(provider, "spring_roll", 200, 28, 30, b -> b
+        fry(provider, "spring_roll", 200, 28, 150, b -> b
                 .inputItems(GFEFormItems.DOUGH_SHEET.get()).inputItems(GFEFormItems.CABBAGE_STRIP.get())
                 .outputItems(GFEDishes.SPRING_ROLL.get(), 2));
-        fry(provider, "rice_cracker", 160, 24, 20, b -> b
+        fry(provider, "rice_cracker", 160, 24, 100, b -> b
                 .inputItems(GFEFormItems.RICE_FLOUR.get())
                 .outputItems(GFEDishes.RICE_CRACKER.get(), 2));
     }
@@ -161,7 +166,7 @@ public final class GFECookingRecipes {
     private static void stirfry(Consumer<FinishedRecipe> provider, String name, int duration, int eut,
                                 Consumer<GTRecipeBuilder> config) {
         cook(provider, name, 3, duration, eut, b -> {
-            b.inputFluids(GTMaterials.SeedOil, 10);
+            b.inputFluids(GTMaterials.SeedOil, STIRFRY_OIL);
             config.accept(b);
         });
     }
