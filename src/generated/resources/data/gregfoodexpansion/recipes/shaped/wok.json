@@ -3,13 +3,16 @@
   "key": {
     "I": {
       "item": "gtceu:iron_plate"
+    },
+    "R": {
+      "item": "gtceu:iron_rod"
     }
   },
   "matchSize": false,
   "pattern": [
     "III",
     "III",
-    "I I"
+    "R R"
   ],
   "result": {
     "item": "gregfoodexpansion:wok",

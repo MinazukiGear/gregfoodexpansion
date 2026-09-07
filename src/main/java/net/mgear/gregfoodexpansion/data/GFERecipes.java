@@ -67,11 +67,12 @@ public final class GFERecipes {
                 new net.minecraft.world.item.ItemStack(GFECookingTools.KITCHEN_KNIFE.get()),
                 "II", "I ", "S ",
                 'I', ChemicalHelper.get(TagPrefix.plate, GTMaterials.Iron), 'S', Items.STICK);
-        // 炒锅:铁板 ×7(碗形 + 双足)
+        // 炒锅:铁板 ×6(碗体)+ 铁杆 ×2(双耳/双足)
         VanillaRecipeHelper.addShapedRecipe(provider, id("wok"),
                 new net.minecraft.world.item.ItemStack(GFECookingTools.WOK.get()),
-                "III", "III", "I I",
-                'I', ChemicalHelper.get(TagPrefix.plate, GTMaterials.Iron));
+                "III", "III", "R R",
+                'I', ChemicalHelper.get(TagPrefix.plate, GTMaterials.Iron),
+                'R', ChemicalHelper.get(TagPrefix.rod, GTMaterials.Iron));
         // 蒸笼:竹 ×5(笼格,2026-09-08 降本易获得)
         VanillaRecipeHelper.addShapedRecipe(provider, id("steamer"),
                 new net.minecraft.world.item.ItemStack(GFECookingTools.STEAMER.get()),
