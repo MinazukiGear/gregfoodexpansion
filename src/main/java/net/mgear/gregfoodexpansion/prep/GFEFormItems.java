@@ -80,6 +80,10 @@ public final class GFEFormItems {
     public static final RegistryObject<Item> BREAD_SLICE = form("bread_slice");
     public static final RegistryObject<Item> BAGUETTE_SLICE = form("baguette_slice");
     public static final RegistryObject<Item> BURGER_BUN = form("burger_bun");
+    // ---- 切好件(2026-09-08:切片 ×2 工作台拼装为一份即用切片,装配基座与库存密度) ----
+    public static final RegistryObject<Item> SLICED_BREAD = form("sliced_bread");
+    public static final RegistryObject<Item> SLICED_BAGUETTE = form("sliced_baguetted");
+    public static final RegistryObject<Item> SLICED_BURGER_BUN = form("sliced_burger_bun");
     // ---- 米制品链(2026-09-08 提案落地):水稻 → 研磨 → 大米粉 → +水 → 米粉团 → 压延 → 米粉条 ----
     public static final RegistryObject<Item> RICE_FLOUR = form("rice_flour");
     public static final RegistryObject<Item> RICE_DOUGH = form("rice_dough");
@@ -96,6 +100,7 @@ public final class GFEFormItems {
             TOMATO_DICED, ONION_DICED, FRIES_BLANK, CHILI_DICED, POTATO_DICED,
             ONION_MINCED, GARLIC_MINCED, CHILI_POWDER, APPLE_FLESH, NOODLE, DOUGH_SHEET,
             BREAD_SLICE, BAGUETTE_SLICE, BURGER_BUN,
+            SLICED_BREAD, SLICED_BAGUETTE, SLICED_BURGER_BUN,
             RAW_BREAD, RAW_TOAST, RAW_BAGUETTE,
             RICE_FLOUR, RICE_DOUGH, RICE_NOODLES);
 

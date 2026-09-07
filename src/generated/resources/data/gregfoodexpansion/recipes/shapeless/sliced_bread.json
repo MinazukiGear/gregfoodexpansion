@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gregfoodexpansion:bread_slice"
+    },
+    {
+      "item": "gregfoodexpansion:bread_slice"
+    }
+  ],
+  "result": {
+    "item": "gregfoodexpansion:sliced_bread"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gregfoodexpansion:burger_bun"
+    },
+    {
+      "item": "gregfoodexpansion:burger_bun"
+    }
+  ],
+  "result": {
+    "item": "gregfoodexpansion:sliced_burger_bun"
+  }
+}

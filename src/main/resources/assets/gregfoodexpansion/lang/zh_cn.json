@@ -184,5 +184,8 @@
   "item.gregfoodexpansion.burger_bun": "汉堡胚",
   "item.gregfoodexpansion.raw_bread": "生面包坯",
   "item.gregfoodexpansion.raw_baguette": "生法棍",
-  "item.gregfoodexpansion.raw_toast": "生吐司坯"
+  "item.gregfoodexpansion.raw_toast": "生吐司坯",
+  "item.gregfoodexpansion.sliced_bread": "切好的面包",
+  "item.gregfoodexpansion.sliced_baguetted": "切好的法棍",
+  "item.gregfoodexpansion.sliced_burger_bun": "切好的汉堡胚"
 }

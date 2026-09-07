@@ -78,6 +78,17 @@ public final class GFERecipes {
                 new net.minecraft.world.item.ItemStack(GFEFormItems.BURGER_BUN.get()),
                 GFEPrepTools.CLEAVER.get(), GFEDishes.DINNER_ROLL.get());
 
+        // 切好件(2026-09-08):切片 ×2 工作台拼装为一份即用切片(三明治/汉堡装配基座)
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("sliced_bread"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.SLICED_BREAD.get()),
+                GFEFormItems.BREAD_SLICE.get(), GFEFormItems.BREAD_SLICE.get());
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("sliced_baguetted"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.SLICED_BAGUETTE.get()),
+                GFEFormItems.BAGUETTE_SLICE.get(), GFEFormItems.BAGUETTE_SLICE.get());
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("sliced_burger_bun"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.SLICED_BURGER_BUN.get()),
+                GFEFormItems.BURGER_BUN.get(), GFEFormItems.BURGER_BUN.get());
+
         // 面皮切丝成面条(手工:菜刀)
         VanillaRecipeHelper.addShapelessRecipe(provider, id("noodle_manual"),
                 new net.minecraft.world.item.ItemStack(GFEFormItems.NOODLE.get()),
