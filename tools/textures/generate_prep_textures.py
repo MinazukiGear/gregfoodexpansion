@@ -98,6 +98,7 @@ FORMS = [
     ("raw_bread", "flesh", "dough"), ("raw_toast", "flesh", "dough"),
     ("raw_baguette", "fries", "dough"), ("raw_dinner_roll", "flesh", "dough"),
     ("raw_beef_patty", "nugget", "beef"), ("cooked_beef_patty", "nugget", "toast_brown"),
+    ("raw_chicken_cutlet", "flesh", "chicken"), ("raw_chicken_tender", "strips", "chicken"),
     ("vegetable_sandwich", "stirfry", "dish_green"), ("egg_sandwich", "plate", "soup_yellow"),
     ("beef_sandwich", "stirfry", "beef"), ("chicken_sandwich", "stirfry", "chicken"),
     ("beef_burger", "nugget", "beef"), ("chicken_burger", "nugget", "chicken"),
@@ -125,6 +126,7 @@ FORMS = [
     ("beef_chow_fun", "stirfry", "soup_brown"),
     ("fries", "fried", "dish_gold"), ("potato_chips", "fried", "dish_gold"),
     ("fried_chicken_cuts", "fried", "dish_gold"), ("fried_peanuts", "fried", "soup_brown"),
+    ("chicken_cutlet", "fried", "dish_gold"), ("chicken_tender", "fries", "dish_gold"),
     ("fried_fish_fillet", "fried", "dish_gold"), ("onion_rings", "fried", "dish_gold"),
     ("spring_roll", "fried", "dish_gold"), ("rice_cracker", "fried", "soup_white"),
 ]

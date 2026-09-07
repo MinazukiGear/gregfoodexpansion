@@ -64,6 +64,8 @@ public final class GFEDishes {
     public static final RegistryObject<Item> ONION_RINGS = fried("onion_rings", 4, 0.8F);
     public static final RegistryObject<Item> SPRING_ROLL = fried("spring_roll", 6, 0.8F);
     public static final RegistryObject<Item> RICE_CRACKER = fried("rice_cracker", 3, 0.8F);
+    public static final RegistryObject<Item> CHICKEN_CUTLET = fried("chicken_cutlet", 6, 0.7F);
+    public static final RegistryObject<Item> CHICKEN_TENDER = fried("chicken_tender", 5, 0.7F);
 
     // ---- 基础档(手工,dishes-and-gains.md §2/§5):急迫 I 15 s 微效果,无主增益 ----
     public static final RegistryObject<Item> FRUIT_PLATTER = hand("fruit_platter", 4, 0.3F);
@@ -104,7 +106,7 @@ public final class GFEDishes {
             STIR_FRIED_PORK, KUNG_PAO_CHICKEN, STIR_FRIED_VEGETABLES, FRIED_RICE_NOODLES,
             BEEF_CHOW_FUN,
             FRIES, POTATO_CHIPS, FRIED_CHICKEN_CUTS, FRIED_PEANUTS, FRIED_FISH_FILLET,
-            ONION_RINGS, SPRING_ROLL, RICE_CRACKER,
+            ONION_RINGS, SPRING_ROLL, RICE_CRACKER, CHICKEN_CUTLET, CHICKEN_TENDER,
             FRUIT_PLATTER, SUGAR_TOMATO, CHICKEN_COLD_NOODLES, FRIED_EGG, PLAIN_NOODLES,
             HAND_FRIED_RICE, HAND_STEAMED_EGG, HAND_STEAMED_CORN,
             BREAD, TOAST, SWEET_BREAD, CAKE, APPLE_PIE, BAGUETTE, DINNER_ROLL,

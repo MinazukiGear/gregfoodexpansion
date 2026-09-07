@@ -50,6 +50,8 @@ public final class GFEPrepRecipes {
         prep(provider, 2, 40, 4, GFECropItems.CABBAGE.get(), GFEFormItems.CABBAGE_STRIP.get());
         prep(provider, 2, 40, 4, GFECropItems.CHILI.get(), GFEFormItems.CHILI_STRIP.get());
         prep(provider, 2, 40, 4, Items.COOKED_CHICKEN, GFEFormItems.CHICKEN_SHRED.get());
+        // 生鸡柳条:鸡肉片切条(生熟判定:生鸡可切条,不可切丝)
+        prep(provider, 2, 40, 4, Items.CHICKEN, GFEFormItems.RAW_CHICKEN_TENDER.get());
 
         // ---- c3 切块:40 tick / 4 EU/t ----
         prep(provider, 3, 40, 4, Items.BEEF, GFEFormItems.BEEF_CUBE.get());

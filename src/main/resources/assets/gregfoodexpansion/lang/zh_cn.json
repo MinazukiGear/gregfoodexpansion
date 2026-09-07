@@ -196,5 +196,9 @@
   "item.gregfoodexpansion.beef_sandwich": "牛肉三明治",
   "item.gregfoodexpansion.chicken_sandwich": "鸡肉三明治",
   "item.gregfoodexpansion.beef_burger": "牛肉汉堡",
-  "item.gregfoodexpansion.chicken_burger": "鸡肉汉堡"
+  "item.gregfoodexpansion.chicken_burger": "鸡肉汉堡",
+  "item.gregfoodexpansion.raw_chicken_cutlet": "生鸡排",
+  "item.gregfoodexpansion.raw_chicken_tender": "生鸡柳条",
+  "item.gregfoodexpansion.chicken_cutlet": "鸡排",
+  "item.gregfoodexpansion.chicken_tender": "鸡柳"
 }

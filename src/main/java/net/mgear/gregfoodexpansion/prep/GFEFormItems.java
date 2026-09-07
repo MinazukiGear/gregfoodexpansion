@@ -44,6 +44,9 @@ public final class GFEFormItems {
     public static final RegistryObject<Item> CHICKEN_DICED = form("chicken_diced");
     public static final RegistryObject<Item> CHICKEN_CUTS = form("chicken_cuts");
     public static final RegistryObject<Item> CHICKEN_MINCED = form("chicken_minced");
+    // 生鸡排(鸡肉片压延拍平)/生鸡柳条(鸡肉片切条):挂糊炸制的前置(2026-09-08)
+    public static final RegistryObject<Item> RAW_CHICKEN_CUTLET = form("raw_chicken_cutlet");
+    public static final RegistryObject<Item> RAW_CHICKEN_TENDER = form("raw_chicken_tender");
     // ---- 肉类:鱼 ----
     public static final RegistryObject<Item> FISH_SLICE = form("fish_slice");
     public static final RegistryObject<Item> FISH_CUBE = form("fish_cube");
@@ -98,6 +101,7 @@ public final class GFEFormItems {
             PORK_SLICE, PORK_STRIP, PORK_CUBE, PORK_RIBS, PORK_MINCED,
             MUTTON_SLICE, MUTTON_CUBE, MUTTON_MINCED,
             CHICKEN_SLICE, CHICKEN_SHRED, CHICKEN_DICED, CHICKEN_CUTS, CHICKEN_MINCED,
+            RAW_CHICKEN_CUTLET, RAW_CHICKEN_TENDER,
             RAW_BEEF_PATTY, COOKED_BEEF_PATTY,
             FISH_SLICE, FISH_CUBE, FISH_SURIMI,
             CHILI_RING, POTATO_SLICE, APPLE_SLICE, TOMATO_SLICE,

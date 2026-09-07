@@ -153,6 +153,12 @@ public final class GFECookingRecipes {
         fry(provider, "rice_cracker", 160, 24, 100, b -> b
                 .inputItems(GFEFormItems.RICE_FLOUR.get())
                 .outputItems(GFEDishes.RICE_CRACKER.get(), 2));
+        fry(provider, "chicken_cutlet", 200, 28, 150, b -> b
+                .inputItems(GFEFormItems.RAW_CHICKEN_CUTLET.get())
+                .outputItems(GFEDishes.CHICKEN_CUTLET.get()));
+        fry(provider, "chicken_tender", 160, 24, 150, b -> b
+                .inputItems(GFEFormItems.RAW_CHICKEN_TENDER.get(), 2)
+                .outputItems(GFEDishes.CHICKEN_TENDER.get(), 2));
 
         // ---- c5 烤:烘焙品(隧道式烤炉量产,通用烹饪机亦可小批量) ----
         bake(provider, "bread", 2, 200, 12, b -> b
