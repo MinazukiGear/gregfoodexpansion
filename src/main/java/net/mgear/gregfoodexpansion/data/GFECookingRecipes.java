@@ -22,9 +22,10 @@ import net.minecraft.world.level.ItemLike;
 /**
  * 通用烹饪机电路配方(universal-cooker.md §3/§4/§5 草案数值,基准;
  * 菜肴名录 dishes-and-gains.md §5,M1 原料可达 32 道):
- * c1 煮(水/奶介质)/ c2 蒸 / c3 炒(食用油 20 mB)/ c4 炸(食用油 100-200 mB)。
+ * c1 煮(水/奶介质)/ c2 蒸 / c3 炒(食用油 20 mB)/ c4 炸(油浴装填 1,000 mB、回收后净吸收 100-200 mB)。
  * 用油口径(2026-09-08 现实化调整,1 mB = 1 mL):炒按每盘 15-30 mL 取 20;炸为油浴操作,
- * 现实一次装填 1-2 L 且重复使用,每批按吸收与劣化分摊计 100-200(挂糊类吸收高取上限)。
+ * 配方按"装填-回收"建模——每批输入 1 桶油浴、输出扣除吸收后的回油(净吸收:裸炸 100 /
+ * 挂糊 150 / 重糊 200),回油可回流复用;吸收量即净油耗,装填量即机器油浴吞吐。
  * 食用油 v1 口径 = GTCEu 种子油(seed oil),`#forge:cooking_oil` 标签已建,待自建食用油精炼链后迁移。
  * 经 IGTAddon#addRecipes 走 GTCEu 动态数据包注册。
  */
@@ -171,10 +172,15 @@ public final class GFECookingRecipes {
         });
     }
 
+    // 炸 = 油浴操作:配方装填 1 桶(1,000 mB)食用油,烹饪后回收"装填 − 吸收"。
+    // 吸收量(净油耗)不变:裸炸 100 / 挂糊 150 / 重糊 200;回收油经流体输出槽返回可复用。
+    private static final int FRY_BATH = 1000;
+
     private static void fry(Consumer<FinishedRecipe> provider, String name, int duration, int eut,
-                            int oil, Consumer<GTRecipeBuilder> config) {
+                            int absorbed, Consumer<GTRecipeBuilder> config) {
         cook(provider, name, 4, duration, eut, b -> {
-            b.inputFluids(GTMaterials.SeedOil, oil);
+            b.inputFluids(GTMaterials.SeedOil, FRY_BATH)
+                    .outputFluids(GTMaterials.SeedOil.getFluid(FRY_BATH - absorbed));
             config.accept(b);
         });
     }
