@@ -200,5 +200,8 @@
   "item.gregfoodexpansion.raw_chicken_cutlet": "生鸡排",
   "item.gregfoodexpansion.raw_chicken_tender": "生鸡柳条",
   "item.gregfoodexpansion.chicken_cutlet": "鸡排",
-  "item.gregfoodexpansion.chicken_tender": "鸡柳"
+  "item.gregfoodexpansion.chicken_tender": "鸡柳",
+  "item.gregfoodexpansion.mutton_ribs": "羊排骨",
+  "item.gregfoodexpansion.chicken_feet": "鸡爪",
+  "item.gregfoodexpansion.fish_bones": "鱼骨"
 }

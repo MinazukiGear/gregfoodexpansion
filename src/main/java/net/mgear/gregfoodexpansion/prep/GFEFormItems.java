@@ -37,6 +37,7 @@ public final class GFEFormItems {
     // ---- 肉类:羊肉 ----
     public static final RegistryObject<Item> MUTTON_SLICE = form("mutton_slice");
     public static final RegistryObject<Item> MUTTON_CUBE = form("mutton_cube");
+    public static final RegistryObject<Item> MUTTON_RIBS = form("mutton_ribs");
     public static final RegistryObject<Item> MUTTON_MINCED = form("mutton_minced");
     // ---- 肉类:鸡肉(肉丝仅熟鸡,可直接食用) ----
     public static final RegistryObject<Item> CHICKEN_SLICE = form("chicken_slice");
@@ -44,6 +45,7 @@ public final class GFEFormItems {
     public static final RegistryObject<Item> CHICKEN_DICED = form("chicken_diced");
     public static final RegistryObject<Item> CHICKEN_CUTS = form("chicken_cuts");
     public static final RegistryObject<Item> CHICKEN_MINCED = form("chicken_minced");
+    public static final RegistryObject<Item> CHICKEN_FEET = form("chicken_feet");
     // 生鸡排(鸡肉片压延拍平)/生鸡柳条(鸡肉片切条):挂糊炸制的前置(2026-09-08)
     public static final RegistryObject<Item> RAW_CHICKEN_CUTLET = form("raw_chicken_cutlet");
     public static final RegistryObject<Item> RAW_CHICKEN_TENDER = form("raw_chicken_tender");
@@ -51,6 +53,7 @@ public final class GFEFormItems {
     public static final RegistryObject<Item> FISH_SLICE = form("fish_slice");
     public static final RegistryObject<Item> FISH_CUBE = form("fish_cube");
     public static final RegistryObject<Item> FISH_SURIMI = form("fish_surimi");
+    public static final RegistryObject<Item> FISH_BONES = form("fish_bones");
     // ---- 非肉:切片 ----
     public static final RegistryObject<Item> CHILI_RING = form("chili_ring");
     public static final RegistryObject<Item> POTATO_SLICE = form("potato_slice");
@@ -99,11 +102,11 @@ public final class GFEFormItems {
     public static final List<RegistryObject<Item>> ALL = List.of(
             BEEF_SLICE, BEEF_STRIP, BEEF_CUBE, BEEF_RIBS, BEEF_MINCED,
             PORK_SLICE, PORK_STRIP, PORK_CUBE, PORK_RIBS, PORK_MINCED,
-            MUTTON_SLICE, MUTTON_CUBE, MUTTON_MINCED,
-            CHICKEN_SLICE, CHICKEN_SHRED, CHICKEN_DICED, CHICKEN_CUTS, CHICKEN_MINCED,
+            MUTTON_SLICE, MUTTON_CUBE, MUTTON_RIBS, MUTTON_MINCED,
+            CHICKEN_SLICE, CHICKEN_SHRED, CHICKEN_DICED, CHICKEN_CUTS, CHICKEN_FEET, CHICKEN_MINCED,
             RAW_CHICKEN_CUTLET, RAW_CHICKEN_TENDER,
             RAW_BEEF_PATTY, COOKED_BEEF_PATTY,
-            FISH_SLICE, FISH_CUBE, FISH_SURIMI,
+            FISH_SLICE, FISH_CUBE, FISH_SURIMI, FISH_BONES,
             CHILI_RING, POTATO_SLICE, APPLE_SLICE, TOMATO_SLICE,
             POTATO_STRIP, CARROT_STRIP, CABBAGE_STRIP, CHILI_STRIP,
             TOMATO_DICED, ONION_DICED, FRIES_BLANK, CHILI_DICED, POTATO_DICED,
@@ -118,7 +121,7 @@ public final class GFEFormItems {
     public static final List<RegistryObject<Item>> MEAT_STRIPS = List.of(
             BEEF_STRIP, PORK_STRIP, CHICKEN_SHRED);
     public static final List<RegistryObject<Item>> MEAT_CUBES = List.of(
-            BEEF_CUBE, BEEF_RIBS, PORK_CUBE, PORK_RIBS, MUTTON_CUBE,
+            BEEF_CUBE, BEEF_RIBS, PORK_CUBE, PORK_RIBS, MUTTON_CUBE, MUTTON_RIBS,
             CHICKEN_DICED, CHICKEN_CUTS, FISH_CUBE);
     public static final List<RegistryObject<Item>> MINCED_MEATS = List.of(
             BEEF_MINCED, PORK_MINCED, MUTTON_MINCED, CHICKEN_MINCED, FISH_SURIMI);

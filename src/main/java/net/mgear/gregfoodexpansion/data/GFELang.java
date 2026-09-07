@@ -82,11 +82,14 @@ public final class GFELang {
         add("item.gregfoodexpansion.mutton_slice", "Mutton Slice");
         add("item.gregfoodexpansion.mutton_cube", "Mutton Cubes");
         add("item.gregfoodexpansion.mutton_minced", "Minced Mutton");
+        add("item.gregfoodexpansion.mutton_ribs", "Mutton Ribs");
         add("item.gregfoodexpansion.chicken_slice", "Chicken Slice");
         add("item.gregfoodexpansion.chicken_shred", "Shredded Chicken");
         add("item.gregfoodexpansion.chicken_diced", "Diced Chicken");
         add("item.gregfoodexpansion.chicken_cuts", "Chicken Cuts");
         add("item.gregfoodexpansion.chicken_minced", "Minced Chicken");
+        add("item.gregfoodexpansion.chicken_feet", "Chicken Feet");
+        add("item.gregfoodexpansion.fish_bones", "Fish Bones");
         add("item.gregfoodexpansion.raw_chicken_cutlet", "Raw Chicken Cutlet");
         add("item.gregfoodexpansion.raw_chicken_tender", "Raw Chicken Strips");
         add("item.gregfoodexpansion.chicken_cutlet", "Chicken Cutlet");

@@ -87,6 +87,10 @@ public final class GFEPrepRecipes {
         // ---- c8 带骨切件(实现期提案):40 tick / 4 EU/t ----
         prep(provider, 8, 40, 4, Items.BEEF, GFEFormItems.BEEF_RIBS.get());
         prep(provider, 8, 40, 4, Items.PORKCHOP, GFEFormItems.PORK_RIBS.get());
+        prep(provider, 8, 40, 4, Items.MUTTON, GFEFormItems.MUTTON_RIBS.get());
+        prep(provider, 8, 40, 4, Items.CHICKEN, GFEFormItems.CHICKEN_FEET.get());
+        prep(provider, 8, 40, 4, Items.COD, GFEFormItems.FISH_BONES.get());
+        prep(provider, 8, 40, 4, Items.SALMON, GFEFormItems.FISH_BONES.get());
 
         // ---- c7 压延:100 tick / 8 EU/t(§5 压延取上限),原料 = GTCEu 面团 ----
         prep(provider, 7, 100, 8, GTItems.DOUGH.get(), GFEFormItems.NOODLE.get());
