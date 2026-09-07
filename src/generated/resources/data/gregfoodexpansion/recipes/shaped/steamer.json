@@ -8,8 +8,7 @@
   "matchSize": false,
   "pattern": [
     "BBB",
-    "BBB",
-    "BBB"
+    "B B"
   ],
   "result": {
     "item": "gregfoodexpansion:steamer",

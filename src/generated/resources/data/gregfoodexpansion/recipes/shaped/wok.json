@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "I": {
-      "item": "minecraft:iron_ingot"
+      "item": "gtceu:iron_plate"
     }
   },
   "matchSize": false,

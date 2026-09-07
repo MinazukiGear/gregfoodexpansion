@@ -2,6 +2,9 @@ package net.mgear.gregfoodexpansion.data;
 
 import java.util.function.Consumer;
 
+import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
+import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 
 import net.mgear.gregfoodexpansion.GregFoodExpansion;
@@ -26,16 +29,16 @@ public final class GFERecipes {
     // 手工切配工具(food-processor.md §7):工作台 + 铁质,配方刻意少;
     // 切配机 LV 起接管量产,工具定位为前置过渡。
     private static void addToolRecipes(Consumer<FinishedRecipe> provider) {
-        // 菜刀:铁锭 ×5 + 木棍(2026-09-08 提价:LV 前食品加工入口应为早期真实投资)
+        // 菜刀:铁板 ×5 + 木棍(2026-09-08:用铁配方统一改铁板;提价口径不变)
         VanillaRecipeHelper.addShapedRecipe(provider, id("cleaver"),
                 new net.minecraft.world.item.ItemStack(GFEPrepTools.CLEAVER.get()),
                 "III", "II ", "S  ",
-                'I', Items.IRON_INGOT, 'S', Items.STICK);
-        // 削皮刀:铁锭 ×2 + 木棍
+                'I', ChemicalHelper.get(TagPrefix.plate, GTMaterials.Iron), 'S', Items.STICK);
+        // 削皮刀:铁板 ×2 + 木棍
         VanillaRecipeHelper.addShapedRecipe(provider, id("peeler"),
                 new net.minecraft.world.item.ItemStack(GFEPrepTools.PEELER.get()),
                 "II", " S",
-                'I', Items.IRON_INGOT, 'S', Items.STICK);
+                'I', ChemicalHelper.get(TagPrefix.plate, GTMaterials.Iron), 'S', Items.STICK);
         // 研钵:圆石 ×8
         VanillaRecipeHelper.addShapedRecipe(provider, id("mortar_pestle"),
                 new net.minecraft.world.item.ItemStack(GFEPrepTools.MORTAR_PESTLE.get()),
@@ -59,20 +62,20 @@ public final class GFERecipes {
 
     // 手工烹饪工具(universal-cooker.md §7):厨刀/炒锅/蒸笼,铁系+竹木,炸无手工路径
     private static void addCookingToolRecipes(Consumer<FinishedRecipe> provider) {
-        // 厨刀:铁锭 ×3 + 木棍(2026-09-08 提价,与菜刀形状区分)
+        // 厨刀:铁板 ×3 + 木棍(与菜刀形状区分)
         VanillaRecipeHelper.addShapedRecipe(provider, id("kitchen_knife"),
                 new net.minecraft.world.item.ItemStack(GFECookingTools.KITCHEN_KNIFE.get()),
                 "II", "I ", "S ",
-                'I', Items.IRON_INGOT, 'S', Items.STICK);
-        // 炒锅:铁锭 ×7(碗形 + 双足)
+                'I', ChemicalHelper.get(TagPrefix.plate, GTMaterials.Iron), 'S', Items.STICK);
+        // 炒锅:铁板 ×7(碗形 + 双足)
         VanillaRecipeHelper.addShapedRecipe(provider, id("wok"),
                 new net.minecraft.world.item.ItemStack(GFECookingTools.WOK.get()),
                 "III", "III", "I I",
-                'I', Items.IRON_INGOT);
-        // 蒸笼:竹 ×9(双层笼格)
+                'I', ChemicalHelper.get(TagPrefix.plate, GTMaterials.Iron));
+        // 蒸笼:竹 ×5(笼格,2026-09-08 降本易获得)
         VanillaRecipeHelper.addShapedRecipe(provider, id("steamer"),
                 new net.minecraft.world.item.ItemStack(GFECookingTools.STEAMER.get()),
-                "BBB", "BBB", "BBB",
+                "BBB", "B B",
                 'B', Items.BAMBOO);
     }
 
