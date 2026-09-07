@@ -7,6 +7,7 @@ import com.gregtechceu.gtceu.common.data.GTMaterials;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 
 import net.mgear.gregfoodexpansion.GregFoodExpansion;
+import net.mgear.gregfoodexpansion.cooking.GFEDishes;
 import net.mgear.gregfoodexpansion.prep.GFEFormItems;
 import net.mgear.gregfoodexpansion.registry.GFECropItems;
 import net.mgear.gregfoodexpansion.registry.GFERecipeTypes;
@@ -36,6 +37,10 @@ public final class GFEPrepRecipes {
         prep(provider, 1, 40, 4, Items.APPLE, GFEFormItems.APPLE_SLICE.get());
         prep(provider, 1, 40, 4, GFECropItems.TOMATO.get(), GFEFormItems.TOMATO_SLICE.get());
         prep(provider, 1, 40, 4, GFECropItems.CHILI.get(), GFEFormItems.CHILI_RING.get());
+        // 烘焙切分(dishes-and-gains.md §4):面包片/法棍片/汉堡胚(小圆面包对半)
+        prep(provider, 1, 40, 4, GFEDishes.BREAD.get(), GFEFormItems.BREAD_SLICE.get());
+        prep(provider, 1, 40, 4, GFEDishes.BAGUETTE.get(), GFEFormItems.BAGUETTE_SLICE.get());
+        prep(provider, 1, 40, 4, GFEDishes.DINNER_ROLL.get(), GFEFormItems.BURGER_BUN.get());
 
         // ---- c2 切丝:40 tick / 4 EU/t ----
         prep(provider, 2, 40, 4, Items.BEEF, GFEFormItems.BEEF_STRIP.get());

@@ -72,6 +72,10 @@ public final class GFEFormItems {
     // ---- 非肉:压延 ----
     public static final RegistryObject<Item> NOODLE = form("noodle");
     public static final RegistryObject<Item> DOUGH_SHEET = form("dough_sheet");
+    // ---- 烘焙切分(dishes-and-gains.md §4):切片电路承载,三明治/汉堡与蒜香法棍的原料 ----
+    public static final RegistryObject<Item> BREAD_SLICE = form("bread_slice");
+    public static final RegistryObject<Item> BAGUETTE_SLICE = form("baguette_slice");
+    public static final RegistryObject<Item> BURGER_BUN = form("burger_bun");
     // ---- 米制品链(2026-09-08 提案落地):水稻 → 研磨 → 大米粉 → +水 → 米粉团 → 压延 → 米粉条 ----
     public static final RegistryObject<Item> RICE_FLOUR = form("rice_flour");
     public static final RegistryObject<Item> RICE_DOUGH = form("rice_dough");
@@ -87,6 +91,7 @@ public final class GFEFormItems {
             POTATO_STRIP, CARROT_STRIP, CABBAGE_STRIP, CHILI_STRIP,
             TOMATO_DICED, ONION_DICED, FRIES_BLANK, CHILI_DICED, POTATO_DICED,
             ONION_MINCED, GARLIC_MINCED, CHILI_POWDER, APPLE_FLESH, NOODLE, DOUGH_SHEET,
+            BREAD_SLICE, BAGUETTE_SLICE, BURGER_BUN,
             RICE_FLOUR, RICE_DOUGH, RICE_NOODLES);
 
     public static final List<RegistryObject<Item>> MEAT_SLICES = List.of(

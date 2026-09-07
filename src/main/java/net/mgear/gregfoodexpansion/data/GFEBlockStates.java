@@ -6,6 +6,7 @@ import net.mgear.gregfoodexpansion.GregFoodExpansion;
 import net.mgear.gregfoodexpansion.crop.GFECropBlock;
 import net.mgear.gregfoodexpansion.registry.GFECropBlocks;
 import net.mgear.gregfoodexpansion.registry.GFEWildCropBlocks;
+import net.mgear.gregfoodexpansion.registry.GFEBlocks;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -18,6 +19,7 @@ public final class GFEBlockStates {
     private static final int[] AGE_TO_STAGE = {0, 1, 1, 2, 2, 3, 3, 3};
 
     public static void init(RegistrateBlockstateProvider provider) {
+        ovenStructures(provider);
         GFECropBlocks.ALL_CROPS.forEach(crop -> {
             GFECropBlock block = (GFECropBlock) crop.get();
             String name = crop.getId().getPath();
@@ -42,6 +44,18 @@ public final class GFEBlockStates {
             ModelFile model = provider.models()
                     .cross(crop.getId().getPath(), modLoc("block/crop/stage_3"));
             provider.getVariantBuilder(crop.get())
+                    .partialState()
+                    .setModels(new ConfiguredModel(model));
+        });
+    }
+
+    // 烘焙结构方块:全 cube 模型(贴图区分外壳/传送带/加热管/排气口)
+    private static void ovenStructures(RegistrateBlockstateProvider provider) {
+        GFEBlocks.ALL.forEach(pair -> {
+            var block = pair.getSecond();
+            ModelFile model = provider.models()
+                    .cubeAll(block.getId().getPath(), modLoc("block/casings/" + block.getId().getPath()));
+            provider.getVariantBuilder(block.get())
                     .partialState()
                     .setModels(new ConfiguredModel(model));
         });

@@ -41,6 +41,9 @@ PALETTES = {
     "rice_flour": {"K": "#8A8468", "M": "#F2EDDE", "L": "#FAF7EC", "D": "#D9D2B8"},
     "rice_dough": {"K": "#8A8058", "M": "#EDE7CE", "L": "#F7F3E4", "D": "#CFC6A4"},
     "rice_noodles": {"K": "#8A7A4E", "M": "#F0EAD0", "L": "#F9F5E6", "D": "#D4CBA6"},
+    "baked": {"K": "#7A5A20", "M": "#D8A860", "L": "#F0D0A0", "D": "#B08840"},
+    "toast_brown": {"K": "#6E4A20", "M": "#C89050", "L": "#E0B478", "D": "#A07038"},
+    "cake_cream": {"K": "#8A7440", "M": "#F5E8D0", "L": "#FDF6E8", "D": "#D8C098"},
     "dish_pink": {"K": "#7A5030", "M": "#F0C0B8", "L": "#FAE0D8", "D": "#D09890"},
     "noodle_white": {"K": "#8A8468", "M": "#F2EFE2", "L": "#FAF8EE", "D": "#D9D4BE"},
     "soup_red": {"K": "#6E1F16", "M": "#E04B3A", "L": "#F2836F", "D": "#C23325"},
@@ -82,6 +85,15 @@ FORMS = [
     ("noodle", "noodle", "dough"), ("dough_sheet", "sheet", "dough"),
     ("rice_flour", "powder", "rice_flour"), ("rice_dough", "flesh", "rice_dough"),
     ("rice_noodles", "noodle", "rice_noodles"),
+    # ---- 烘焙品(c5 烤) ----
+    ("bread", "nugget", "baked"), ("toast", "slices", "toast_brown"),
+    ("sweet_bread", "nugget", "dish_gold"), ("cake", "plate", "cake_cream"),
+    ("apple_pie", "plate", "dish_gold"), ("baguette", "fries", "baked"),
+    ("dinner_roll", "nugget", "dish_cream"), ("corn_bread", "diced", "soup_yellow"),
+    ("baked_corn", "nugget", "soup_yellow"), ("garlic_baguette", "fries", "dish_cream"),
+    # ---- 烘焙切分 ----
+    ("bread_slice", "slices", "baked"), ("baguette_slice", "slices", "toast_brown"),
+    ("burger_bun", "plate", "dish_cream"),
     # ---- 基础档手工菜肴 ----
     ("fruit_platter", "stirfry", "dish_green"), ("sugar_tomato", "plate", "dish_red"),
     ("chicken_cold_noodles", "noodle", "dish_pink"), ("fried_egg", "plate", "soup_yellow"),
@@ -354,6 +366,83 @@ def tool_mortar_pestle() -> Image.Image:
     return img
 
 
+def block_casing() -> Image.Image:
+    img = base()
+    d = ImageDraw.Draw(img)
+    d.rectangle([0, 0, 15, 15], fill="#5A6169")
+    d.rectangle([1, 1, 14, 14], fill="#6E767E")
+    for y in (5, 10):
+        d.line([(1, y), (14, y)], fill="#4A5056")
+    for x, y in ((3, 2), (10, 2), (3, 12), (10, 12)):
+        d.rectangle([x, y, x + 1, y + 1], fill="#8A929B")
+    return img
+
+
+def block_belt() -> Image.Image:
+    img = base()
+    d = ImageDraw.Draw(img)
+    d.rectangle([0, 0, 15, 15], fill="#3A3F46")
+    for x in range(1, 15, 4):
+        d.rectangle([x, 1, x + 2, 14], fill="#4E565E")
+        d.line([(x, 2), (x + 2, 2)], fill="#6A7076")
+    return img
+
+
+def block_heater(glowing: bool) -> Image.Image:
+    img = base()
+    d = ImageDraw.Draw(img)
+    d.rectangle([0, 0, 15, 15], fill="#4A423A")
+    coil = "#E88A3A" if glowing else "#C86A2A"
+    for y in (2, 7, 12):
+        d.line([(2, y), (13, y)], fill=coil, width=3)
+        d.line([(2, y + 1), (13, y + 1)], fill="#8A4A1A")
+    if glowing:
+        for x, y in ((4, 4), (10, 4), (7, 9), (4, 14), (11, 14)):
+            d.point((x, y), fill="#FFD080")
+    return img
+
+
+def block_vent() -> Image.Image:
+    img = base()
+    d = ImageDraw.Draw(img)
+    d.rectangle([0, 0, 15, 15], fill="#4A5056")
+    d.rectangle([2, 2, 13, 13], fill="#33383D")
+    d.rectangle([4, 4, 11, 11], fill="#22262A")
+    d.line([(5, 5), (10, 10)], fill="#5A6169", width=2)
+    d.line([(10, 5), (5, 10)], fill="#5A6169", width=2)
+    return img
+
+
+def cooker_overlay_front(active: bool) -> Image.Image:
+    img = base()
+    d = ImageDraw.Draw(img)
+    panel(d)
+    # 炉口拱门图形:黑色膛口 + 拱形 + 炉火
+    d.rectangle([3, 5, 12, 13], fill="#22262A")
+    d.arc([3, 2, 12, 11], 180, 360, fill=STEEL_DARK, width=2)
+    if active:
+        d.rectangle([5, 9, 10, 12], fill=ACCENT)
+        d.point((6, 8), fill="#FFD080")
+    else:
+        d.rectangle([5, 10, 10, 12], fill="#C86A2A")
+    return img
+
+
+def cooker_overlay_side(active: bool) -> Image.Image:
+    return overlay_side(active)
+
+
+def cooker_overlay_top(active: bool) -> Image.Image:
+    img = base()
+    d = ImageDraw.Draw(img)
+    panel(d)
+    d.ellipse([4, 4, 12, 12], fill=PANEL_DARK)
+    d.ellipse([6, 6, 10, 10], fill="#22262A")
+    if active:
+        d.ellipse([6, 6, 10, 10], outline=ACCENT, width=2)
+    return img
+
+
 def tool_kitchen_knife() -> Image.Image:
     img = base()
     d = ImageDraw.Draw(img)
@@ -428,12 +517,30 @@ def cooker_overlay_top(active: bool) -> Image.Image:
 
 def main() -> None:
     cooker_dir = TEX / "block" / "machines" / "universal_cooker"
+    oven_dir = TEX / "block" / "casings"
+    oven_machine_dir = TEX / "block" / "machines" / "tunnel_oven"
     machine_dir = TEX / "block" / "machines" / "food_processor"
     item_dir = TEX / "item"
     machine_dir.mkdir(parents=True, exist_ok=True)
     cooker_dir.mkdir(parents=True, exist_ok=True)
-
+    oven_dir.mkdir(parents=True, exist_ok=True)
+    oven_machine_dir.mkdir(parents=True, exist_ok=True)
     images = {}
+    for name, img in {"tunnel_oven_casing": block_casing(),
+                      "tunnel_oven_belt": block_belt(),
+                      "tunnel_oven_heater": block_heater(True),
+                      "tunnel_oven_vent": block_vent()}.items():
+        img.save(oven_dir / f"{name}.png")
+        images[name] = img
+    for name, img in {"overlay_front": cooker_overlay_front(False),
+                      "overlay_front_active": cooker_overlay_front(True),
+                      "overlay_side": cooker_overlay_side(False),
+                      "overlay_side_active": cooker_overlay_side(True),
+                      "overlay_top": cooker_overlay_top(False),
+                      "overlay_top_active": cooker_overlay_top(True)}.items():
+        img.save(oven_machine_dir / f"{name}.png")
+        images["oven_" + name] = img
+
     for name, img in {
         "overlay_front": overlay_front(False), "overlay_front_active": overlay_front(True),
         "overlay_side": overlay_side(False), "overlay_side_active": overlay_side(True),
@@ -472,6 +579,9 @@ def main() -> None:
                                        "overlay_side_active", "overlay_top", "overlay_top_active")]
             + ["cleaver", "peeler", "mortar_pestle", "rolling_pin",
                "kitchen_knife", "wok", "steamer"]
+            + ["tunnel_oven_casing", "tunnel_oven_belt", "tunnel_oven_heater",
+               "tunnel_oven_vent",
+               "oven_overlay_front", "oven_overlay_front_active"]
             + [f[0] for f in FORMS])
     cols = 10
     rows = (len(keys) + cols - 1) // cols
@@ -492,7 +602,7 @@ def main() -> None:
 
     preview = ROOT / "tools/textures/preview_prep.png"
     sheet.save(preview)
-    print(f"written {12 + 7 + len(FORMS)} textures; preview: {preview}")
+    print(f"written {12 + 7 + 4 + 6 + len(FORMS)} textures; preview: {preview}")
 
 
 if __name__ == "__main__":

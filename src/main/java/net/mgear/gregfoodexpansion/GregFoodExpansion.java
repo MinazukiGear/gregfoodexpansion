@@ -16,6 +16,7 @@ import net.mgear.gregfoodexpansion.data.GFERecipes;
 import net.mgear.gregfoodexpansion.prep.GFEFormItems;
 import net.mgear.gregfoodexpansion.prep.GFEPrepTools;
 import net.mgear.gregfoodexpansion.registry.GFECreativeModeTabs;
+import net.mgear.gregfoodexpansion.registry.GFEBlocks;
 import net.mgear.gregfoodexpansion.registry.GFECropBlocks;
 import net.mgear.gregfoodexpansion.registry.GFECropItems;
 import net.mgear.gregfoodexpansion.registry.GFECropLootModifiers;
@@ -44,6 +45,7 @@ public final class GregFoodExpansion {
         IEventBus modEventBus = context.getModEventBus();
         GFERegistration.REGISTRATE.registerEventListeners(modEventBus);
         GFECreativeModeTabs.init();
+        GFEBlocks.BLOCKS.register(modEventBus);
         GFECropBlocks.BLOCKS.register(modEventBus);
         GFEWildCropBlocks.BLOCKS.register(modEventBus);
         GFECropItems.ITEMS.register(modEventBus);

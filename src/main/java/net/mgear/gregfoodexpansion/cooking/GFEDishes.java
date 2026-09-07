@@ -75,6 +75,18 @@ public final class GFEDishes {
     public static final RegistryObject<Item> HAND_STEAMED_EGG = hand("hand_steamed_egg", 3, 0.3F);
     public static final RegistryObject<Item> HAND_STEAMED_CORN = hand("hand_steamed_corn", 2, 0.3F);
 
+    // ---- c5 烤(隧道式烤炉/通用烹饪机电路 5):急迫 I 5 min + 饱和(瞬时),烘焙主食向 ----
+    public static final RegistryObject<Item> BREAD = baked("bread", 5, 0.6F);
+    public static final RegistryObject<Item> TOAST = baked("toast", 4, 0.6F);
+    public static final RegistryObject<Item> SWEET_BREAD = baked("sweet_bread", 5, 0.6F);
+    public static final RegistryObject<Item> CAKE = baked("cake", 6, 0.5F);
+    public static final RegistryObject<Item> APPLE_PIE = baked("apple_pie", 6, 0.6F);
+    public static final RegistryObject<Item> BAGUETTE = baked("baguette", 5, 0.6F);
+    public static final RegistryObject<Item> DINNER_ROLL = baked("dinner_roll", 3, 0.5F);
+    public static final RegistryObject<Item> CORN_BREAD = baked("corn_bread", 5, 0.6F);
+    public static final RegistryObject<Item> BAKED_CORN = baked("baked_corn", 3, 0.5F);
+    public static final RegistryObject<Item> GARLIC_BAGUETTE = baked("garlic_baguette", 6, 0.6F);
+
     public static final List<RegistryObject<Item>> ALL = List.of(
             RICE_NOODLE_SOUP, TOMATO_SOUP, VEGETABLE_SOUP, RIB_SOUP, RICE_PORRIDGE,
             CORN_SOUP, DUMPLINGS,
@@ -86,7 +98,9 @@ public final class GFEDishes {
             FRIES, POTATO_CHIPS, FRIED_CHICKEN_CUTS, FRIED_PEANUTS, FRIED_FISH_FILLET,
             ONION_RINGS, SPRING_ROLL, RICE_CRACKER,
             FRUIT_PLATTER, SUGAR_TOMATO, CHICKEN_COLD_NOODLES, FRIED_EGG, PLAIN_NOODLES,
-            HAND_FRIED_RICE, HAND_STEAMED_EGG, HAND_STEAMED_CORN);
+            HAND_FRIED_RICE, HAND_STEAMED_EGG, HAND_STEAMED_CORN,
+            BREAD, TOAST, SWEET_BREAD, CAKE, APPLE_PIE, BAGUETTE, DINNER_ROLL,
+            CORN_BREAD, BAKED_CORN, GARLIC_BAGUETTE);
 
     private static RegistryObject<Item> dish(String name, FoodProperties food) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(food)));
@@ -120,6 +134,14 @@ public final class GFEDishes {
         return dish(name, food(hunger, saturation)
                 .effect(haste(), 1.0F)
                 .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 3600, 0), 1.0F)
+                .build());
+    }
+
+    // c5 烤:急迫 I 5 min + 饱和(瞬时,40 tick)
+    private static RegistryObject<Item> baked(String name, int hunger, float saturation) {
+        return dish(name, food(hunger, saturation)
+                .effect(haste(), 1.0F)
+                .effect(() -> new MobEffectInstance(MobEffects.SATURATION, 40, 0), 1.0F)
                 .build());
     }
 

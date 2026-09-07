@@ -153,6 +153,37 @@ public final class GFECookingRecipes {
         fry(provider, "rice_cracker", 160, 24, 100, b -> b
                 .inputItems(GFEFormItems.RICE_FLOUR.get())
                 .outputItems(GFEDishes.RICE_CRACKER.get(), 2));
+
+        // ---- c5 烤:烘焙品(隧道式烤炉量产,通用烹饪机亦可小批量) ----
+        bake(provider, "bread", 2, 200, 12, b -> b
+                .inputItems(GTItems.DOUGH, 2).outputItems(GFEDishes.BREAD.get()));
+        bake(provider, "dinner_roll", 2, 200, 12, b -> b
+                .inputItems(GTItems.DOUGH).outputItems(GFEDishes.DINNER_ROLL.get()));
+        bake(provider, "baguette", 2, 240, 12, b -> b
+                .inputItems(GTItems.DOUGH, 3).outputItems(GFEDishes.BAGUETTE.get()));
+        bake(provider, "toast", 2, 200, 12, b -> b
+                .inputItems(GFEFormItems.BREAD_SLICE.get(), 2).outputItems(GFEDishes.TOAST.get(), 2));
+        bake(provider, "sweet_bread", 2, 240, 12, b -> b
+                .inputItems(GTItems.DOUGH).inputItems(Items.SUGAR)
+                .outputItems(GFEDishes.SWEET_BREAD.get(), 2));
+        bake(provider, "corn_bread", 2, 240, 12, b -> b
+                .inputItems(GFECropItems.CORN.get(), 2).inputItems(GTItems.DOUGH)
+                .outputItems(GFEDishes.CORN_BREAD.get()));
+        bake(provider, "apple_pie", 1, 300, 12, b -> b
+                .inputItems(GFEFormItems.DOUGH_SHEET.get()).inputItems(GFEFormItems.APPLE_FLESH.get(), 2)
+                .outputItems(GFEDishes.APPLE_PIE.get()));
+        bake(provider, "cake", 1, 300, 12, b -> b
+                .inputItems(GTItems.DOUGH).inputItems(Items.EGG).inputItems(Items.SUGAR, 2)
+                .inputFluids(GTMaterials.Milk, 250)
+                .outputItems(GFEDishes.CAKE.get()));
+        bake(provider, "baked_corn", 3, 200, 20, b -> b
+                .inputItems(GFECropItems.CORN.get(), 2)
+                .outputItems(GFEDishes.BAKED_CORN.get(), 2));
+        bake(provider, "garlic_baguette", 3, 240, 20, b -> b
+                .inputItems(GFEFormItems.BAGUETTE_SLICE.get())
+                .inputItems(GFEFormItems.GARLIC_MINCED.get())
+                .inputFluids(GTMaterials.SeedOil, 20)
+                .outputItems(GFEDishes.GARLIC_BAGUETTE.get()));
     }
 
     private static void soup(Consumer<FinishedRecipe> provider, String name, int duration, int eut,
@@ -182,6 +213,16 @@ public final class GFECookingRecipes {
         cook(provider, name, 4, duration, eut, b -> {
             b.inputFluids(GTMaterials.SeedOil, FRY_BATH)
                     .outputFluids(GTFEMaterials.USED_COOKING_OIL.getFluid(FRY_BATH - absorbed));
+            config.accept(b);
+        });
+    }
+
+    // c5 烤:面包/吐司/甜面包 = 标准档(2);蛋糕 = 低温档(1);烤玉米/蒜香法棍 = 高温档(3)。
+    // 配方一份定义:通用烹饪机小批量可烤,隧道式烤炉并行量产(tunnel-oven.md §6)。
+    private static void bake(Consumer<FinishedRecipe> provider, String name, int tier, int duration,
+                             int eut, Consumer<GTRecipeBuilder> config) {
+        cook(provider, name, 5, duration, eut, b -> {
+            b.addData("oven_temp", tier);
             config.accept(b);
         });
     }

@@ -147,6 +147,25 @@ public final class GFELang {
         add("item.gregfoodexpansion.spring_roll", "Spring Rolls");
         add("item.gregfoodexpansion.rice_cracker", "Rice Crackers");
 
+        // ---- 烘焙(tunnel-oven.md) ----
+        add("block.gregfoodexpansion.tunnel_oven_casing", "Tunnel Oven Casing");
+        add("block.gregfoodexpansion.tunnel_oven_belt", "Tunnel Oven Belt");
+        add("block.gregfoodexpansion.tunnel_oven_heater", "Tunnel Oven Heater");
+        add("block.gregfoodexpansion.tunnel_oven_vent", "Tunnel Oven Vent");
+        add("item.gregfoodexpansion.bread", "Bread");
+        add("item.gregfoodexpansion.toast", "Toast");
+        add("item.gregfoodexpansion.sweet_bread", "Sweet Bread");
+        add("item.gregfoodexpansion.cake", "Cake");
+        add("item.gregfoodexpansion.apple_pie", "Apple Pie");
+        add("item.gregfoodexpansion.baguette", "Baguette");
+        add("item.gregfoodexpansion.dinner_roll", "Dinner Roll");
+        add("item.gregfoodexpansion.corn_bread", "Corn Bread");
+        add("item.gregfoodexpansion.baked_corn", "Baked Corn");
+        add("item.gregfoodexpansion.garlic_baguette", "Garlic Baguette");
+        add("item.gregfoodexpansion.bread_slice", "Bread Slice");
+        add("item.gregfoodexpansion.baguette_slice", "Baguette Slice");
+        add("item.gregfoodexpansion.burger_bun", "Burger Bun");
+
         // ---- 基础档手工菜肴(dishes-and-gains.md §5,LV 前兜底) ----
         add("item.gregfoodexpansion.fruit_platter", "Fruit Platter");
         add("item.gregfoodexpansion.sugar_tomato", "Tomatoes with Sugar");
