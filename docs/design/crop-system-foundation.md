@@ -98,7 +98,8 @@ record CropEnvSpec(double tempMin, double tempMax,   // 原版生物群系基础
 - 生长贴图:全作物共用 **4 张灰度生长模板**,按 vanilla 胡萝卜式映射到 8 个 age(age→模板:0,1,1,2,2,3,3,3),运行时经 `BlockColors` 按作物颜色表染色——13 种作物只需 4 张模板;
 - 每作物独立:种子贴图 ×1、产物贴图 ×1(共 26 张);成熟视觉差异由染色承担,阶段一不做"挂果"专用模型;
 - 模型:vanilla `crop` 骨架(cross)+ age 贴图映射,datagen 生成;
-- 资产总量:26 + 4 = **30 张**,与 [内容方向草案 §9-M1] 的"作物 ~30 张"预算吻合。
+- 资产总量:26 + 4 = **30 张**,与 [内容方向草案 §9-M1] 的"作物 ~30 张"预算吻合;
+- 产出方式:全部 30 张由 `tools/textures/generate_crop_textures.py` 脚本生成(可复现、可迭代,8× 审阅图见 `tools/textures/preview.png`);脚本内 TINTS 表为运行时染色基准色,BlockColors 注册须与其一致;AI 首版,需人工审阅后定稿。
 
 ## 6. 获取途径 [草案数值,基准]
 
@@ -139,6 +140,7 @@ record CropEnvSpec(double tempMin, double tempMax,   // 原版生物群系基础
 ## 10. 实现进度
 
 - 2026-09-07:注册基座就位——GTRegistrate + @GTAddon、`gregfoodexpansion:main` 创造标签(图标暂用面包占位)与 datagen 六类 provider 骨架;build/runData/runClient 冒烟通过;
+- 2026-09-07:§5 全部 30 张贴图首版生成完毕(4 灰度模板 + 13 种子 + 13 产物),待人工审阅;
 - 尚未完成:本文档范围内的作物内容(§2 注册规格起的全部条目)。
 
 ## 参考
