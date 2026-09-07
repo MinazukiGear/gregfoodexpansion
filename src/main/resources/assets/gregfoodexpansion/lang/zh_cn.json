@@ -181,5 +181,7 @@
   "item.gregfoodexpansion.garlic_baguette": "蒜香法棍",
   "item.gregfoodexpansion.bread_slice": "面包片",
   "item.gregfoodexpansion.baguette_slice": "法棍片",
-  "item.gregfoodexpansion.burger_bun": "汉堡胚"
+  "item.gregfoodexpansion.burger_bun": "汉堡胚",
+  "item.gregfoodexpansion.raw_bread": "生面包坯",
+  "item.gregfoodexpansion.raw_baguette": "生法棍"
 }

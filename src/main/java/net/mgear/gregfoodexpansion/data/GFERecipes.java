@@ -5,6 +5,7 @@ import java.util.function.Consumer;
 import com.gregtechceu.gtceu.api.data.chemical.ChemicalHelper;
 import com.gregtechceu.gtceu.api.data.tag.TagPrefix;
 import com.gregtechceu.gtceu.common.data.GTMaterials;
+import com.gregtechceu.gtceu.common.data.GTItems;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 
 import net.mgear.gregfoodexpansion.GregFoodExpansion;
@@ -52,6 +53,13 @@ public final class GFERecipes {
 
         // 米制品链手工路线(compatibility-boundary Q1:LV 前食品加工仅手搓):
         // 研钵 + 水稻 → 大米粉(研钵覆盖研磨);大米粉 + 水桶 → 米粉团
+        // 擀面杖手工成型:面团 → 生面包坯/生法棍(切配机压延的对应手工路线)
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("raw_bread_manual"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.RAW_BREAD.get()),
+                GFEPrepTools.ROLLING_PIN.get(), GTItems.DOUGH, GTItems.DOUGH, GTItems.DOUGH);
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("raw_baguette_manual"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.RAW_BAGUETTE.get()),
+                GFEPrepTools.ROLLING_PIN.get(), GTItems.DOUGH, GTItems.DOUGH, GTItems.DOUGH, GTItems.DOUGH);
         VanillaRecipeHelper.addShapelessRecipe(provider, id("rice_flour_manual"),
                 new net.minecraft.world.item.ItemStack(GFEFormItems.RICE_FLOUR.get()),
                 GFEPrepTools.MORTAR_PESTLE.get(), GFECropItems.RICE.get());

@@ -156,18 +156,18 @@ public final class GFECookingRecipes {
 
         // ---- c5 烤:烘焙品(隧道式烤炉量产,通用烹饪机亦可小批量) ----
         bake(provider, "bread", 2, 200, 12, b -> b
-                .inputItems(GTItems.DOUGH, 2).outputItems(GFEDishes.BREAD.get()));
+                .inputItems(GFEFormItems.RAW_BREAD.get(), 2).outputItems(GFEDishes.BREAD.get()));
         bake(provider, "dinner_roll", 2, 200, 12, b -> b
-                .inputItems(GTItems.DOUGH).outputItems(GFEDishes.DINNER_ROLL.get()));
+                .inputItems(GFEFormItems.RAW_BREAD.get()).outputItems(GFEDishes.DINNER_ROLL.get()));
         bake(provider, "baguette", 2, 240, 12, b -> b
-                .inputItems(GTItems.DOUGH, 3).outputItems(GFEDishes.BAGUETTE.get()));
+                .inputItems(GFEFormItems.RAW_BAGUETTE.get()).outputItems(GFEDishes.BAGUETTE.get()));
         bake(provider, "toast", 2, 200, 12, b -> b
                 .inputItems(GFEFormItems.BREAD_SLICE.get(), 2).outputItems(GFEDishes.TOAST.get(), 2));
         bake(provider, "sweet_bread", 2, 240, 12, b -> b
-                .inputItems(GTItems.DOUGH).inputItems(Items.SUGAR)
+                .inputItems(GFEFormItems.RAW_BREAD.get()).inputItems(Items.SUGAR)
                 .outputItems(GFEDishes.SWEET_BREAD.get(), 2));
         bake(provider, "corn_bread", 2, 240, 12, b -> b
-                .inputItems(GFECropItems.CORN.get(), 2).inputItems(GTItems.DOUGH)
+                .inputItems(GFECropItems.CORN.get(), 2).inputItems(GFEFormItems.RAW_BREAD.get())
                 .outputItems(GFEDishes.CORN_BREAD.get()));
         bake(provider, "apple_pie", 1, 300, 12, b -> b
                 .inputItems(GFEFormItems.DOUGH_SHEET.get()).inputItems(GFEFormItems.APPLE_FLESH.get(), 2)

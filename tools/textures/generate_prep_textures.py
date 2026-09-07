@@ -94,6 +94,8 @@ FORMS = [
     # ---- 烘焙切分 ----
     ("bread_slice", "slices", "baked"), ("baguette_slice", "slices", "toast_brown"),
     ("burger_bun", "plate", "dish_cream"),
+    # ---- 烘焙生坯(面团成型中间品) ----
+    ("raw_bread", "flesh", "dough"), ("raw_baguette", "fries", "dough"),
     # ---- 基础档手工菜肴 ----
     ("fruit_platter", "stirfry", "dish_green"), ("sugar_tomato", "plate", "dish_red"),
     ("chicken_cold_noodles", "noodle", "dish_pink"), ("fried_egg", "plate", "soup_yellow"),

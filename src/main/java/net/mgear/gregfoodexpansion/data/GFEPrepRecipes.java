@@ -95,12 +95,17 @@ public final class GFEPrepRecipes {
 
     private static void prep(Consumer<FinishedRecipe> provider, int circuit, int duration,
                              int eut, ItemLike input, ItemLike output) {
+        prep(provider, circuit, duration, eut, input, 1, output);
+    }
+
+    private static void prep(Consumer<FinishedRecipe> provider, int circuit, int duration,
+                             int eut, ItemLike input, int inputCount, ItemLike output) {
         String in = net.minecraft.core.registries.BuiltInRegistries.ITEM
                 .getKey(input.asItem()).getPath();
         String out = net.minecraft.core.registries.BuiltInRegistries.ITEM
                 .getKey(output.asItem()).getPath();
         GFERecipeTypes.FOOD_PREP.recipeBuilder(GregFoodExpansion.id("food_prep/" + in + "_to_" + out))
-                .inputItems(input)
+                .inputItems(input, inputCount)
                 .circuitMeta(circuit)
                 .outputItems(output)
                 .duration(duration)
