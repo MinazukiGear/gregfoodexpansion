@@ -10,8 +10,8 @@
   },
   "matchSize": false,
   "pattern": [
-    "I",
-    "S"
+    "II",
+    " S"
   ],
   "result": {
     "item": "gregfoodexpansion:peeler",

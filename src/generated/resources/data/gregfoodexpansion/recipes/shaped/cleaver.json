@@ -10,8 +10,9 @@
   },
   "matchSize": false,
   "pattern": [
-    "II",
-    "IS"
+    "III",
+    "II ",
+    "S  "
   ],
   "result": {
     "item": "gregfoodexpansion:cleaver",

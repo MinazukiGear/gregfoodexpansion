@@ -7,6 +7,7 @@
   },
   "matchSize": false,
   "pattern": [
+    "CCC",
     "C C",
     "CCC"
   ],

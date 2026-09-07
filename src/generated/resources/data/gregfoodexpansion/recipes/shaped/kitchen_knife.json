@@ -10,9 +10,9 @@
   },
   "matchSize": false,
   "pattern": [
-    "I",
-    "I",
-    "S"
+    "II",
+    "I ",
+    "S "
   ],
   "result": {
     "item": "gregfoodexpansion:kitchen_knife",

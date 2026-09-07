@@ -26,26 +26,26 @@ public final class GFERecipes {
     // 手工切配工具(food-processor.md §7):工作台 + 铁质,配方刻意少;
     // 切配机 LV 起接管量产,工具定位为前置过渡。
     private static void addToolRecipes(Consumer<FinishedRecipe> provider) {
-        // 菜刀:铁锭 ×2 + 木棍(宽刃 + 柄)
+        // 菜刀:铁锭 ×5 + 木棍(2026-09-08 提价:LV 前食品加工入口应为早期真实投资)
         VanillaRecipeHelper.addShapedRecipe(provider, id("cleaver"),
                 new net.minecraft.world.item.ItemStack(GFEPrepTools.CLEAVER.get()),
-                "II", "IS",
+                "III", "II ", "S  ",
                 'I', Items.IRON_INGOT, 'S', Items.STICK);
-        // 削皮刀:铁锭 + 木棍
+        // 削皮刀:铁锭 ×2 + 木棍
         VanillaRecipeHelper.addShapedRecipe(provider, id("peeler"),
                 new net.minecraft.world.item.ItemStack(GFEPrepTools.PEELER.get()),
-                "I", "S",
+                "II", " S",
                 'I', Items.IRON_INGOT, 'S', Items.STICK);
-        // 研钵:圆石碗形
+        // 研钵:圆石 ×8
         VanillaRecipeHelper.addShapedRecipe(provider, id("mortar_pestle"),
                 new net.minecraft.world.item.ItemStack(GFEPrepTools.MORTAR_PESTLE.get()),
-                "C C", "CCC",
+                "CCC", "C C", "CCC",
                 'C', Items.COBBLESTONE);
-        // 擀面杖:木棍 ×2
+        // 擀面杖:木板 ×4 + 木棍
         VanillaRecipeHelper.addShapedRecipe(provider, id("rolling_pin"),
                 new net.minecraft.world.item.ItemStack(GFEPrepTools.ROLLING_PIN.get()),
-                "S", "S",
-                'S', Items.STICK);
+                "PP", "PP", " S",
+                'P', Items.OAK_PLANKS, 'S', Items.STICK);
 
         // 米制品链手工路线(compatibility-boundary Q1:LV 前食品加工仅手搓):
         // 研钵 + 水稻 → 大米粉(研钵覆盖研磨);大米粉 + 水桶 → 米粉团
@@ -59,20 +59,20 @@ public final class GFERecipes {
 
     // 手工烹饪工具(universal-cooker.md §7):厨刀/炒锅/蒸笼,铁系+竹木,炸无手工路径
     private static void addCookingToolRecipes(Consumer<FinishedRecipe> provider) {
-        // 厨刀:铁锭 ×2 + 木棍(竖版窄刃,与菜刀/削皮刀形状区分)
+        // 厨刀:铁锭 ×3 + 木棍(2026-09-08 提价,与菜刀形状区分)
         VanillaRecipeHelper.addShapedRecipe(provider, id("kitchen_knife"),
                 new net.minecraft.world.item.ItemStack(GFECookingTools.KITCHEN_KNIFE.get()),
-                "I", "I", "S",
+                "II", "I ", "S ",
                 'I', Items.IRON_INGOT, 'S', Items.STICK);
-        // 炒锅:铁锭 ×5(碗形)
+        // 炒锅:铁锭 ×7(碗形 + 双足)
         VanillaRecipeHelper.addShapedRecipe(provider, id("wok"),
                 new net.minecraft.world.item.ItemStack(GFECookingTools.WOK.get()),
-                "I I", "III",
+                "III", "III", "I I",
                 'I', Items.IRON_INGOT);
-        // 蒸笼:竹 ×7(双层笼格)
+        // 蒸笼:竹 ×9(双层笼格)
         VanillaRecipeHelper.addShapedRecipe(provider, id("steamer"),
                 new net.minecraft.world.item.ItemStack(GFECookingTools.STEAMER.get()),
-                "BBB", "B B", "BBB",
+                "BBB", "BBB", "BBB",
                 'B', Items.BAMBOO);
     }
 

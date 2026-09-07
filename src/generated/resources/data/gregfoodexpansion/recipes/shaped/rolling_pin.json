@@ -1,14 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
+    "P": {
+      "item": "minecraft:oak_planks"
+    },
     "S": {
       "item": "minecraft:stick"
     }
   },
   "matchSize": false,
   "pattern": [
-    "S",
-    "S"
+    "PP",
+    "PP",
+    " S"
   ],
   "result": {
     "item": "gregfoodexpansion:rolling_pin",

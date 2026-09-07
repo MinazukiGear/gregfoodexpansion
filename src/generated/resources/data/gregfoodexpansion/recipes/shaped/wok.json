@@ -7,8 +7,9 @@
   },
   "matchSize": false,
   "pattern": [
-    "I I",
-    "III"
+    "III",
+    "III",
+    "I I"
   ],
   "result": {
     "item": "gregfoodexpansion:wok",
