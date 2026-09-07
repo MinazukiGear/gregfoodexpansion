@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gregfoodexpansion:rolling_pin"
+    },
+    {
+      "item": "gtceu:dough"
+    }
+  ],
+  "result": {
+    "item": "gregfoodexpansion:dough_sheet"
+  }
+}

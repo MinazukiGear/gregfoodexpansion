@@ -53,13 +53,35 @@ public final class GFERecipes {
 
         // 米制品链手工路线(compatibility-boundary Q1:LV 前食品加工仅手搓):
         // 研钵 + 水稻 → 大米粉(研钵覆盖研磨);大米粉 + 水桶 → 米粉团
-        // 擀面杖手工成型:面团 → 生面包坯/生法棍(切配机压延的对应手工路线)
+        // 擀面杖手工成型(切配机压延的对应手工路线):不同投入量成型不同生坯
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("dough_sheet_manual"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.DOUGH_SHEET.get()),
+                GFEPrepTools.ROLLING_PIN.get(), GTItems.DOUGH);
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("raw_toast_manual"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.RAW_TOAST.get()),
+                GFEPrepTools.ROLLING_PIN.get(), GTItems.DOUGH, GTItems.DOUGH);
         VanillaRecipeHelper.addShapelessRecipe(provider, id("raw_bread_manual"),
                 new net.minecraft.world.item.ItemStack(GFEFormItems.RAW_BREAD.get()),
                 GFEPrepTools.ROLLING_PIN.get(), GTItems.DOUGH, GTItems.DOUGH, GTItems.DOUGH);
         VanillaRecipeHelper.addShapelessRecipe(provider, id("raw_baguette_manual"),
                 new net.minecraft.world.item.ItemStack(GFEFormItems.RAW_BAGUETTE.get()),
                 GFEPrepTools.ROLLING_PIN.get(), GTItems.DOUGH, GTItems.DOUGH, GTItems.DOUGH, GTItems.DOUGH);
+
+        // 菜刀手切烘焙切分(切配机器的对应手工路线)
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("bread_slice_manual"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.BREAD_SLICE.get()),
+                GFEPrepTools.CLEAVER.get(), GFEDishes.BREAD.get());
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("baguette_slice_manual"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.BAGUETTE_SLICE.get()),
+                GFEPrepTools.CLEAVER.get(), GFEDishes.BAGUETTE.get());
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("burger_bun_manual"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.BURGER_BUN.get()),
+                GFEPrepTools.CLEAVER.get(), GFEDishes.DINNER_ROLL.get());
+
+        // 面皮切丝成面条(手工:菜刀)
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("noodle_manual"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.NOODLE.get()),
+                GFEPrepTools.CLEAVER.get(), GFEFormItems.DOUGH_SHEET.get());
         VanillaRecipeHelper.addShapelessRecipe(provider, id("rice_flour_manual"),
                 new net.minecraft.world.item.ItemStack(GFEFormItems.RICE_FLOUR.get()),
                 GFEPrepTools.MORTAR_PESTLE.get(), GFECropItems.RICE.get());

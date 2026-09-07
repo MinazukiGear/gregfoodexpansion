@@ -74,6 +74,7 @@ public final class GFEFormItems {
     public static final RegistryObject<Item> DOUGH_SHEET = form("dough_sheet");
     // ---- 烘焙生坯(2026-09-08:面团与烘焙品之间的成型转换,压延/擀面杖承载) ----
     public static final RegistryObject<Item> RAW_BREAD = form("raw_bread");
+    public static final RegistryObject<Item> RAW_TOAST = form("raw_toast");
     public static final RegistryObject<Item> RAW_BAGUETTE = form("raw_baguette");
     // ---- 烘焙切分(dishes-and-gains.md §4):切片电路承载,三明治/汉堡与蒜香法棍的原料 ----
     public static final RegistryObject<Item> BREAD_SLICE = form("bread_slice");
@@ -95,7 +96,7 @@ public final class GFEFormItems {
             TOMATO_DICED, ONION_DICED, FRIES_BLANK, CHILI_DICED, POTATO_DICED,
             ONION_MINCED, GARLIC_MINCED, CHILI_POWDER, APPLE_FLESH, NOODLE, DOUGH_SHEET,
             BREAD_SLICE, BAGUETTE_SLICE, BURGER_BUN,
-            RAW_BREAD, RAW_BAGUETTE,
+            RAW_BREAD, RAW_TOAST, RAW_BAGUETTE,
             RICE_FLOUR, RICE_DOUGH, RICE_NOODLES);
 
     public static final List<RegistryObject<Item>> MEAT_SLICES = List.of(

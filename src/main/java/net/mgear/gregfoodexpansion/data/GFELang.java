@@ -167,6 +167,7 @@ public final class GFELang {
         add("item.gregfoodexpansion.burger_bun", "Burger Bun");
         add("item.gregfoodexpansion.raw_bread", "Raw Bread Loaf");
         add("item.gregfoodexpansion.raw_baguette", "Raw Baguette");
+        add("item.gregfoodexpansion.raw_toast", "Raw Toast Loaf");
 
         // ---- 基础档手工菜肴(dishes-and-gains.md §5,LV 前兜底) ----
         add("item.gregfoodexpansion.fruit_platter", "Fruit Platter");

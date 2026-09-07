@@ -162,7 +162,7 @@ public final class GFECookingRecipes {
         bake(provider, "baguette", 2, 240, 12, b -> b
                 .inputItems(GFEFormItems.RAW_BAGUETTE.get()).outputItems(GFEDishes.BAGUETTE.get()));
         bake(provider, "toast", 2, 200, 12, b -> b
-                .inputItems(GFEFormItems.BREAD_SLICE.get(), 2).outputItems(GFEDishes.TOAST.get(), 2));
+                .inputItems(GFEFormItems.RAW_TOAST.get()).outputItems(GFEDishes.TOAST.get()));
         bake(provider, "sweet_bread", 2, 240, 12, b -> b
                 .inputItems(GFEFormItems.RAW_BREAD.get()).inputItems(Items.SUGAR)
                 .outputItems(GFEDishes.SWEET_BREAD.get(), 2));
