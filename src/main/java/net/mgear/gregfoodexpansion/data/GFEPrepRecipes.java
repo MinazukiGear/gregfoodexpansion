@@ -3,6 +3,8 @@ package net.mgear.gregfoodexpansion.data;
 import java.util.function.Consumer;
 
 import com.gregtechceu.gtceu.common.data.GTItems;
+import com.gregtechceu.gtceu.common.data.GTMaterials;
+import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 
 import net.mgear.gregfoodexpansion.GregFoodExpansion;
 import net.mgear.gregfoodexpansion.prep.GFEFormItems;
@@ -70,6 +72,7 @@ public final class GFEPrepRecipes {
 
         // ---- c5 研磨:80 tick / 6 EU/t ----
         prep(provider, 5, 80, 6, GFECropItems.CHILI.get(), GFEFormItems.CHILI_POWDER.get());
+        prep(provider, 5, 80, 6, GFECropItems.RICE.get(), GFEFormItems.RICE_FLOUR.get());
 
         // ---- c6 剥皮:40 tick / 4 EU/t ----
         prep(provider, 6, 40, 4, Items.APPLE, GFEFormItems.APPLE_FLESH.get());
@@ -81,6 +84,8 @@ public final class GFEPrepRecipes {
         // ---- c7 压延:100 tick / 8 EU/t(§5 压延取上限),原料 = GTCEu 面团 ----
         prep(provider, 7, 100, 8, GTItems.DOUGH.get(), GFEFormItems.NOODLE.get());
         prep(provider, 7, 100, 8, GTItems.DOUGH.get(), GFEFormItems.DOUGH_SHEET.get());
+        // 米制品链:米粉团 → 米粉条(大米粉+水 → 米粉团见搅拌机/手工配方)
+        prep(provider, 7, 100, 8, GFEFormItems.RICE_DOUGH.get(), GFEFormItems.RICE_NOODLES.get());
     }
 
     private static void prep(Consumer<FinishedRecipe> provider, int circuit, int duration,

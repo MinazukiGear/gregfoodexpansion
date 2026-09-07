@@ -38,6 +38,9 @@ PALETTES = {
     "onion": {"K": "#5C5260", "M": "#E8E0EC", "L": "#F7F3F8", "D": "#C9BECF"},
     "dough": {"K": "#8A6E3E", "M": "#E8D9A8", "L": "#F5ECCB", "D": "#C9B478"},
     "garlic": {"K": "#6E6A5A", "M": "#F2EFE2", "L": "#FAF8EE", "D": "#D9D4BE"},
+    "rice_flour": {"K": "#8A8468", "M": "#F2EDDE", "L": "#FAF7EC", "D": "#D9D2B8"},
+    "rice_dough": {"K": "#8A8058", "M": "#EDE7CE", "L": "#F7F3E4", "D": "#CFC6A4"},
+    "rice_noodles": {"K": "#8A7A4E", "M": "#F0EAD0", "L": "#F9F5E6", "D": "#D4CBA6"},
 }
 
 # (id, 模板, 配色源)
@@ -67,6 +70,8 @@ FORMS = [
     ("chili_powder", "powder", "chili"),
     ("apple_flesh", "flesh", "apple"),
     ("noodle", "noodle", "dough"), ("dough_sheet", "sheet", "dough"),
+    ("rice_flour", "powder", "rice_flour"), ("rice_dough", "flesh", "rice_dough"),
+    ("rice_noodles", "noodle", "rice_noodles"),
 ]
 
 MINCED_DOTS = [(3, 4), (7, 3), (11, 5), (4, 8), (9, 8), (12, 10), (3, 11), (7, 11), (10, 12)]

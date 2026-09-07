@@ -72,6 +72,10 @@ public final class GFEFormItems {
     // ---- 非肉:压延 ----
     public static final RegistryObject<Item> NOODLE = form("noodle");
     public static final RegistryObject<Item> DOUGH_SHEET = form("dough_sheet");
+    // ---- 米制品链(2026-09-08 提案落地):水稻 → 研磨 → 大米粉 → +水 → 米粉团 → 压延 → 米粉条 ----
+    public static final RegistryObject<Item> RICE_FLOUR = form("rice_flour");
+    public static final RegistryObject<Item> RICE_DOUGH = form("rice_dough");
+    public static final RegistryObject<Item> RICE_NOODLES = form("rice_noodles");
 
     public static final List<RegistryObject<Item>> ALL = List.of(
             BEEF_SLICE, BEEF_STRIP, BEEF_CUBE, BEEF_RIBS, BEEF_MINCED,
@@ -82,7 +86,8 @@ public final class GFEFormItems {
             CHILI_RING, POTATO_SLICE, APPLE_SLICE, TOMATO_SLICE,
             POTATO_STRIP, CARROT_STRIP, CABBAGE_STRIP, CHILI_STRIP,
             TOMATO_DICED, ONION_DICED, FRIES_BLANK, CHILI_DICED, POTATO_DICED,
-            ONION_MINCED, GARLIC_MINCED, CHILI_POWDER, APPLE_FLESH, NOODLE, DOUGH_SHEET);
+            ONION_MINCED, GARLIC_MINCED, CHILI_POWDER, APPLE_FLESH, NOODLE, DOUGH_SHEET,
+            RICE_FLOUR, RICE_DOUGH, RICE_NOODLES);
 
     public static final List<RegistryObject<Item>> MEAT_SLICES = List.of(
             BEEF_SLICE, PORK_SLICE, MUTTON_SLICE, CHICKEN_SLICE, FISH_SLICE);

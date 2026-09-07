@@ -109,6 +109,9 @@ public final class GFELang {
         add("item.gregfoodexpansion.apple_flesh", "Peeled Apple");
         add("item.gregfoodexpansion.noodle", "Noodles");
         add("item.gregfoodexpansion.dough_sheet", "Dough Sheet");
+        add("item.gregfoodexpansion.rice_flour", "Rice Flour");
+        add("item.gregfoodexpansion.rice_dough", "Rice Dough");
+        add("item.gregfoodexpansion.rice_noodles", "Rice Noodles");
 
         // ---- 手工切配工具(food-processor.md §7) ----
         add("item.gregfoodexpansion.cleaver", "Cleaver");
