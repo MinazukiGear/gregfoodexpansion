@@ -2,6 +2,7 @@ package net.mgear.gregfoodexpansion.data;
 
 import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 
+import net.mgear.gregfoodexpansion.cooking.GFEDishes;
 import net.mgear.gregfoodexpansion.prep.GFEFormItems;
 import net.mgear.gregfoodexpansion.prep.GFEPrepTools;
 import net.mgear.gregfoodexpansion.registry.GFECropItems;
@@ -15,5 +16,6 @@ public final class GFEItemModels {
         GFECropItems.ALL_PRODUCTS.forEach(item -> provider.basicItem(item.get()));
         GFEFormItems.ALL.forEach(item -> provider.basicItem(item.get()));
         GFEPrepTools.ALL.forEach(item -> provider.basicItem(item.get()));
+        GFEDishes.ALL.forEach(item -> provider.basicItem(item.get()));
     }
 }

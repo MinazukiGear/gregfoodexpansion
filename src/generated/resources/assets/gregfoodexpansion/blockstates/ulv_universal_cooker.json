@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "gregfoodexpansion:block/machine/ulv_universal_cooker",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "gregfoodexpansion:block/machine/ulv_universal_cooker"
+    },
+    "facing=south": {
+      "model": "gregfoodexpansion:block/machine/ulv_universal_cooker",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "gregfoodexpansion:block/machine/ulv_universal_cooker",
+      "y": 270
+    }
+  }
+}

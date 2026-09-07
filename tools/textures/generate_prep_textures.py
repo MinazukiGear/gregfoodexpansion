@@ -41,6 +41,14 @@ PALETTES = {
     "rice_flour": {"K": "#8A8468", "M": "#F2EDDE", "L": "#FAF7EC", "D": "#D9D2B8"},
     "rice_dough": {"K": "#8A8058", "M": "#EDE7CE", "L": "#F7F3E4", "D": "#CFC6A4"},
     "rice_noodles": {"K": "#8A7A4E", "M": "#F0EAD0", "L": "#F9F5E6", "D": "#D4CBA6"},
+    "soup_red": {"K": "#6E1F16", "M": "#E04B3A", "L": "#F2836F", "D": "#C23325"},
+    "soup_brown": {"K": "#5A4020", "M": "#C89A50", "L": "#E0BC78", "D": "#9A7038"},
+    "soup_white": {"K": "#8A8468", "M": "#F2EDDE", "L": "#FAF7EC", "D": "#D9D2B8"},
+    "soup_yellow": {"K": "#8A6E20", "M": "#F2CB4B", "L": "#FBE9A0", "D": "#D9A92E"},
+    "dish_green": {"K": "#3E5C26", "M": "#8FBF5A", "L": "#C9E09A", "D": "#6E9B3E"},
+    "dish_red": {"K": "#7A1810", "M": "#D93A2B", "L": "#F06A55", "D": "#B02417"},
+    "dish_gold": {"K": "#8A5A10", "M": "#E8B44A", "L": "#F5D488", "D": "#C08A28"},
+    "dish_cream": {"K": "#8A7440", "M": "#F0E0B8", "L": "#FAF0D8", "D": "#D4BC84"},
 }
 
 # (id, 模板, 配色源)
@@ -72,6 +80,24 @@ FORMS = [
     ("noodle", "noodle", "dough"), ("dough_sheet", "sheet", "dough"),
     ("rice_flour", "powder", "rice_flour"), ("rice_dough", "flesh", "rice_dough"),
     ("rice_noodles", "noodle", "rice_noodles"),
+    # ---- 精制档菜肴(c1 煮=碗 / c2 蒸=白盘 / c3 炒=盘+混炒 / c4 炸=金炸物) ----
+    ("rice_noodle_soup", "soup", "rice_noodles"), ("tomato_soup", "soup", "soup_red"),
+    ("vegetable_soup", "soup", "dish_green"), ("rib_soup", "soup", "soup_brown"),
+    ("rice_porridge", "soup", "soup_white"), ("corn_soup", "soup", "soup_yellow"),
+    ("dumplings", "soup", "soup_white"),
+    ("steamed_rice", "plate", "soup_white"), ("mantou", "plate", "dish_cream"),
+    ("baozi", "plate", "dish_cream"), ("steamed_egg", "plate", "soup_yellow"),
+    ("steamed_corn", "plate", "soup_yellow"), ("rice_cake", "plate", "soup_white"),
+    ("rice_steamed_pork", "plate", "soup_brown"), ("white_cake", "plate", "soup_white"),
+    ("tomato_scrambled_egg", "stirfry", "soup_yellow"), ("fried_rice", "stirfry", "soup_yellow"),
+    ("fried_noodles", "stirfry", "soup_brown"), ("chili_shredded_pork", "stirfry", "dish_red"),
+    ("stir_fried_pork", "stirfry", "dish_red"), ("kung_pao_chicken", "stirfry", "dish_red"),
+    ("stir_fried_vegetables", "stirfry", "dish_green"), ("fried_rice_noodles", "stirfry", "soup_brown"),
+    ("beef_chow_fun", "stirfry", "soup_brown"),
+    ("fries", "fried", "dish_gold"), ("potato_chips", "fried", "dish_gold"),
+    ("fried_chicken_cuts", "fried", "dish_gold"), ("fried_peanuts", "fried", "soup_brown"),
+    ("fried_fish_fillet", "fried", "dish_gold"), ("onion_rings", "fried", "dish_gold"),
+    ("spring_roll", "fried", "dish_gold"), ("rice_cracker", "fried", "soup_white"),
 ]
 
 MINCED_DOTS = [(3, 4), (7, 3), (11, 5), (4, 8), (9, 8), (12, 10), (3, 11), (7, 11), (10, 12)]
@@ -182,11 +208,49 @@ def p_surimi(d, pal):
         d.point((ox + 2, oy + 1), fill=pal["L"])
 
 
+PLATE = "#E8E8EE"
+
+
+def p_soup(d, pal):
+    d.ellipse([1, 5, 15, 14], fill="#C9CDD1")
+    d.ellipse([2, 5, 14, 11], fill="#A8AEB5")
+    d.ellipse([3, 6, 13, 11], fill=pal["M"])
+    d.ellipse([5, 7, 11, 10], fill=pal["L"])
+    for x, y in ((5, 7), (9, 6), (11, 9)):
+        d.point((x, y), fill=pal["D"])
+
+
+def p_plate(d, pal):
+    d.ellipse([1, 7, 15, 14], fill=PLATE)
+    d.ellipse([2, 8, 14, 13], fill="#D4D4DC")
+    d.ellipse([4, 5, 12, 12], fill=pal["K"])
+    d.ellipse([5, 6, 11, 11], fill=pal["M"])
+    d.ellipse([6, 6, 10, 9], fill=pal["L"])
+
+
+def p_stirfry(d, pal):
+    d.ellipse([1, 7, 15, 14], fill=PLATE)
+    d.ellipse([2, 8, 14, 13], fill="#D4D4DC")
+    for ox, oy in ((3, 7), (7, 5), (10, 8), (5, 9), (9, 9), (12, 6)):
+        d.rectangle([ox, oy, ox + 2, oy + 2], fill=pal["M"])
+        d.point((ox, oy), fill=pal["L"])
+    for ox, oy in ((5, 6), (11, 10)):
+        d.rectangle([ox, oy, ox + 2, oy + 2], fill=pal["D"])
+
+
+def p_fried(d, pal):
+    for ox, oy in ((2, 3), (7, 2), (11, 5), (4, 8), (9, 9), (6, 12)):
+        d.rounded_rectangle([ox, oy, ox + 4, oy + 3], radius=1, fill=pal["K"])
+        d.rounded_rectangle([ox + 1, oy + 1, ox + 3, oy + 2], radius=1, fill=pal["M"])
+        d.point((ox + 1, oy + 1), fill=pal["L"])
+
+
 PATTERNS = {
     "slices": p_slices, "strips": p_strips, "diced": p_diced, "minced": p_minced,
     "powder": p_powder, "ring": p_ring, "flesh": p_flesh, "fries": p_fries,
     "noodle": p_noodle, "sheet": p_sheet, "ribs": p_ribs, "nugget": p_nugget,
     "surimi": p_surimi,
+    "soup": p_soup, "plate": p_plate, "stirfry": p_stirfry, "fried": p_fried,
 }
 
 # ---- 机器 overlay(灰钢面板 + 刀具图形) ----
@@ -294,10 +358,41 @@ def tool_rolling_pin() -> Image.Image:
     return img
 
 
+def cooker_overlay_front(active: bool) -> Image.Image:
+    img = base()
+    d = ImageDraw.Draw(img)
+    panel(d)
+    d.ellipse([2, 6, 10, 13], fill=STEEL_DARK)
+    d.ellipse([3, 7, 9, 12], fill=STEEL)
+    d.line([(10, 4), (13, 8)], fill="#6E4A26", width=3)
+    if active:
+        d.ellipse([4, 8, 8, 11], fill=ACCENT)
+    return img
+
+
+def cooker_overlay_side(active: bool) -> Image.Image:
+    img = overlay_side(active)
+    return img
+
+
+def cooker_overlay_top(active: bool) -> Image.Image:
+    img = base()
+    d = ImageDraw.Draw(img)
+    panel(d)
+    d.ellipse([2, 2, 14, 14], fill=PANEL_DARK)
+    d.ellipse([3, 3, 13, 13], fill=STEEL_DARK)
+    d.ellipse([5, 5, 11, 11], fill=PANEL)
+    if active:
+        d.arc([3, 3, 13, 13], 300, 80, fill=ACCENT, width=2)
+    return img
+
+
 def main() -> None:
+    cooker_dir = TEX / "block" / "machines" / "universal_cooker"
     machine_dir = TEX / "block" / "machines" / "food_processor"
     item_dir = TEX / "item"
     machine_dir.mkdir(parents=True, exist_ok=True)
+    cooker_dir.mkdir(parents=True, exist_ok=True)
 
     images = {}
     for name, img in {
@@ -307,6 +402,13 @@ def main() -> None:
     }.items():
         img.save(machine_dir / f"{name}.png")
         images[name] = img
+    for name, img in {
+        "overlay_front": cooker_overlay_front(False), "overlay_front_active": cooker_overlay_front(True),
+        "overlay_side": cooker_overlay_side(False), "overlay_side_active": cooker_overlay_side(True),
+        "overlay_top": cooker_overlay_top(False), "overlay_top_active": cooker_overlay_top(True),
+    }.items():
+        img.save(cooker_dir / f"{name}.png")
+        images["cooker_" + name] = img
 
     for name, draw in {
         "cleaver": tool_cleaver, "peeler": tool_peeler,
@@ -324,9 +426,12 @@ def main() -> None:
 
     # ---- 审阅预览 ----
     scale, cell, gutter, label_h = 8, 128, 8, 14
-    keys = ["overlay_front", "overlay_front_active", "overlay_side", "overlay_side_active",
-            "overlay_top", "overlay_top_active",
-            "cleaver", "peeler", "mortar_pestle", "rolling_pin"] + [f[0] for f in FORMS]
+    keys = (["overlay_front", "overlay_front_active", "overlay_side", "overlay_side_active",
+             "overlay_top", "overlay_top_active"]
+            + ["cooker_" + n for n in ("overlay_front", "overlay_front_active", "overlay_side",
+                                       "overlay_side_active", "overlay_top", "overlay_top_active")]
+            + ["cleaver", "peeler", "mortar_pestle", "rolling_pin"]
+            + [f[0] for f in FORMS])
     cols = 10
     rows = (len(keys) + cols - 1) // cols
     width = cols * (cell + gutter) + gutter
@@ -346,7 +451,7 @@ def main() -> None:
 
     preview = ROOT / "tools/textures/preview_prep.png"
     sheet.save(preview)
-    print(f"written {6 + 4 + len(FORMS)} textures; preview: {preview}")
+    print(f"written {12 + 4 + len(FORMS)} textures; preview: {preview}")
 
 
 if __name__ == "__main__":

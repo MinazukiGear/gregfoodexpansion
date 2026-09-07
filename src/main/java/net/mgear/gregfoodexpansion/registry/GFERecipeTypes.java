@@ -25,6 +25,8 @@ public final class GFERecipeTypes {
     private GFERecipeTypes() {}
 
     public static GTRecipeType FOOD_PREP;
+    /** 通用烹饪类型(universal-cooker.md §2/§4):c1 煮 / c2 蒸 / c3 炒 / c4 炸;中央厨房后续直接复用。 */
+    public static GTRecipeType COOKING;
 
     public static void init(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {
         ResourceLocation id = GregFoodExpansion.id("food_prep");
@@ -42,5 +44,20 @@ public final class GFERecipeTypes {
         GTRegistries.register(BuiltInRegistries.RECIPE_SERIALIZER, FOOD_PREP.registryName,
                 new GTRecipeSerializer());
         event.register(id, FOOD_PREP);
+
+        ResourceLocation cookingId = GregFoodExpansion.id("cooking");
+        COOKING = new GTRecipeType(cookingId, GTRecipeTypes.ELECTRIC)
+                .setMaxIOSize(9, 3, 3, 3)
+                .setEUIO(IO.IN)
+                // 数值基准(universal-cooker.md §5 草案):煮 8-16 / 蒸 12-16 / 炒 16-24 / 炸 24-32。
+                .prepareBuilder(builder -> builder.duration(200).EUt(8))
+                .setProgressBar(GuiTextures.PROGRESS_BAR_ARROW, FillDirection.LEFT_TO_RIGHT)
+                .setSound(GTSoundEntries.FURNACE)
+                .setXEIVisible(true);
+
+        GTRegistries.register(BuiltInRegistries.RECIPE_TYPE, COOKING.registryName, COOKING);
+        GTRegistries.register(BuiltInRegistries.RECIPE_SERIALIZER, COOKING.registryName,
+                new GTRecipeSerializer());
+        event.register(cookingId, COOKING);
     }
 }

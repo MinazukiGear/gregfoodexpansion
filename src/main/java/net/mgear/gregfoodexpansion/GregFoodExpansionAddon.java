@@ -5,6 +5,7 @@ import java.util.function.Consumer;
 import com.gregtechceu.gtceu.api.addon.GTAddon;
 import com.gregtechceu.gtceu.api.addon.IGTAddon;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
+import net.mgear.gregfoodexpansion.data.GFECookingRecipes;
 import net.mgear.gregfoodexpansion.data.GFEPrepRecipes;
 import net.mgear.gregfoodexpansion.data.GFELang;
 import net.mgear.gregfoodexpansion.registry.GFERegistration;
@@ -25,6 +26,7 @@ public final class GregFoodExpansionAddon implements IGTAddon {
     @Override
     public void addRecipes(Consumer<FinishedRecipe> provider) {
         GFEPrepRecipes.init(provider);
+        GFECookingRecipes.init(provider);
     }
 
     @Override

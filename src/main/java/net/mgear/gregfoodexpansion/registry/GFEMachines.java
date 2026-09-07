@@ -18,9 +18,13 @@ public final class GFEMachines {
     private GFEMachines() {}
 
     public static MachineDefinition[] FOOD_PROCESSOR;
+    public static MachineDefinition[] UNIVERSAL_COOKER;
 
     /** 由 GTCEuAPI RegisterEvent<MachineDefinition> 触发(入口类监听)。 */
     public static void init() {
+        int[] tiers = {GTValues.ULV, GTValues.LV, GTValues.MV, GTValues.HV, GTValues.EV,
+                GTValues.IV, GTValues.LuV, GTValues.ZPM, GTValues.UV};
+
         FOOD_PROCESSOR = GTMachineUtils.registerTieredMachines(
                 GFERegistration.REGISTRATE,
                 "food_processor",
@@ -39,7 +43,26 @@ public final class GFEMachines {
                                     GregFoodExpansion.id("block/machines/food_processor"))
                             .register();
                 },
-                new int[] {GTValues.ULV, GTValues.LV, GTValues.MV, GTValues.HV, GTValues.EV,
-                        GTValues.IV, GTValues.LuV, GTValues.ZPM, GTValues.UV});
+                tiers);
+
+        UNIVERSAL_COOKER = GTMachineUtils.registerTieredMachines(
+                GFERegistration.REGISTRATE,
+                "universal_cooker",
+                (holder, tier) -> new SimpleTieredMachine(holder, tier,
+                        GTMachineUtils.defaultTankSizeFunction),
+                (tier, builder) -> {
+                    builder.recipeModifier(GTRecipeModifiers.OC_NON_PERFECT);
+                    return builder
+                            .langValue("%s %s %s".formatted(GTValues.VLVH[tier],
+                                    "Universal Cooker", GTValues.VLVT[tier]))
+                            .editableUI(SimpleTieredMachine.EDITABLE_UI_CREATOR.apply(
+                                    GregFoodExpansion.id("universal_cooker"), GFERecipeTypes.COOKING))
+                            .rotationState(RotationState.NON_Y_AXIS)
+                            .recipeType(GFERecipeTypes.COOKING)
+                            .workableTieredHullModel(
+                                    GregFoodExpansion.id("block/machines/universal_cooker"))
+                            .register();
+                },
+                tiers);
     }
 }

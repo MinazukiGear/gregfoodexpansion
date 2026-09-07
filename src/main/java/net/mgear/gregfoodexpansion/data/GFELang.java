@@ -113,6 +113,40 @@ public final class GFELang {
         add("item.gregfoodexpansion.rice_dough", "Rice Dough");
         add("item.gregfoodexpansion.rice_noodles", "Rice Noodles");
 
+        // ---- 精制档菜肴(dishes-and-gains.md §5) ----
+        add("item.gregfoodexpansion.rice_noodle_soup", "Rice Noodle Soup");
+        add("item.gregfoodexpansion.tomato_soup", "Tomato Soup");
+        add("item.gregfoodexpansion.vegetable_soup", "Vegetable Soup");
+        add("item.gregfoodexpansion.rib_soup", "Rib Soup");
+        add("item.gregfoodexpansion.rice_porridge", "Rice Porridge");
+        add("item.gregfoodexpansion.corn_soup", "Corn Soup");
+        add("item.gregfoodexpansion.dumplings", "Dumplings");
+        add("item.gregfoodexpansion.steamed_rice", "Steamed Rice");
+        add("item.gregfoodexpansion.mantou", "Mantou");
+        add("item.gregfoodexpansion.baozi", "Baozi");
+        add("item.gregfoodexpansion.steamed_egg", "Steamed Egg");
+        add("item.gregfoodexpansion.steamed_corn", "Steamed Corn");
+        add("item.gregfoodexpansion.rice_cake", "Rice Cake");
+        add("item.gregfoodexpansion.rice_steamed_pork", "Rice-Flour Steamed Pork");
+        add("item.gregfoodexpansion.white_cake", "White Cake");
+        add("item.gregfoodexpansion.tomato_scrambled_egg", "Scrambled Eggs with Tomato");
+        add("item.gregfoodexpansion.fried_rice", "Fried Rice");
+        add("item.gregfoodexpansion.fried_noodles", "Fried Noodles");
+        add("item.gregfoodexpansion.chili_shredded_pork", "Shredded Pork with Chili");
+        add("item.gregfoodexpansion.stir_fried_pork", "Stir-Fried Pork with Chili");
+        add("item.gregfoodexpansion.kung_pao_chicken", "Kung Pao Chicken");
+        add("item.gregfoodexpansion.stir_fried_vegetables", "Stir-Fried Vegetables");
+        add("item.gregfoodexpansion.fried_rice_noodles", "Stir-Fried Rice Noodles");
+        add("item.gregfoodexpansion.beef_chow_fun", "Beef Chow Fun");
+        add("item.gregfoodexpansion.fries", "Fries");
+        add("item.gregfoodexpansion.potato_chips", "Potato Chips");
+        add("item.gregfoodexpansion.fried_chicken_cuts", "Fried Chicken Cuts");
+        add("item.gregfoodexpansion.fried_peanuts", "Fried Peanuts");
+        add("item.gregfoodexpansion.fried_fish_fillet", "Fried Fish Fillet");
+        add("item.gregfoodexpansion.onion_rings", "Onion Rings");
+        add("item.gregfoodexpansion.spring_roll", "Spring Rolls");
+        add("item.gregfoodexpansion.rice_cracker", "Rice Crackers");
+
         // ---- 手工切配工具(food-processor.md §7) ----
         add("item.gregfoodexpansion.cleaver", "Cleaver");
         add("item.gregfoodexpansion.peeler", "Peeler");

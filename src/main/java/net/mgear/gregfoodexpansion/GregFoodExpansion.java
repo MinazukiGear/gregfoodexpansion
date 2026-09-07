@@ -5,6 +5,7 @@ import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.mojang.logging.LogUtils;
 import com.tterrag.registrate.providers.ProviderType;
+import net.mgear.gregfoodexpansion.cooking.GFEDishes;
 import net.mgear.gregfoodexpansion.data.GFEBlockStates;
 import net.mgear.gregfoodexpansion.data.GFEBlockTags;
 import net.mgear.gregfoodexpansion.data.GFEItemModels;
@@ -46,6 +47,7 @@ public final class GregFoodExpansion {
         GFECropItems.ITEMS.register(modEventBus);
         GFEFormItems.ITEMS.register(modEventBus);
         GFEPrepTools.ITEMS.register(modEventBus);
+        GFEDishes.ITEMS.register(modEventBus);
         GFECropLootModifiers.SERIALIZERS.register(modEventBus);
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.RECIPE, GFERecipes::init);
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.BLOCKSTATE, GFEBlockStates::init);
@@ -76,6 +78,7 @@ public final class GregFoodExpansion {
             GFECropItems.ALL_PRODUCTS.forEach(item -> event.accept(item.get()));
             GFEFormItems.ALL.forEach(item -> event.accept(item.get()));
             GFEPrepTools.ALL.forEach(item -> event.accept(item.get()));
+            GFEDishes.ALL.forEach(item -> event.accept(item.get()));
         }
     }
 
