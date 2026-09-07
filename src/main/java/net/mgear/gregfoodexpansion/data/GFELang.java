@@ -171,6 +171,7 @@ public final class GFELang {
         add("item.gregfoodexpansion.sliced_bread", "Sliced Bread");
         add("item.gregfoodexpansion.sliced_baguetted", "Sliced Baguette");
         add("item.gregfoodexpansion.sliced_burger_bun", "Sliced Burger Bun");
+        add("gregfoodexpansion.multiblock.tunnel_oven.preheating", "Oven preheating...");
 
         // ---- 基础档手工菜肴(dishes-and-gains.md §5,LV 前兜底) ----
         add("item.gregfoodexpansion.fruit_platter", "Fruit Platter");
