@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "gregfoodexpansion:sandwich_base"
+    },
+    {
+      "item": "gregfoodexpansion:chicken_slice"
+    }
+  ],
+  "result": {
+    "item": "gregfoodexpansion:chicken_sandwich"
+  }
+}

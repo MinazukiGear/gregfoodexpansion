@@ -187,5 +187,14 @@
   "item.gregfoodexpansion.raw_toast": "生吐司坯",
   "item.gregfoodexpansion.sliced_bread": "切好的面包",
   "item.gregfoodexpansion.sliced_baguetted": "切好的法棍",
-  "item.gregfoodexpansion.sliced_burger_bun": "切好的汉堡胚"
+  "item.gregfoodexpansion.sliced_burger_bun": "切好的汉堡胚",
+  "item.gregfoodexpansion.raw_dinner_roll": "生小圆面包坯",
+  "item.gregfoodexpansion.raw_beef_patty": "生牛肉饼",
+  "item.gregfoodexpansion.cooked_beef_patty": "熟牛肉饼",
+  "item.gregfoodexpansion.vegetable_sandwich": "蔬菜三明治",
+  "item.gregfoodexpansion.egg_sandwich": "鸡蛋三明治",
+  "item.gregfoodexpansion.beef_sandwich": "牛肉三明治",
+  "item.gregfoodexpansion.chicken_sandwich": "鸡肉三明治",
+  "item.gregfoodexpansion.beef_burger": "牛肉汉堡",
+  "item.gregfoodexpansion.chicken_burger": "鸡肉汉堡"
 }

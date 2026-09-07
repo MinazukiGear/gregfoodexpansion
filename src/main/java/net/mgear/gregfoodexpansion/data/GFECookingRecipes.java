@@ -158,7 +158,7 @@ public final class GFECookingRecipes {
         bake(provider, "bread", 2, 200, 12, b -> b
                 .inputItems(GFEFormItems.RAW_BREAD.get(), 2).outputItems(GFEDishes.BREAD.get()));
         bake(provider, "dinner_roll", 2, 200, 12, b -> b
-                .inputItems(GFEFormItems.RAW_BREAD.get()).outputItems(GFEDishes.DINNER_ROLL.get()));
+                .inputItems(GFEFormItems.RAW_DINNER_ROLL.get()).outputItems(GFEDishes.DINNER_ROLL.get()));
         bake(provider, "baguette", 2, 240, 12, b -> b
                 .inputItems(GFEFormItems.RAW_BAGUETTE.get()).outputItems(GFEDishes.BAGUETTE.get()));
         bake(provider, "toast", 2, 200, 12, b -> b
@@ -184,6 +184,16 @@ public final class GFECookingRecipes {
                 .inputItems(GFEFormItems.GARLIC_MINCED.get())
                 .inputFluids(GTMaterials.SeedOil, 20)
                 .outputItems(GFEDishes.GARLIC_BAGUETTE.get()));
+
+        // ---- 熟牛肉饼(c3 煎):肉饼链生肉饼 → 熟肉饼(dishes-and-gains.md §5) ----
+        GFERecipeTypes.COOKING.recipeBuilder(GregFoodExpansion.id("cooking/cooked_beef_patty"))
+                .inputItems(GFEFormItems.RAW_BEEF_PATTY.get())
+                .inputFluids(GTMaterials.SeedOil, 10)
+                .circuitMeta(3)
+                .outputItems(GFEFormItems.COOKED_BEEF_PATTY.get())
+                .duration(160)
+                .EUt(16)
+                .save(provider);
     }
 
     private static void soup(Consumer<FinishedRecipe> provider, String name, int duration, int eut,

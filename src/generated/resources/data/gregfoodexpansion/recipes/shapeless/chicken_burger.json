@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "tag": "gregfoodexpansion:burger_base"
+    },
+    {
+      "item": "gregfoodexpansion:fried_chicken_cuts"
+    }
+  ],
+  "result": {
+    "item": "gregfoodexpansion:chicken_burger"
+  }
+}

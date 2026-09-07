@@ -87,6 +87,14 @@ public final class GFEDishes {
     public static final RegistryObject<Item> BAKED_CORN = baked("baked_corn", 3, 0.5F);
     public static final RegistryObject<Item> GARLIC_BAGUETTE = baked("garlic_baguette", 6, 0.6F);
 
+    // ---- 装配类(工作台,基础档,dishes-and-gains.md §5):急迫 I 15 s 微效果 ----
+    public static final RegistryObject<Item> VEGETABLE_SANDWICH = hand("vegetable_sandwich", 5, 0.4F);
+    public static final RegistryObject<Item> EGG_SANDWICH = hand("egg_sandwich", 4, 0.4F);
+    public static final RegistryObject<Item> BEEF_SANDWICH = hand("beef_sandwich", 7, 0.5F);
+    public static final RegistryObject<Item> CHICKEN_SANDWICH = hand("chicken_sandwich", 6, 0.5F);
+    public static final RegistryObject<Item> BEEF_BURGER = hand("beef_burger", 9, 0.6F);
+    public static final RegistryObject<Item> CHICKEN_BURGER = hand("chicken_burger", 8, 0.6F);
+
     public static final List<RegistryObject<Item>> ALL = List.of(
             RICE_NOODLE_SOUP, TOMATO_SOUP, VEGETABLE_SOUP, RIB_SOUP, RICE_PORRIDGE,
             CORN_SOUP, DUMPLINGS,
@@ -100,7 +108,9 @@ public final class GFEDishes {
             FRUIT_PLATTER, SUGAR_TOMATO, CHICKEN_COLD_NOODLES, FRIED_EGG, PLAIN_NOODLES,
             HAND_FRIED_RICE, HAND_STEAMED_EGG, HAND_STEAMED_CORN,
             BREAD, TOAST, SWEET_BREAD, CAKE, APPLE_PIE, BAGUETTE, DINNER_ROLL,
-            CORN_BREAD, BAKED_CORN, GARLIC_BAGUETTE);
+            CORN_BREAD, BAKED_CORN, GARLIC_BAGUETTE,
+            VEGETABLE_SANDWICH, EGG_SANDWICH, BEEF_SANDWICH, CHICKEN_SANDWICH,
+            BEEF_BURGER, CHICKEN_BURGER);
 
     private static RegistryObject<Item> dish(String name, FoodProperties food) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(food)));

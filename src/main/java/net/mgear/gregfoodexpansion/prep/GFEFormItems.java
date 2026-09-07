@@ -76,6 +76,10 @@ public final class GFEFormItems {
     public static final RegistryObject<Item> RAW_BREAD = form("raw_bread");
     public static final RegistryObject<Item> RAW_TOAST = form("raw_toast");
     public static final RegistryObject<Item> RAW_BAGUETTE = form("raw_baguette");
+    public static final RegistryObject<Item> RAW_DINNER_ROLL = form("raw_dinner_roll");
+    // ---- 肉饼链(dishes-and-gains.md §5 装配与肉饼链):馅 → 冲压 → 生肉饼 → 煎/烤 → 熟肉饼 ----
+    public static final RegistryObject<Item> RAW_BEEF_PATTY = form("raw_beef_patty");
+    public static final RegistryObject<Item> COOKED_BEEF_PATTY = cookedPatty("cooked_beef_patty", 6, 0.6F);
     // ---- 烘焙切分(dishes-and-gains.md §4):切片电路承载,三明治/汉堡与蒜香法棍的原料 ----
     public static final RegistryObject<Item> BREAD_SLICE = form("bread_slice");
     public static final RegistryObject<Item> BAGUETTE_SLICE = form("baguette_slice");
@@ -94,6 +98,7 @@ public final class GFEFormItems {
             PORK_SLICE, PORK_STRIP, PORK_CUBE, PORK_RIBS, PORK_MINCED,
             MUTTON_SLICE, MUTTON_CUBE, MUTTON_MINCED,
             CHICKEN_SLICE, CHICKEN_SHRED, CHICKEN_DICED, CHICKEN_CUTS, CHICKEN_MINCED,
+            RAW_BEEF_PATTY, COOKED_BEEF_PATTY,
             FISH_SLICE, FISH_CUBE, FISH_SURIMI,
             CHILI_RING, POTATO_SLICE, APPLE_SLICE, TOMATO_SLICE,
             POTATO_STRIP, CARROT_STRIP, CABBAGE_STRIP, CHILI_STRIP,
@@ -101,7 +106,7 @@ public final class GFEFormItems {
             ONION_MINCED, GARLIC_MINCED, CHILI_POWDER, APPLE_FLESH, NOODLE, DOUGH_SHEET,
             BREAD_SLICE, BAGUETTE_SLICE, BURGER_BUN,
             SLICED_BREAD, SLICED_BAGUETTE, SLICED_BURGER_BUN,
-            RAW_BREAD, RAW_TOAST, RAW_BAGUETTE,
+            RAW_BREAD, RAW_TOAST, RAW_BAGUETTE, RAW_DINNER_ROLL,
             RICE_FLOUR, RICE_DOUGH, RICE_NOODLES);
 
     public static final List<RegistryObject<Item>> MEAT_SLICES = List.of(
@@ -124,6 +129,17 @@ public final class GFEFormItems {
                 new net.minecraft.world.food.FoodProperties.Builder()
                         .nutrition(1)
                         .saturationMod(0.1F)
+                        .build())));
+    }
+
+    // 熟肉饼为烹饪机精制档产出(急迫 I 5 min)
+    private static RegistryObject<Item> cookedPatty(String name, int hunger, float saturation) {
+        return ITEMS.register(name, () -> new Item(new Item.Properties().food(
+                new net.minecraft.world.food.FoodProperties.Builder()
+                        .nutrition(hunger)
+                        .saturationMod(saturation)
+                        .effect(() -> new net.minecraft.world.effect.MobEffectInstance(
+                                net.minecraft.world.effect.MobEffects.DIG_SPEED, 6000, 0), 1.0F)
                         .build())));
     }
 

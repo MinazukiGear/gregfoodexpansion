@@ -96,7 +96,11 @@ FORMS = [
     ("burger_bun", "plate", "dish_cream"),
     # ---- 烘焙生坯(面团成型中间品) ----
     ("raw_bread", "flesh", "dough"), ("raw_toast", "flesh", "dough"),
-    ("raw_baguette", "fries", "dough"),
+    ("raw_baguette", "fries", "dough"), ("raw_dinner_roll", "flesh", "dough"),
+    ("raw_beef_patty", "nugget", "beef"), ("cooked_beef_patty", "nugget", "toast_brown"),
+    ("vegetable_sandwich", "stirfry", "dish_green"), ("egg_sandwich", "plate", "soup_yellow"),
+    ("beef_sandwich", "stirfry", "beef"), ("chicken_sandwich", "stirfry", "chicken"),
+    ("beef_burger", "nugget", "beef"), ("chicken_burger", "nugget", "chicken"),
     # ---- 切好件(切片拼装) ----
     ("sliced_bread", "slices", "baked"), ("sliced_baguetted", "fries", "toast_brown"),
     ("sliced_burger_bun", "plate", "dish_cream"),

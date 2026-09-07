@@ -16,6 +16,7 @@ import net.mgear.gregfoodexpansion.prep.GFEPrepTools;
 import net.mgear.gregfoodexpansion.registry.GFECropItems;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Items;
 
 public final class GFERecipes {
@@ -89,6 +90,26 @@ public final class GFERecipes {
                 new net.minecraft.world.item.ItemStack(GFEFormItems.SLICED_BURGER_BUN.get()),
                 GFEFormItems.BURGER_BUN.get(), GFEFormItems.BURGER_BUN.get());
 
+        // 三明治/汉堡装配(dishes-and-gains.md §5):基座标签同时接受面包片与切好的面包
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("vegetable_sandwich"),
+                new net.minecraft.world.item.ItemStack(GFEDishes.VEGETABLE_SANDWICH.get()),
+                sandwichBase(), GFEFormItems.TOMATO_DICED.get(), GFEFormItems.CABBAGE_STRIP.get());
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("egg_sandwich"),
+                new net.minecraft.world.item.ItemStack(GFEDishes.EGG_SANDWICH.get()),
+                sandwichBase(), Items.EGG);
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("beef_sandwich"),
+                new net.minecraft.world.item.ItemStack(GFEDishes.BEEF_SANDWICH.get()),
+                sandwichBase(), GFEFormItems.BEEF_SLICE.get());
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("chicken_sandwich"),
+                new net.minecraft.world.item.ItemStack(GFEDishes.CHICKEN_SANDWICH.get()),
+                sandwichBase(), GFEFormItems.CHICKEN_SLICE.get());
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("beef_burger"),
+                new net.minecraft.world.item.ItemStack(GFEDishes.BEEF_BURGER.get()),
+                burgerBase(), GFEFormItems.COOKED_BEEF_PATTY.get(), GFEFormItems.TOMATO_SLICE.get());
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("chicken_burger"),
+                new net.minecraft.world.item.ItemStack(GFEDishes.CHICKEN_BURGER.get()),
+                burgerBase(), GFEDishes.FRIED_CHICKEN_CUTS.get());
+
         // 面皮切丝成面条(手工:菜刀)
         VanillaRecipeHelper.addShapelessRecipe(provider, id("noodle_manual"),
                 new net.minecraft.world.item.ItemStack(GFEFormItems.NOODLE.get()),
@@ -151,6 +172,18 @@ public final class GFERecipes {
         VanillaRecipeHelper.addShapelessRecipe(provider, id("hand_steamed_corn"),
                 new net.minecraft.world.item.ItemStack(GFEDishes.HAND_STEAMED_CORN.get()),
                 GFECookingTools.STEAMER.get(), GFECropItems.CORN.get());
+    }
+
+    /** 三明治基座:面包片或切好的面包。 */
+    private static TagKey<net.minecraft.world.item.Item> sandwichBase() {
+        return TagKey.create(net.minecraft.core.registries.Registries.ITEM,
+                GregFoodExpansion.id("sandwich_base"));
+    }
+
+    /** 汉堡基座:汉堡胚或切好的汉堡胚。 */
+    private static TagKey<net.minecraft.world.item.Item> burgerBase() {
+        return TagKey.create(net.minecraft.core.registries.Registries.ITEM,
+                GregFoodExpansion.id("burger_base"));
     }
 
     private static ResourceLocation id(String path) {

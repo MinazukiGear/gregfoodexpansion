@@ -168,6 +168,15 @@ public final class GFELang {
         add("item.gregfoodexpansion.raw_bread", "Raw Bread Loaf");
         add("item.gregfoodexpansion.raw_baguette", "Raw Baguette");
         add("item.gregfoodexpansion.raw_toast", "Raw Toast Loaf");
+        add("item.gregfoodexpansion.raw_dinner_roll", "Raw Dinner Roll Base");
+        add("item.gregfoodexpansion.raw_beef_patty", "Raw Beef Patty");
+        add("item.gregfoodexpansion.cooked_beef_patty", "Cooked Beef Patty");
+        add("item.gregfoodexpansion.vegetable_sandwich", "Vegetable Sandwich");
+        add("item.gregfoodexpansion.egg_sandwich", "Egg Sandwich");
+        add("item.gregfoodexpansion.beef_sandwich", "Beef Sandwich");
+        add("item.gregfoodexpansion.chicken_sandwich", "Chicken Sandwich");
+        add("item.gregfoodexpansion.beef_burger", "Beef Burger");
+        add("item.gregfoodexpansion.chicken_burger", "Chicken Burger");
         add("item.gregfoodexpansion.sliced_bread", "Sliced Bread");
         add("item.gregfoodexpansion.sliced_baguetted", "Sliced Baguette");
         add("item.gregfoodexpansion.sliced_burger_bun", "Sliced Burger Bun");

@@ -37,6 +37,17 @@ public final class GFEItemTags {
         GFEFormItems.MEAT_STRIPS.forEach(item -> provider.addTag(forgeTag("meat_strips")).add(item.get()));
         GFEFormItems.MEAT_CUBES.forEach(item -> provider.addTag(forgeTag("meat_cubes")).add(item.get()));
         GFEFormItems.MINCED_MEATS.forEach(item -> provider.addTag(forgeTag("minced_meat")).add(item.get()));
+
+        // 装配基座标签(③层内部分组):三明治/汉堡配方同时接受面包片或切好的面包、
+        // 汉堡坯或切好的汉堡胚(2026-09-08 决议)。
+        provider.addTag(modTag("sandwich_base")).add(GFEFormItems.BREAD_SLICE.get());
+        provider.addTag(modTag("sandwich_base")).add(GFEFormItems.SLICED_BREAD.get());
+        provider.addTag(modTag("burger_base")).add(GFEFormItems.BURGER_BUN.get());
+        provider.addTag(modTag("burger_base")).add(GFEFormItems.SLICED_BURGER_BUN.get());
+    }
+
+    private static TagKey<Item> modTag(String path) {
+        return TagKey.create(Registries.ITEM, GregFoodExpansion.id(path));
     }
 
     // 方块注册名是 <crop>_crop,取作物名需去掉后缀。
