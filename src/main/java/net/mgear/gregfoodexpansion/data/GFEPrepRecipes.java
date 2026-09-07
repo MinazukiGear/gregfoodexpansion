@@ -59,6 +59,9 @@ public final class GFEPrepRecipes {
         prep(provider, 2, 40, 4, Items.COOKED_CHICKEN, GFEFormItems.CHICKEN_SHRED.get());
         // 生鸡柳条:鸡肉片切条(生熟判定:生鸡可切条,不可切丝)
         prep(provider, 2, 40, 4, Items.CHICKEN, GFEFormItems.RAW_CHICKEN_TENDER.get());
+        // 肥牛卷/肥羊卷:肉片×2 压延卷制(2026-09-08;卷为中间品,不可食用)
+        prep(provider, 7, 100, 8, GFEFormItems.BEEF_SLICE.get(), 2, GFEFormItems.FATTY_BEEF_ROLL.get(), 2);
+        prep(provider, 7, 100, 8, GFEFormItems.MUTTON_SLICE.get(), 2, GFEFormItems.FATTY_MUTTON_ROLL.get(), 2);
 
         // ---- c3 切块:40 tick / 4 EU/t ----
         prep(provider, 3, 40, 4, Items.BEEF, GFEFormItems.BEEF_CUBE.get());

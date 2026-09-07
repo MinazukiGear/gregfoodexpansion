@@ -33,6 +33,9 @@ public final class GFEDishes {
     public static final RegistryObject<Item> RICE_PORRIDGE = soup("rice_porridge", 3, 0.3F);
     public static final RegistryObject<Item> CORN_SOUP = soup("corn_soup", 5, 0.4F);
     public static final RegistryObject<Item> DUMPLINGS = soup("dumplings", 8, 0.5F);
+    public static final RegistryObject<Item> SHABU_BEEF = soup("shabu_beef", 6, 0.5F);
+    public static final RegistryObject<Item> SHABU_MUTTON = soup("shabu_mutton", 6, 0.5F);
+    public static final RegistryObject<Item> BEEF_RICE_BOWL = soup("beef_rice_bowl", 8, 0.6F);
 
     // ---- c2 蒸 ----
     public static final RegistryObject<Item> STEAMED_RICE = steamed("steamed_rice", 4, 0.4F);
@@ -99,7 +102,7 @@ public final class GFEDishes {
 
     public static final List<RegistryObject<Item>> ALL = List.of(
             RICE_NOODLE_SOUP, TOMATO_SOUP, VEGETABLE_SOUP, RIB_SOUP, RICE_PORRIDGE,
-            CORN_SOUP, DUMPLINGS,
+            CORN_SOUP, DUMPLINGS, SHABU_BEEF, SHABU_MUTTON, BEEF_RICE_BOWL,
             STEAMED_RICE, MANTOU, BAOZI, STEAMED_EGG, STEAMED_CORN, RICE_CAKE,
             RICE_STEAMED_PORK, WHITE_CAKE,
             TOMATO_SCRAMBLED_EGG, FRIED_RICE, FRIED_NOODLES, CHILI_SHREDDED_PORK,

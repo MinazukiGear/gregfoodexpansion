@@ -69,6 +69,18 @@ public final class GFECookingRecipes {
                 .inputItems(ANY_MEAT_STRIPS, 2)
                 .inputFluids(GTMaterials.Water, 200)
                 .outputItems(GFEDishes.DUMPLINGS.get(), 2));
+        soup(provider, "shabu_beef", 300, 8, b -> b
+                .inputItems(GFEFormItems.FATTY_BEEF_ROLL.get())
+                .inputFluids(GTMaterials.Water, 200)
+                .outputItems(GFEDishes.SHABU_BEEF.get()));
+        soup(provider, "shabu_mutton", 300, 8, b -> b
+                .inputItems(GFEFormItems.FATTY_MUTTON_ROLL.get())
+                .inputFluids(GTMaterials.Water, 200)
+                .outputItems(GFEDishes.SHABU_MUTTON.get()));
+        soup(provider, "beef_rice_bowl", 400, 12, b -> b
+                .inputItems(GFEDishes.STEAMED_RICE.get()).inputItems(GFEFormItems.FATTY_BEEF_ROLL.get())
+                .inputItems(GFEFormItems.ONION_DICED.get())
+                .outputItems(GFEDishes.BEEF_RICE_BOWL.get()));
 
         // ---- c2 蒸:200-300 tick / 12-16 EU/t ----
         steam(provider, "steamed_rice", 200, 12, b -> b

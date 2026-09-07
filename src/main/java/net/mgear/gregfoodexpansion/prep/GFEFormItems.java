@@ -24,6 +24,7 @@ public final class GFEFormItems {
 
     // ---- 肉类:牛肉 ----
     public static final RegistryObject<Item> BEEF_SLICE = form("beef_slice");
+    public static final RegistryObject<Item> FATTY_BEEF_ROLL = form("fatty_beef_roll");
     public static final RegistryObject<Item> BEEF_STRIP = form("beef_strip");
     public static final RegistryObject<Item> BEEF_CUBE = form("beef_cube");
     public static final RegistryObject<Item> BEEF_RIBS = form("beef_ribs");
@@ -36,6 +37,7 @@ public final class GFEFormItems {
     public static final RegistryObject<Item> PORK_MINCED = form("pork_minced");
     // ---- 肉类:羊肉 ----
     public static final RegistryObject<Item> MUTTON_SLICE = form("mutton_slice");
+    public static final RegistryObject<Item> FATTY_MUTTON_ROLL = form("fatty_mutton_roll");
     public static final RegistryObject<Item> MUTTON_CUBE = form("mutton_cube");
     public static final RegistryObject<Item> MUTTON_RIBS = form("mutton_ribs");
     public static final RegistryObject<Item> MUTTON_MINCED = form("mutton_minced");
@@ -106,9 +108,9 @@ public final class GFEFormItems {
     public static final RegistryObject<Item> RICE_NOODLES = form("rice_noodles");
 
     public static final List<RegistryObject<Item>> ALL = List.of(
-            BEEF_SLICE, BEEF_STRIP, BEEF_CUBE, BEEF_RIBS, BEEF_MINCED,
+            BEEF_SLICE, FATTY_BEEF_ROLL, BEEF_STRIP, BEEF_CUBE, BEEF_RIBS, BEEF_MINCED,
             PORK_SLICE, PORK_STRIP, PORK_CUBE, PORK_RIBS, PORK_MINCED,
-            MUTTON_SLICE, MUTTON_CUBE, MUTTON_RIBS, MUTTON_MINCED,
+            MUTTON_SLICE, FATTY_MUTTON_ROLL, MUTTON_CUBE, MUTTON_RIBS, MUTTON_MINCED,
             CHICKEN_SLICE, CHICKEN_SHRED, CHICKEN_DICED, CHICKEN_CUTS, CHICKEN_FEET, CHICKEN_MINCED,
             RAW_CHICKEN_CUTLET, RAW_CHICKEN_TENDER,
             RAW_BEEF_PATTY, COOKED_BEEF_PATTY,
