@@ -9,9 +9,13 @@ import net.mgear.gregfoodexpansion.data.GFEItemTags;
 import net.mgear.gregfoodexpansion.data.GFELoot;
 import net.mgear.gregfoodexpansion.data.GFERecipes;
 import net.mgear.gregfoodexpansion.registry.GFECreativeModeTabs;
+import net.mgear.gregfoodexpansion.registry.GFECropBlocks;
+import net.mgear.gregfoodexpansion.registry.GFECropItems;
+import net.mgear.gregfoodexpansion.registry.GFECropLootModifiers;
 import net.mgear.gregfoodexpansion.registry.GFERegistration;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
@@ -29,13 +33,25 @@ public final class GregFoodExpansion {
         IEventBus modEventBus = context.getModEventBus();
         GFERegistration.REGISTRATE.registerEventListeners(modEventBus);
         GFECreativeModeTabs.init();
+        GFECropBlocks.BLOCKS.register(modEventBus);
+        GFECropItems.ITEMS.register(modEventBus);
+        GFECropLootModifiers.SERIALIZERS.register(modEventBus);
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.RECIPE, GFERecipes::init);
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.BLOCKSTATE, GFEBlockStates::init);
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.ITEM_MODEL, GFEItemModels::init);
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.LOOT, GFELoot::init);
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, GFEBlockTags::init);
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, GFEItemTags::init);
+        modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::commonSetup);
+    }
+
+    // 创造标签展示序:种子 → 作物产物(crop-system-foundation.md §2)。
+    private void addCreative(final BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == GFECreativeModeTabs.MAIN.getKey()) {
+            GFECropItems.ALL_SEEDS.forEach(item -> event.accept(item.get()));
+            GFECropItems.ALL_PRODUCTS.forEach(item -> event.accept(item.get()));
+        }
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

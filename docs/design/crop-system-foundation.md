@@ -139,9 +139,11 @@ record CropEnvSpec(double tempMin, double tempMax,   // 原版生物群系基础
 
 ## 10. 实现进度
 
-- 2026-09-07:注册基座就位——GTRegistrate + @GTAddon、`gregfoodexpansion:main` 创造标签(图标暂用面包占位)与 datagen 六类 provider 骨架;build/runData/runClient 冒烟通过;
+- 2026-09-07:注册基座就位——GTRegistrate + @GTAddon、`gregfoodexpansion:main` 创造标签与 datagen 六类 provider 骨架;build/runData/runClient 冒烟通过;
 - 2026-09-07:§5 全部 30 张贴图首版生成完毕(4 灰度模板 + 13 种子 + 13 产物),待人工审阅;
-- 尚未完成:本文档范围内的作物内容(§2 注册规格起的全部条目)。
+- 2026-09-08:**阶段一代码完成**——13 作物全链注册(GFECropBlock + CropEnvSpec + ItemNameBlockItem 种子 + 产物,咖啡为 coffee_cherries)、§3.3 环境修正生长(vanilla 速度 × 修正系数,温度/含水量越界 ×0.6/×0.35,生长门限按 lightMin,存活线保持 vanilla ≥8)、§3.4 掉落表、§6 草丛种子 GLM(12.5% 加权掉落,forge:loot_table_id 圈定目标表)、§7 标签(forge:crops|seeds/<crop> 全 13 种 + forge:grain/{barley,rice},①/② 层 forge 命名空间)、BlockColors 染色注册、创造标签排序(种子→产物)、双语语言;build/runData/runClient 冒烟通过;
+- 待实机验收:§8 阶段一完成定义 1-3(种植/生长/收获、寒冷群系咖啡减速观察、染色目检);
+- 尚未完成:§9-3/4/5/6(实机调参、草丛权重调参、水田视觉、创造栏分组细节)。
 
 ## 参考
 

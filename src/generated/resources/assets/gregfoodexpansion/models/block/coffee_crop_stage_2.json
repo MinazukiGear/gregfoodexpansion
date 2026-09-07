@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "gregfoodexpansion:block/crop/stage_2"
+  }
+}

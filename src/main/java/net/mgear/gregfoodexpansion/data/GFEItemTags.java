@@ -2,17 +2,41 @@ package net.mgear.gregfoodexpansion.data;
 
 import com.tterrag.registrate.providers.RegistrateItemTagsProvider;
 
+import net.mgear.gregfoodexpansion.registry.GFECropBlocks;
+import net.mgear.gregfoodexpansion.registry.GFECropItems;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.item.Item;
+import net.minecraftforge.registries.RegistryObject;
+
 /**
- * 三层标签策略的落点(compatibility-boundary.md §3):
- * ① forge 通用语义标签(crops/raw_meats/dairy/grain 等);
- * ② forge 形态标签(sliced_meat/minced_meat 等);
- * ③ gregfoodexpansion 内部私有分组——语义上属于通用族的一律进 ①/② 层,不进本层。
- * 本模组加工配方只引用标签,不硬编码物品 id。
+ * 三层标签策略落地(compatibility-boundary.md §3):每作物注册 forge:crops/<crop>(产物)、
+ * forge:seeds/<crop>(种子);谷物类另注册 forge:grain/<crop>(barley、rice,沿用
+ * GTCEu CustomTags 既有口径)。①/② 层标签一律为 forge 命名空间(跨模组互通的语义层),
+ * gregfoodexpansion:* 私有分组是 ③ 层,不在此处使用。本模组配方只引用标签,不硬编码物品 id。
  */
 public final class GFEItemTags {
     private GFEItemTags() {}
 
     public static void init(RegistrateItemTagsProvider provider) {
-        // forge:crops/<crop>、forge:seeds/<crop>、forge:grain/<crop> 随 M1 作物落地(crop-system-foundation.md §7)。
+        for (int i = 0; i < GFECropBlocks.ALL_CROPS.size(); i++) {
+            String crop = cropName(GFECropBlocks.ALL_CROPS.get(i));
+            provider.addTag(forgeTag("crops/" + crop)).add(GFECropItems.ALL_PRODUCTS.get(i).get());
+            provider.addTag(forgeTag("seeds/" + crop)).add(GFECropItems.ALL_SEEDS.get(i).get());
+        }
+        // 谷物类(crop-system-foundation.md §7):barley、rice 进 forge:grain。
+        provider.addTag(forgeTag("grain/barley")).add(GFECropItems.BARLEY.get());
+        provider.addTag(forgeTag("grain/rice")).add(GFECropItems.RICE.get());
+    }
+
+    // 方块注册名是 <crop>_crop,取作物名需去掉后缀。
+    private static String cropName(RegistryObject<?> cropBlock) {
+        String path = cropBlock.getId().getPath();
+        return path.endsWith("_crop") ? path.substring(0, path.length() - "_crop".length()) : path;
+    }
+
+    private static TagKey<Item> forgeTag(String path) {
+        return TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("forge", path));
     }
 }
