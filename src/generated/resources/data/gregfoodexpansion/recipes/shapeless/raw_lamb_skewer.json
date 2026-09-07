@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gregfoodexpansion:wooden_skewer"
+    },
+    {
+      "item": "gregfoodexpansion:mutton_slice"
+    }
+  ],
+  "result": {
+    "item": "gregfoodexpansion:raw_lamb_skewer"
+  }
+}

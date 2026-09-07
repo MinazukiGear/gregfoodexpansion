@@ -203,6 +203,16 @@ public final class GFECookingRecipes {
                 .inputFluids(GTMaterials.SeedOil, 20)
                 .outputItems(GFEDishes.GARLIC_BAGUETTE.get()));
 
+        // ---- c6 烧烤(铁签串):200 tick / 16 EU/t,精制档 ----
+        cook(provider, "iron_lamb_skewer", 6, 200, 16, b -> b
+                .inputItems(GFEFormItems.FATTY_MUTTON_ROLL.get())
+                .inputItems(GFEFormItems.IRON_SKEWER.get())
+                .outputItems(GFEDishes.IRON_LAMB_SKEWER.get()));
+        cook(provider, "iron_beef_roll_skewer", 6, 200, 16, b -> b
+                .inputItems(GFEFormItems.FATTY_BEEF_ROLL.get())
+                .inputItems(GFEFormItems.IRON_SKEWER.get())
+                .outputItems(GFEDishes.IRON_BEEF_ROLL_SKEWER.get()));
+
         // ---- 熟牛肉饼(c3 煎):肉饼链生肉饼 → 熟肉饼(dishes-and-gains.md §5) ----
         GFERecipeTypes.COOKING.recipeBuilder(GregFoodExpansion.id("cooking/cooked_beef_patty"))
                 .inputItems(GFEFormItems.RAW_BEEF_PATTY.get())

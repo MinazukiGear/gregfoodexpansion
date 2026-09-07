@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 200,
+  "experience": 0.35,
+  "ingredient": {
+    "item": "gregfoodexpansion:raw_lamb_skewer"
+  },
+  "result": "gregfoodexpansion:campfire_lamb_skewer"
+}

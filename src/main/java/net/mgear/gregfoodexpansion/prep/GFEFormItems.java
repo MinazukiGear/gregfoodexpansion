@@ -85,6 +85,13 @@ public final class GFEFormItems {
     public static final RegistryObject<Item> RAW_TOAST = form("raw_toast");
     public static final RegistryObject<Item> RAW_BAGUETTE = form("raw_baguette");
     public static final RegistryObject<Item> RAW_DINNER_ROLL = form("raw_dinner_roll");
+    // ---- 烧烤(2026-09-08):木签=常规串(营火基础档/烹饪机精制档),铁签=精贵串(烹饪机精制档) ----
+    public static final RegistryObject<Item> WOODEN_SKEWER = form("wooden_skewer");
+    public static final RegistryObject<Item> IRON_SKEWER = form("iron_skewer");
+    public static final RegistryObject<Item> RAW_LAMB_SKEWER = form("raw_lamb_skewer");
+    public static final RegistryObject<Item> RAW_BEEF_SKEWER = form("raw_beef_skewer");
+    public static final RegistryObject<Item> RAW_CHICKEN_SKEWER = form("raw_chicken_skewer");
+    public static final RegistryObject<Item> RAW_CHILI_SKEWER = form("raw_chili_skewer");
     // ---- 肉饼链(dishes-and-gains.md §5 装配与肉饼链):馅 → 冲压 → 生肉饼 → 煎/烤 → 熟肉饼 ----
     public static final RegistryObject<Item> RAW_BEEF_PATTY = form("raw_beef_patty");
     public static final RegistryObject<Item> COOKED_BEEF_PATTY = cookedPatty("cooked_beef_patty", 6, 0.6F);
@@ -122,6 +129,8 @@ public final class GFEFormItems {
             BREAD_SLICE, BAGUETTE_SLICE, BURGER_BUN,
             SLICED_BREAD, SLICED_BAGUETTE, SLICED_BURGER_BUN,
             RAW_BREAD, RAW_TOAST, RAW_BAGUETTE, RAW_DINNER_ROLL,
+            WOODEN_SKEWER, IRON_SKEWER, RAW_LAMB_SKEWER, RAW_BEEF_SKEWER,
+            RAW_CHICKEN_SKEWER, RAW_CHILI_SKEWER,
             RICE_FLOUR, RICE_DOUGH, RICE_NOODLES);
 
     public static final List<RegistryObject<Item>> MEAT_SLICES = List.of(

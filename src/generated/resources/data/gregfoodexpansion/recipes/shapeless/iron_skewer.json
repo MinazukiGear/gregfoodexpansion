@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gtceu:iron_rod"
+    }
+  ],
+  "result": {
+    "item": "gregfoodexpansion:iron_skewer"
+  }
+}

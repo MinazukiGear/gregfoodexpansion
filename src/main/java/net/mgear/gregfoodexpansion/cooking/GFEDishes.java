@@ -100,6 +100,14 @@ public final class GFEDishes {
     public static final RegistryObject<Item> BEEF_BURGER = hand("beef_burger", 9, 0.6F);
     public static final RegistryObject<Item> CHICKEN_BURGER = hand("chicken_burger", 8, 0.6F);
 
+    // ---- 烧烤(2026-09-08):营火=基础档(急迫 I 15s);铁签串=精制档(烤口径:急迫 I 5min+饱和) ----
+    public static final RegistryObject<Item> CAMPFIRE_LAMB_SKEWER = hand("campfire_lamb_skewer", 3, 0.3F);
+    public static final RegistryObject<Item> CAMPFIRE_BEEF_SKEWER = hand("campfire_beef_skewer", 3, 0.3F);
+    public static final RegistryObject<Item> CAMPFIRE_CHICKEN_SKEWER = hand("campfire_chicken_skewer", 3, 0.3F);
+    public static final RegistryObject<Item> CAMPFIRE_CHILI_SKEWER = hand("campfire_chili_skewer", 2, 0.3F);
+    public static final RegistryObject<Item> IRON_LAMB_SKEWER = baked("iron_lamb_skewer", 7, 0.6F);
+    public static final RegistryObject<Item> IRON_BEEF_ROLL_SKEWER = baked("iron_beef_roll_skewer", 7, 0.6F);
+
     public static final List<RegistryObject<Item>> ALL = List.of(
             RICE_NOODLE_SOUP, TOMATO_SOUP, VEGETABLE_SOUP, RIB_SOUP, RICE_PORRIDGE,
             CORN_SOUP, DUMPLINGS, SHABU_BEEF, SHABU_MUTTON, BEEF_RICE_BOWL,
@@ -115,7 +123,9 @@ public final class GFEDishes {
             BREAD, TOAST, SWEET_BREAD, CAKE, APPLE_PIE, BAGUETTE, DINNER_ROLL,
             CORN_BREAD, BAKED_CORN, GARLIC_BAGUETTE,
             VEGETABLE_SANDWICH, EGG_SANDWICH, BEEF_SANDWICH, CHICKEN_SANDWICH,
-            BEEF_BURGER, CHICKEN_BURGER);
+            BEEF_BURGER, CHICKEN_BURGER,
+            CAMPFIRE_LAMB_SKEWER, CAMPFIRE_BEEF_SKEWER, CAMPFIRE_CHICKEN_SKEWER,
+            CAMPFIRE_CHILI_SKEWER, IRON_LAMB_SKEWER, IRON_BEEF_ROLL_SKEWER);
 
     private static RegistryObject<Item> dish(String name, FoodProperties food) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(food)));

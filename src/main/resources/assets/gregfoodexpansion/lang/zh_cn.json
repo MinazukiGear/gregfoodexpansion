@@ -208,5 +208,17 @@
   "item.gregfoodexpansion.cooked_pork_slice": "熟猪肉片",
   "item.gregfoodexpansion.cooked_mutton_slice": "熟羊肉片",
   "item.gregfoodexpansion.cooked_chicken_slice": "熟鸡肉片",
-  "item.gregfoodexpansion.cooked_fish_slice": "熟鱼片"
+  "item.gregfoodexpansion.cooked_fish_slice": "熟鱼片",
+  "item.gregfoodexpansion.wooden_skewer": "木签",
+  "item.gregfoodexpansion.iron_skewer": "铁签",
+  "item.gregfoodexpansion.raw_lamb_skewer": "生羊肉串",
+  "item.gregfoodexpansion.raw_beef_skewer": "生牛肉串",
+  "item.gregfoodexpansion.raw_chicken_skewer": "生鸡肉串",
+  "item.gregfoodexpansion.raw_chili_skewer": "生辣椒串",
+  "item.gregfoodexpansion.campfire_lamb_skewer": "营火羊肉串",
+  "item.gregfoodexpansion.campfire_beef_skewer": "营火牛肉串",
+  "item.gregfoodexpansion.campfire_chicken_skewer": "营火鸡肉串",
+  "item.gregfoodexpansion.campfire_chili_skewer": "营火辣椒串",
+  "item.gregfoodexpansion.iron_lamb_skewer": "铁签肥羊卷",
+  "item.gregfoodexpansion.iron_beef_roll_skewer": "铁签肥牛卷"
 }

@@ -26,6 +26,26 @@ public final class GFERecipes {
         addToolRecipes(provider);
         addCookingToolRecipes(provider);
         addHandCookingRecipes(provider);
+        addCampfireSkewerRecipes(provider);
+    }
+
+    // 营火烤串(基础档,急迫 I 15s):原版营火烹饪,零机器依赖(LV 前可用)
+    private static void addCampfireSkewerRecipes(Consumer<FinishedRecipe> provider) {
+        skewer(provider, "lamb", GFEFormItems.RAW_LAMB_SKEWER.get(), GFEDishes.CAMPFIRE_LAMB_SKEWER.get());
+        skewer(provider, "beef", GFEFormItems.RAW_BEEF_SKEWER.get(), GFEDishes.CAMPFIRE_BEEF_SKEWER.get());
+        skewer(provider, "chicken", GFEFormItems.RAW_CHICKEN_SKEWER.get(), GFEDishes.CAMPFIRE_CHICKEN_SKEWER.get());
+        skewer(provider, "chili", GFEFormItems.RAW_CHILI_SKEWER.get(), GFEDishes.CAMPFIRE_CHILI_SKEWER.get());
+    }
+
+    private static void skewer(Consumer<FinishedRecipe> provider, String meat,
+                               net.minecraft.world.level.ItemLike input, net.minecraft.world.level.ItemLike output) {
+        net.minecraft.data.recipes.SimpleCookingRecipeBuilder.campfireCooking(
+                        net.minecraft.world.item.crafting.Ingredient.of(input),
+                        net.minecraft.data.recipes.RecipeCategory.FOOD, output, 0.35F, 200)
+                .unlockedBy("has_" + meat + "_skewer",
+                        net.minecraft.advancements.critereon.InventoryChangeTrigger.TriggerInstance
+                                .hasItems(GFEFormItems.RAW_LAMB_SKEWER.get()))
+                .save(provider, GregFoodExpansion.id("campfire/" + meat + "_skewer"));
     }
 
     // 手工切配工具(food-processor.md §7):工作台 + 铁质,配方刻意少;
@@ -89,6 +109,28 @@ public final class GFERecipes {
         VanillaRecipeHelper.addShapelessRecipe(provider, id("sliced_burger_bun"),
                 new net.minecraft.world.item.ItemStack(GFEFormItems.SLICED_BURGER_BUN.get()),
                 GFEFormItems.BURGER_BUN.get(), GFEFormItems.BURGER_BUN.get());
+
+        // 签子(2026-09-08):木签=常规串(营火基础档/烹饪机精制档),铁签=精贵串(烹饪机精制档)
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("wooden_skewer"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.WOODEN_SKEWER.get()),
+                Items.STICK);
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("iron_skewer"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.IRON_SKEWER.get()),
+                ChemicalHelper.get(TagPrefix.rod, GTMaterials.Iron));
+
+        // 生串拼装(工作台,中间品)
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("raw_lamb_skewer"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.RAW_LAMB_SKEWER.get()),
+                GFEFormItems.WOODEN_SKEWER.get(), GFEFormItems.MUTTON_SLICE.get());
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("raw_beef_skewer"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.RAW_BEEF_SKEWER.get()),
+                GFEFormItems.WOODEN_SKEWER.get(), GFEFormItems.BEEF_SLICE.get());
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("raw_chicken_skewer"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.RAW_CHICKEN_SKEWER.get()),
+                GFEFormItems.WOODEN_SKEWER.get(), GFEFormItems.CHICKEN_DICED.get());
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("raw_chili_skewer"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.RAW_CHILI_SKEWER.get()),
+                GFEFormItems.WOODEN_SKEWER.get(), GFECropItems.CHILI.get());
 
         // 三明治/汉堡装配(dishes-and-gains.md §5):基座标签同时接受面包片与切好的面包
         VanillaRecipeHelper.addShapelessRecipe(provider, id("vegetable_sandwich"),

@@ -192,6 +192,20 @@ public final class GFELang {
         add("item.gregfoodexpansion.sliced_bread", "Sliced Bread");
         add("item.gregfoodexpansion.sliced_baguetted", "Sliced Baguette");
         add("item.gregfoodexpansion.sliced_burger_bun", "Sliced Burger Bun");
+
+        // ---- 烧烤(木签=常规食材,铁签=精细食材) ----
+        add("item.gregfoodexpansion.wooden_skewer", "Wooden Skewer");
+        add("item.gregfoodexpansion.iron_skewer", "Iron Skewer");
+        add("item.gregfoodexpansion.raw_lamb_skewer", "Raw Lamb Skewer");
+        add("item.gregfoodexpansion.raw_beef_skewer", "Raw Beef Skewer");
+        add("item.gregfoodexpansion.raw_chicken_skewer", "Raw Chicken Skewer");
+        add("item.gregfoodexpansion.raw_chili_skewer", "Raw Chili Skewer");
+        add("item.gregfoodexpansion.campfire_lamb_skewer", "Campfire Lamb Skewer");
+        add("item.gregfoodexpansion.campfire_beef_skewer", "Campfire Beef Skewer");
+        add("item.gregfoodexpansion.campfire_chicken_skewer", "Campfire Chicken Skewer");
+        add("item.gregfoodexpansion.campfire_chili_skewer", "Campfire Chili Skewer");
+        add("item.gregfoodexpansion.iron_lamb_skewer", "Iron-Skewered Fatty Mutton Roll");
+        add("item.gregfoodexpansion.iron_beef_roll_skewer", "Iron-Skewered Fatty Beef Roll");
         add("gregfoodexpansion.multiblock.tunnel_oven.preheating", "Oven preheating...");
 
         // ---- 基础档手工菜肴(dishes-and-gains.md §5,LV 前兜底) ----

@@ -42,6 +42,8 @@ PALETTES = {
     "rice_dough": {"K": "#8A8058", "M": "#EDE7CE", "L": "#F7F3E4", "D": "#CFC6A4"},
     "rice_noodles": {"K": "#8A7A4E", "M": "#F0EAD0", "L": "#F9F5E6", "D": "#D4CBA6"},
     "baked": {"K": "#7A5A20", "M": "#D8A860", "L": "#F0D0A0", "D": "#B08840"},
+    "skewer_wood": {"K": "#6E4A26", "M": "#B08A48", "L": "#D0A868", "D": "#8A6A30"},
+    "skewer_iron": {"K": "#4A5056", "M": "#B8BEC4", "L": "#E8EBEE", "D": "#8A929B"},
     "toast_brown": {"K": "#6E4A20", "M": "#C89050", "L": "#E0B478", "D": "#A07038"},
     "cake_cream": {"K": "#8A7440", "M": "#F5E8D0", "L": "#FDF6E8", "D": "#D8C098"},
     "dish_pink": {"K": "#7A5030", "M": "#F0C0B8", "L": "#FAE0D8", "D": "#D09890"},
@@ -108,6 +110,13 @@ FORMS = [
     ("vegetable_sandwich", "stirfry", "dish_green"), ("egg_sandwich", "plate", "soup_yellow"),
     ("beef_sandwich", "stirfry", "beef"), ("chicken_sandwich", "stirfry", "chicken"),
     ("beef_burger", "nugget", "beef"), ("chicken_burger", "nugget", "chicken"),
+    # ---- 烧烤:木签(常规食材,营火基础档/烹饪机精制档)与铁签(精细食材,精制档) ----
+    ("wooden_skewer", "strips", "skewer_wood"), ("iron_skewer", "strips", "skewer_iron"),
+    ("raw_lamb_skewer", "fries", "mutton"), ("raw_beef_skewer", "fries", "beef"),
+    ("raw_chicken_skewer", "fries", "chicken"), ("raw_chili_skewer", "fries", "chili"),
+    ("campfire_lamb_skewer", "fries", "mutton"), ("campfire_beef_skewer", "fries", "beef"),
+    ("campfire_chicken_skewer", "fries", "chicken"), ("campfire_chili_skewer", "fries", "chili"),
+    ("iron_lamb_skewer", "fries", "mutton"), ("iron_beef_roll_skewer", "fries", "beef"),
     # ---- 切好件(切片拼装) ----
     ("sliced_bread", "slices", "baked"), ("sliced_baguetted", "fries", "toast_brown"),
     ("sliced_burger_bun", "plate", "dish_cream"),
@@ -601,6 +610,10 @@ def main() -> None:
             + ["tunnel_oven_casing", "tunnel_oven_belt", "tunnel_oven_heater",
                "tunnel_oven_vent",
                "oven_overlay_front", "oven_overlay_front_active"]
+            + ["wooden_skewer", "iron_skewer", "raw_lamb_skewer", "raw_beef_skewer",
+               "raw_chicken_skewer", "raw_chili_skewer", "campfire_lamb_skewer",
+               "campfire_beef_skewer", "campfire_chicken_skewer", "campfire_chili_skewer",
+               "iron_lamb_skewer", "iron_beef_roll_skewer"]
             + [f[0] for f in FORMS])
     cols = 10
     rows = (len(keys) + cols - 1) // cols
@@ -621,7 +634,7 @@ def main() -> None:
 
     preview = ROOT / "tools/textures/preview_prep.png"
     sheet.save(preview)
-    print(f"written {12 + 7 + 4 + 6 + len(FORMS)} textures; preview: {preview}")
+    print(f"written {12 + 7 + 4 + 6 + 12 + len(FORMS)} textures; preview: {preview}")
 
 
 if __name__ == "__main__":

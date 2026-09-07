@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gregfoodexpansion:wooden_skewer"
+    },
+    {
+      "item": "gregfoodexpansion:chili"
+    }
+  ],
+  "result": {
+    "item": "gregfoodexpansion:raw_chili_skewer"
+  }
+}
