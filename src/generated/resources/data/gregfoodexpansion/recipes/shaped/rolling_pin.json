@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "matchSize": false,
+  "pattern": [
+    "S",
+    "S"
+  ],
+  "result": {
+    "item": "gregfoodexpansion:rolling_pin",
+    "nbt": {
+      "Damage": 0
+    }
+  }
+}

@@ -67,6 +67,52 @@ public final class GFELang {
         add("block.gregfoodexpansion.wild_coffee", "Wild Coffee Shrub");
         add("block.gregfoodexpansion.wild_tea", "Wild Tea Plant");
         add("block.gregfoodexpansion.wild_hops", "Wild Hops");
+
+        // ---- 食材形态(dishes-and-gains.md §4) ----
+        add("item.gregfoodexpansion.beef_slice", "Beef Slice");
+        add("item.gregfoodexpansion.beef_strip", "Beef Strips");
+        add("item.gregfoodexpansion.beef_cube", "Beef Cubes");
+        add("item.gregfoodexpansion.beef_ribs", "Beef Ribs");
+        add("item.gregfoodexpansion.beef_minced", "Minced Beef");
+        add("item.gregfoodexpansion.pork_slice", "Pork Slice");
+        add("item.gregfoodexpansion.pork_strip", "Pork Strips");
+        add("item.gregfoodexpansion.pork_cube", "Pork Cubes");
+        add("item.gregfoodexpansion.pork_ribs", "Pork Ribs");
+        add("item.gregfoodexpansion.pork_minced", "Minced Pork");
+        add("item.gregfoodexpansion.mutton_slice", "Mutton Slice");
+        add("item.gregfoodexpansion.mutton_cube", "Mutton Cubes");
+        add("item.gregfoodexpansion.mutton_minced", "Minced Mutton");
+        add("item.gregfoodexpansion.chicken_slice", "Chicken Slice");
+        add("item.gregfoodexpansion.chicken_shred", "Shredded Chicken");
+        add("item.gregfoodexpansion.chicken_diced", "Diced Chicken");
+        add("item.gregfoodexpansion.chicken_cuts", "Chicken Cuts");
+        add("item.gregfoodexpansion.chicken_minced", "Minced Chicken");
+        add("item.gregfoodexpansion.fish_slice", "Fish Fillet");
+        add("item.gregfoodexpansion.fish_cube", "Fish Cubes");
+        add("item.gregfoodexpansion.fish_surimi", "Fish Surimi");
+        add("item.gregfoodexpansion.chili_ring", "Chili Rings");
+        add("item.gregfoodexpansion.potato_slice", "Potato Slices");
+        add("item.gregfoodexpansion.apple_slice", "Apple Slices");
+        add("item.gregfoodexpansion.tomato_slice", "Tomato Slices");
+        add("item.gregfoodexpansion.potato_strip", "Potato Strips");
+        add("item.gregfoodexpansion.carrot_strip", "Carrot Strips");
+        add("item.gregfoodexpansion.cabbage_strip", "Cabbage Strips");
+        add("item.gregfoodexpansion.chili_strip", "Chili Strips");
+        add("item.gregfoodexpansion.tomato_diced", "Diced Tomato");
+        add("item.gregfoodexpansion.onion_diced", "Diced Onion");
+        add("item.gregfoodexpansion.fries_blank", "Raw Fries");
+        add("item.gregfoodexpansion.chili_diced", "Diced Chili");
+        add("item.gregfoodexpansion.onion_minced", "Minced Onion");
+        add("item.gregfoodexpansion.chili_powder", "Chili Powder");
+        add("item.gregfoodexpansion.apple_flesh", "Peeled Apple");
+        add("item.gregfoodexpansion.noodle", "Noodles");
+        add("item.gregfoodexpansion.dough_sheet", "Dough Sheet");
+
+        // ---- 手工切配工具(food-processor.md §7) ----
+        add("item.gregfoodexpansion.cleaver", "Cleaver");
+        add("item.gregfoodexpansion.peeler", "Peeler");
+        add("item.gregfoodexpansion.mortar_pestle", "Mortar and Pestle");
+        add("item.gregfoodexpansion.rolling_pin", "Rolling Pin");
     }
 
     private static void add(String key, String value) {

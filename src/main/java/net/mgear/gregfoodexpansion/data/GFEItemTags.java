@@ -2,6 +2,8 @@ package net.mgear.gregfoodexpansion.data;
 
 import com.tterrag.registrate.providers.RegistrateItemTagsProvider;
 
+import net.mgear.gregfoodexpansion.GregFoodExpansion;
+import net.mgear.gregfoodexpansion.prep.GFEFormItems;
 import net.mgear.gregfoodexpansion.registry.GFECropBlocks;
 import net.mgear.gregfoodexpansion.registry.GFECropItems;
 import net.minecraft.core.registries.Registries;
@@ -28,6 +30,13 @@ public final class GFEItemTags {
         // 谷物类(crop-system-foundation.md §7):barley、rice 进 forge:grain。
         provider.addTag(forgeTag("grain/barley")).add(GFECropItems.BARLEY.get());
         provider.addTag(forgeTag("grain/rice")).add(GFECropItems.RICE.get());
+
+        // 形态标签(compatibility-boundary.md §3 第②层,dishes-and-gains.md §4):
+        // 肉形态按种类单品注册,通用配方引用走形态标签。
+        GFEFormItems.MEAT_SLICES.forEach(item -> provider.addTag(forgeTag("sliced_meat")).add(item.get()));
+        GFEFormItems.MEAT_STRIPS.forEach(item -> provider.addTag(forgeTag("meat_strips")).add(item.get()));
+        GFEFormItems.MEAT_CUBES.forEach(item -> provider.addTag(forgeTag("meat_cubes")).add(item.get()));
+        GFEFormItems.MINCED_MEATS.forEach(item -> provider.addTag(forgeTag("minced_meat")).add(item.get()));
     }
 
     // 方块注册名是 <crop>_crop,取作物名需去掉后缀。

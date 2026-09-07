@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "matchSize": false,
+  "pattern": [
+    "I",
+    "S"
+  ],
+  "result": {
+    "item": "gregfoodexpansion:peeler",
+    "nbt": {
+      "Damage": 0
+    }
+  }
+}

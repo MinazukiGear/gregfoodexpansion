@@ -1,5 +1,8 @@
 package net.mgear.gregfoodexpansion;
 
+import com.gregtechceu.gtceu.api.GTCEuAPI;
+import com.gregtechceu.gtceu.api.machine.MachineDefinition;
+import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.mojang.logging.LogUtils;
 import com.tterrag.registrate.providers.ProviderType;
 import net.mgear.gregfoodexpansion.data.GFEBlockStates;
@@ -8,12 +11,16 @@ import net.mgear.gregfoodexpansion.data.GFEItemModels;
 import net.mgear.gregfoodexpansion.data.GFEItemTags;
 import net.mgear.gregfoodexpansion.data.GFELoot;
 import net.mgear.gregfoodexpansion.data.GFERecipes;
+import net.mgear.gregfoodexpansion.prep.GFEFormItems;
+import net.mgear.gregfoodexpansion.prep.GFEPrepTools;
 import net.mgear.gregfoodexpansion.registry.GFECreativeModeTabs;
 import net.mgear.gregfoodexpansion.registry.GFECropBlocks;
 import net.mgear.gregfoodexpansion.registry.GFECropItems;
 import net.mgear.gregfoodexpansion.registry.GFECropLootModifiers;
-import net.mgear.gregfoodexpansion.registry.GFEWildCropBlocks;
+import net.mgear.gregfoodexpansion.registry.GFEMachines;
+import net.mgear.gregfoodexpansion.registry.GFERecipeTypes;
 import net.mgear.gregfoodexpansion.registry.GFERegistration;
+import net.mgear.gregfoodexpansion.registry.GFEWildCropBlocks;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -37,6 +44,8 @@ public final class GregFoodExpansion {
         GFECropBlocks.BLOCKS.register(modEventBus);
         GFEWildCropBlocks.BLOCKS.register(modEventBus);
         GFECropItems.ITEMS.register(modEventBus);
+        GFEFormItems.ITEMS.register(modEventBus);
+        GFEPrepTools.ITEMS.register(modEventBus);
         GFECropLootModifiers.SERIALIZERS.register(modEventBus);
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.RECIPE, GFERecipes::init);
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.BLOCKSTATE, GFEBlockStates::init);
@@ -44,15 +53,29 @@ public final class GregFoodExpansion {
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.LOOT, GFELoot::init);
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, GFEBlockTags::init);
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, GFEItemTags::init);
+        modEventBus.addGenericListener(MachineDefinition.class, this::registerMachines);
+        modEventBus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::commonSetup);
     }
 
-    // 创造标签展示序:种子 → 作物产物(crop-system-foundation.md §2)。
+    private void registerMachines(final GTCEuAPI.RegisterEvent<?, MachineDefinition> event) {
+        GFEMachines.init();
+    }
+
+    private void registerRecipeTypes(final GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {
+        GFERecipeTypes.init(event);
+    }
+
+    // 创造标签展示序:种子 → 作物产物 → 食材形态 → 手工工具
+    // (crop-system-foundation.md §2 / food-processor.md §2);
+    // 切配机经 registrate 默认标签自动追加在末尾。
     private void addCreative(final BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == GFECreativeModeTabs.MAIN.getKey()) {
             GFECropItems.ALL_SEEDS.forEach(item -> event.accept(item.get()));
             GFECropItems.ALL_PRODUCTS.forEach(item -> event.accept(item.get()));
+            GFEFormItems.ALL.forEach(item -> event.accept(item.get()));
+            GFEPrepTools.ALL.forEach(item -> event.accept(item.get()));
         }
     }
 
