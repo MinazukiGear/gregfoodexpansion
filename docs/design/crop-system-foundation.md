@@ -138,7 +138,8 @@ record CropEnvSpec(double tempMin, double tempMax,   // 原版生物群系基础
 
 ## 10. 实现进度
 
-- 尚未完成:全部(本文档为设计基准,代码未动)。
+- 2026-09-07:注册基座就位——GTRegistrate + @GTAddon、`gregfoodexpansion:main` 创造标签(图标暂用面包占位)与 datagen 六类 provider 骨架;build/runData/runClient 冒烟通过;
+- 尚未完成:本文档范围内的作物内容(§2 注册规格起的全部条目)。
 
 ## 参考
 

@@ -1,71 +1,60 @@
 package net.mgear.gregfoodexpansion;
 
 import com.mojang.logging.LogUtils;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.event.server.ServerStartingEvent;
+import com.tterrag.registrate.providers.ProviderType;
+import net.mgear.gregfoodexpansion.data.GFEBlockStates;
+import net.mgear.gregfoodexpansion.data.GFEBlockTags;
+import net.mgear.gregfoodexpansion.data.GFEItemModels;
+import net.mgear.gregfoodexpansion.data.GFEItemTags;
+import net.mgear.gregfoodexpansion.data.GFELoot;
+import net.mgear.gregfoodexpansion.data.GFERecipes;
+import net.mgear.gregfoodexpansion.registry.GFECreativeModeTabs;
+import net.mgear.gregfoodexpansion.registry.GFERegistration;
+import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 
-// The value here should match an entry in the META-INF/mods.toml file
-@Mod(GregFoodExpansion.MODID)
-public class GregFoodExpansion
-{
-    // Define mod id in a common place for everything to reference
-    public static final String MODID = "gregfoodexpansion";
-    // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+@Mod(GregFoodExpansion.MOD_ID)
+public final class GregFoodExpansion {
+    public static final String MOD_ID = "gregfoodexpansion";
+    public static final String MOD_NAME = "Greg Food Expansion";
+    public static final Logger LOGGER = LogUtils.getLogger();
 
-    public GregFoodExpansion(FMLJavaModLoadingContext context)
-    {
+    public GregFoodExpansion(final FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
-
-        // Register the commonSetup method for modloading
+        GFERegistration.REGISTRATE.registerEventListeners(modEventBus);
+        GFECreativeModeTabs.init();
+        GFERegistration.REGISTRATE.addDataGenerator(ProviderType.RECIPE, GFERecipes::init);
+        GFERegistration.REGISTRATE.addDataGenerator(ProviderType.BLOCKSTATE, GFEBlockStates::init);
+        GFERegistration.REGISTRATE.addDataGenerator(ProviderType.ITEM_MODEL, GFEItemModels::init);
+        GFERegistration.REGISTRATE.addDataGenerator(ProviderType.LOOT, GFELoot::init);
+        GFERegistration.REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, GFEBlockTags::init);
+        GFERegistration.REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, GFEItemTags::init);
         modEventBus.addListener(this::commonSetup);
-
-        // Register ourselves for server and other game events we are interested in
-        MinecraftForge.EVENT_BUS.register(this);
-
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
-
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event)
-    {
-
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        LOGGER.info("{} initialized with GTCEu {}.", MOD_NAME, loadedVersion("gtceu"));
     }
 
-    // Add the example block item to the building blocks tab
-    private void addCreative(BuildCreativeModeTabContentsEvent event)
-    {
-
+    private static String loadedVersion(final String modId) {
+        return ModList.get()
+                .getModContainerById(modId)
+                .map(container -> container.getModInfo().getVersion().toString())
+                .orElse("not loaded on this side");
     }
 
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
-    @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event)
-    {
-
+    public static ResourceLocation id(String path) {
+        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
     }
 
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
-    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents
-    {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event)
-        {
-
-        }
+    /** gtceu 命名空间资源 ID:仅用于精确引用上游注册对象(材料/机器/配方)。 */
+    public static ResourceLocation gtceuId(String path) {
+        return ResourceLocation.fromNamespaceAndPath("gtceu", path);
     }
 }

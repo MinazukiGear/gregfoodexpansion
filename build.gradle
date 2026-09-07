@@ -63,6 +63,12 @@ minecraft {
         configureEach {
             workingDirectory project.file('run')
 
+            // GTCEu 的 Mixin refmap 使用 SRG 名;开发环境运行在命名映射下,需要
+            // 这两个属性让 mixin 把 refmap 重映射回当前命名,否则 GTCEu 自身 Mixin
+            // 在 client/server/data 全部 run 中注入失败(与姊妹项目配置一致)。
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
             // Recommended logging data for a userdev environment
             // The markers can be added/remove as needed separated by commas.
             // "SCAN": For mods scan.

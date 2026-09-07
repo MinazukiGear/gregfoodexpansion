@@ -20,9 +20,13 @@ build
 # other
 eclipse
 run
+run-data
 
 # Files from Forge MDK
 forge*changelog.txt
 
 # workbuddy assistant state
 .workbuddy/
+
+# datagen 内部缓存(生成产物本体入库)
+/src/generated/resources/.cache/
