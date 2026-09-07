@@ -8,6 +8,7 @@ import com.tterrag.registrate.providers.loot.RegistrateLootTableProvider;
 import net.mgear.gregfoodexpansion.GregFoodExpansion;
 import net.mgear.gregfoodexpansion.registry.GFECropBlocks;
 import net.mgear.gregfoodexpansion.registry.GFECropItems;
+import net.mgear.gregfoodexpansion.registry.GFEWildCropBlocks;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -41,7 +42,20 @@ public final class GFELoot {
                         GFECropItems.ALL_PRODUCTS.get(i).get(),
                         GFECropItems.ALL_SEEDS.get(i).get()));
             }
+            wildCrops(tables);
         });
+    }
+
+    // 野生作物(crop-system-foundation.md §6):种子 ×1 + 50% 加 1,不掉产物,任何工具即采即得。
+    private static void wildCrops(java.util.function.BiConsumer<ResourceLocation, LootTable.Builder> tables) {
+        for (int i = 0; i < GFEWildCropBlocks.ALL.size(); i++) {
+            var wild = GFEWildCropBlocks.ALL.get(i);
+            Item seeds = GFECropItems.ALL_SEEDS.get(i).get();
+            tables.accept(GregFoodExpansion.id("blocks/" + wild.getId().getPath()),
+                    LootTable.lootTable()
+                            .withPool(pool(null, seeds, 1.0F, 1))
+                            .withPool(pool(null, seeds, 0.5F, 1)));
+        }
     }
 
     private static ResourceLocation tableId(RegistryObject<?> crop) {

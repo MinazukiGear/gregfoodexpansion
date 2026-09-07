@@ -5,6 +5,7 @@ import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import net.mgear.gregfoodexpansion.GregFoodExpansion;
 import net.mgear.gregfoodexpansion.crop.GFECropBlock;
 import net.mgear.gregfoodexpansion.registry.GFECropBlocks;
+import net.mgear.gregfoodexpansion.registry.GFEWildCropBlocks;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
@@ -31,6 +32,18 @@ public final class GFEBlockStates {
                         .with(CropBlock.AGE, age)
                         .setModels(new ConfiguredModel(stages[AGE_TO_STAGE[age]]));
             }
+        });
+        wildCrops(provider);
+    }
+
+    // 野生作物:复用成熟档灰度模板染色(cross 模板带 tintindex),零新贴图。
+    private static void wildCrops(RegistrateBlockstateProvider provider) {
+        GFEWildCropBlocks.ALL.forEach(crop -> {
+            ModelFile model = provider.models()
+                    .cross(crop.getId().getPath(), modLoc("block/crop/stage_3"));
+            provider.getVariantBuilder(crop.get())
+                    .partialState()
+                    .setModels(new ConfiguredModel(model));
         });
     }
 

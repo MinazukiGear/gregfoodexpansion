@@ -38,5 +38,18 @@
   "item.gregfoodexpansion.grape": "葡萄",
   "item.gregfoodexpansion.coffee_cherries": "咖啡浆果",
   "item.gregfoodexpansion.tea": "茶叶",
-  "item.gregfoodexpansion.hops": "啤酒花"
+  "item.gregfoodexpansion.hops": "啤酒花",
+  "block.gregfoodexpansion.wild_soybean": "野生大豆",
+  "block.gregfoodexpansion.wild_corn": "野生玉米",
+  "block.gregfoodexpansion.wild_rice": "野生水稻",
+  "block.gregfoodexpansion.wild_barley": "野生大麦",
+  "block.gregfoodexpansion.wild_peanut": "野生花生",
+  "block.gregfoodexpansion.wild_tomato": "野生番茄",
+  "block.gregfoodexpansion.wild_onion": "野生洋葱",
+  "block.gregfoodexpansion.wild_chili": "野生辣椒",
+  "block.gregfoodexpansion.wild_cabbage": "野生白菜",
+  "block.gregfoodexpansion.wild_grape": "野生葡萄藤",
+  "block.gregfoodexpansion.wild_coffee": "野生咖啡灌木",
+  "block.gregfoodexpansion.wild_tea": "野生茶树",
+  "block.gregfoodexpansion.wild_hops": "野生啤酒花"
 }

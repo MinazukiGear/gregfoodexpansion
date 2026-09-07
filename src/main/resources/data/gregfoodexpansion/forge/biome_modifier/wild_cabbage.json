@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "#gregfoodexpansion:wild/cool",
+  "features": "gregfoodexpansion:wild_cabbage",
+  "step": "vegetal_decoration"
+}

@@ -12,6 +12,7 @@ import net.mgear.gregfoodexpansion.registry.GFECreativeModeTabs;
 import net.mgear.gregfoodexpansion.registry.GFECropBlocks;
 import net.mgear.gregfoodexpansion.registry.GFECropItems;
 import net.mgear.gregfoodexpansion.registry.GFECropLootModifiers;
+import net.mgear.gregfoodexpansion.registry.GFEWildCropBlocks;
 import net.mgear.gregfoodexpansion.registry.GFERegistration;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
@@ -34,6 +35,7 @@ public final class GregFoodExpansion {
         GFERegistration.REGISTRATE.registerEventListeners(modEventBus);
         GFECreativeModeTabs.init();
         GFECropBlocks.BLOCKS.register(modEventBus);
+        GFEWildCropBlocks.BLOCKS.register(modEventBus);
         GFECropItems.ITEMS.register(modEventBus);
         GFECropLootModifiers.SERIALIZERS.register(modEventBus);
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.RECIPE, GFERecipes::init);

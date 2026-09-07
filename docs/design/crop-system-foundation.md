@@ -112,7 +112,7 @@ record CropEnvSpec(double tempMin, double tempMax,   // 原版生物群系基础
 | 稀有 | 辣椒、茶、啤酒花 | 各 6 |
 | 珍稀 | 葡萄、咖啡 | 各 4 |
 
-**补充途径**:产物不反推种子(保留 vanilla 逻辑:种子是独立起点);村民交易等定向获取后置到阶段二配套定案(见尚待定案)。
+**补充途径**:产物不反推种子(保留 vanilla 逻辑:种子是独立起点);**野生作物**[已定案(2026-09-08),数值草案]:13 种 `wild_<crop>` 方块,成熟作物外观(复用 stage_3 灰度模板按作物染色,零新贴图),破坏掉种子 ×1 + 50% 加 1、不掉产物;世界生成按 4 个温度带生物群系标签(temperate/humid/hot/cool,带组合经 wild/* 联合标签)分布,区块频率对齐草丛池四档(常见 1/4、少见 1/10、稀有 1/18、珍稀 1/28),纯数据驱动(random_patch + forge:add_features);村民交易等其余定向获取后置到阶段二配套定案(见尚待定案)。
 
 ## 7. 标签与软兼容 [已定案原则落地]
 
@@ -142,6 +142,7 @@ record CropEnvSpec(double tempMin, double tempMax,   // 原版生物群系基础
 - 2026-09-07:注册基座就位——GTRegistrate + @GTAddon、`gregfoodexpansion:main` 创造标签与 datagen 六类 provider 骨架;build/runData/runClient 冒烟通过;
 - 2026-09-07:§5 全部 30 张贴图首版生成完毕(4 灰度模板 + 13 种子 + 13 产物),待人工审阅;
 - 2026-09-08:**阶段一代码完成**——13 作物全链注册(GFECropBlock + CropEnvSpec + ItemNameBlockItem 种子 + 产物,咖啡为 coffee_cherries)、§3.3 环境修正生长(vanilla 速度 × 修正系数,温度/含水量越界 ×0.6/×0.35,生长门限按 lightMin,存活线保持 vanilla ≥8)、§3.4 掉落表、§6 草丛种子 GLM(12.5% 加权掉落,forge:loot_table_id 圈定目标表)、§7 标签(forge:crops|seeds/<crop> 全 13 种 + forge:grain/{barley,rice},①/② 层 forge 命名空间)、BlockColors 染色注册、创造标签排序(种子→产物)、双语语言;build/runData/runClient 冒烟通过;
+- 2026-09-08:**野生作物落地**(§6 补充途径,2026-09-08 提案定案)——GFEWildCropBlock(BushBlock)+ 13 个 wild_<crop> 方块、掉落与模型 datagen、43 个世界生成数据文件(4 温度带标签 + 6 联合标签 + 13 configured/placed 特征 + 13 biome 修饰器);runServer 实测:数据包解析零错误,区块扫描确认野生大豆 74 区块/野生水稻 42/野生葡萄 17,稀有度梯度符合设计;实机目检待人工;
 - 待实机验收:§8 阶段一完成定义 1-3(种植/生长/收获、寒冷群系咖啡减速观察、染色目检);
 - 尚未完成:§9-3/4/5/6(实机调参、草丛权重调参、水田视觉、创造栏分组细节)。
 

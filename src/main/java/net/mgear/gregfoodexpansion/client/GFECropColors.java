@@ -2,7 +2,9 @@ package net.mgear.gregfoodexpansion.client;
 
 import net.mgear.gregfoodexpansion.GregFoodExpansion;
 import net.mgear.gregfoodexpansion.crop.GFECropBlock;
+import net.mgear.gregfoodexpansion.crop.GFEWildCropBlock;
 import net.mgear.gregfoodexpansion.registry.GFECropBlocks;
+import net.mgear.gregfoodexpansion.registry.GFEWildCropBlocks;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -18,6 +20,10 @@ public final class GFECropColors {
     public static void onRegisterBlockColors(RegisterColorHandlersEvent.Block event) {
         for (var crop : GFECropBlocks.ALL_CROPS) {
             GFECropBlock block = (GFECropBlock) crop.get();
+            event.register((state, level, pos, tintIndex) -> block.tint(), block);
+        }
+        for (var wild : GFEWildCropBlocks.ALL) {
+            GFEWildCropBlock block = (GFEWildCropBlock) wild.get();
             event.register((state, level, pos, tintIndex) -> block.tint(), block);
         }
     }

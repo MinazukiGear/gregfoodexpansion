@@ -53,6 +53,20 @@ public final class GFELang {
         add("item.gregfoodexpansion.coffee_cherries", "Coffee Cherries");
         add("item.gregfoodexpansion.tea", "Tea Leaves");
         add("item.gregfoodexpansion.hops", "Hops");
+
+        add("block.gregfoodexpansion.wild_soybean", "Wild Soybean");
+        add("block.gregfoodexpansion.wild_corn", "Wild Corn");
+        add("block.gregfoodexpansion.wild_rice", "Wild Rice");
+        add("block.gregfoodexpansion.wild_barley", "Wild Barley");
+        add("block.gregfoodexpansion.wild_peanut", "Wild Peanut");
+        add("block.gregfoodexpansion.wild_tomato", "Wild Tomato");
+        add("block.gregfoodexpansion.wild_onion", "Wild Onion");
+        add("block.gregfoodexpansion.wild_chili", "Wild Chili Pepper");
+        add("block.gregfoodexpansion.wild_cabbage", "Wild Cabbage");
+        add("block.gregfoodexpansion.wild_grape", "Wild Grapevine");
+        add("block.gregfoodexpansion.wild_coffee", "Wild Coffee Shrub");
+        add("block.gregfoodexpansion.wild_tea", "Wild Tea Plant");
+        add("block.gregfoodexpansion.wild_hops", "Wild Hops");
     }
 
     private static void add(String key, String value) {
