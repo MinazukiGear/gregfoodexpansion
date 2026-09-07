@@ -148,5 +148,8 @@
   "item.gregfoodexpansion.fried_fish_fillet": "炸鱼排",
   "item.gregfoodexpansion.onion_rings": "洋葱圈",
   "item.gregfoodexpansion.spring_roll": "春卷",
-  "item.gregfoodexpansion.rice_cracker": "米饼"
+  "item.gregfoodexpansion.rice_cracker": "米饼",
+  "material.gregfoodexpansion.used_cooking_oil": "废食用油",
+  "material.gregfoodexpansion.washed_cooking_oil": "水洗回油",
+  "material.gregfoodexpansion.neutralized_cooking_oil": "碱炼回油"
 }

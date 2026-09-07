@@ -11,6 +11,7 @@ import com.gregtechceu.gtceu.data.recipe.builder.GTRecipeBuilder;
 import net.mgear.gregfoodexpansion.GregFoodExpansion;
 import net.mgear.gregfoodexpansion.cooking.GFEDishes;
 import net.mgear.gregfoodexpansion.registry.GFERecipeTypes;
+import net.mgear.gregfoodexpansion.registry.GTFEMaterials;
 import net.mgear.gregfoodexpansion.prep.GFEFormItems;
 import net.mgear.gregfoodexpansion.registry.GFECropItems;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -180,7 +181,7 @@ public final class GFECookingRecipes {
                             int absorbed, Consumer<GTRecipeBuilder> config) {
         cook(provider, name, 4, duration, eut, b -> {
             b.inputFluids(GTMaterials.SeedOil, FRY_BATH)
-                    .outputFluids(GTMaterials.SeedOil.getFluid(FRY_BATH - absorbed));
+                    .outputFluids(GTFEMaterials.USED_COOKING_OIL.getFluid(FRY_BATH - absorbed));
             config.accept(b);
         });
     }

@@ -147,6 +147,11 @@ public final class GFELang {
         add("item.gregfoodexpansion.spring_roll", "Spring Rolls");
         add("item.gregfoodexpansion.rice_cracker", "Rice Crackers");
 
+        // ---- 回油精炼产线(材料流体名) ----
+        add("material.gregfoodexpansion.used_cooking_oil", "Used Cooking Oil");
+        add("material.gregfoodexpansion.washed_cooking_oil", "Washed Cooking Oil");
+        add("material.gregfoodexpansion.neutralized_cooking_oil", "Neutralized Cooking Oil");
+
         // ---- 手工切配工具(food-processor.md §7) ----
         add("item.gregfoodexpansion.cleaver", "Cleaver");
         add("item.gregfoodexpansion.peeler", "Peeler");

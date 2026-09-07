@@ -21,6 +21,7 @@ import net.mgear.gregfoodexpansion.registry.GFECropLootModifiers;
 import net.mgear.gregfoodexpansion.registry.GFEMachines;
 import net.mgear.gregfoodexpansion.registry.GFERecipeTypes;
 import net.mgear.gregfoodexpansion.registry.GFERegistration;
+import net.mgear.gregfoodexpansion.registry.GTFEMaterials;
 import net.mgear.gregfoodexpansion.registry.GFEWildCropBlocks;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
@@ -57,6 +58,8 @@ public final class GregFoodExpansion {
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, GFEItemTags::init);
         modEventBus.addGenericListener(MachineDefinition.class, this::registerMachines);
         modEventBus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
+        modEventBus.addListener(GTFEMaterials::createRegistry);
+        modEventBus.addListener(GTFEMaterials::register);
         modEventBus.addListener(this::addCreative);
         modEventBus.addListener(this::commonSetup);
     }
