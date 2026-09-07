@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "matchSize": false,
+  "pattern": [
+    "I",
+    "I",
+    "S"
+  ],
+  "result": {
+    "item": "gregfoodexpansion:kitchen_knife",
+    "nbt": {
+      "Damage": 0
+    }
+  }
+}

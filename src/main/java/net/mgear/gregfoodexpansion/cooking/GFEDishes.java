@@ -65,6 +65,16 @@ public final class GFEDishes {
     public static final RegistryObject<Item> SPRING_ROLL = fried("spring_roll", 6, 0.8F);
     public static final RegistryObject<Item> RICE_CRACKER = fried("rice_cracker", 3, 0.8F);
 
+    // ---- 基础档(手工,dishes-and-gains.md §2/§5):急迫 I 15 s 微效果,无主增益 ----
+    public static final RegistryObject<Item> FRUIT_PLATTER = hand("fruit_platter", 4, 0.3F);
+    public static final RegistryObject<Item> SUGAR_TOMATO = hand("sugar_tomato", 3, 0.3F);
+    public static final RegistryObject<Item> CHICKEN_COLD_NOODLES = hand("chicken_cold_noodles", 6, 0.4F);
+    public static final RegistryObject<Item> FRIED_EGG = hand("fried_egg", 3, 0.4F);
+    public static final RegistryObject<Item> PLAIN_NOODLES = hand("plain_noodles", 5, 0.4F);
+    public static final RegistryObject<Item> HAND_FRIED_RICE = hand("hand_fried_rice", 5, 0.4F);
+    public static final RegistryObject<Item> HAND_STEAMED_EGG = hand("hand_steamed_egg", 3, 0.3F);
+    public static final RegistryObject<Item> HAND_STEAMED_CORN = hand("hand_steamed_corn", 2, 0.3F);
+
     public static final List<RegistryObject<Item>> ALL = List.of(
             RICE_NOODLE_SOUP, TOMATO_SOUP, VEGETABLE_SOUP, RIB_SOUP, RICE_PORRIDGE,
             CORN_SOUP, DUMPLINGS,
@@ -74,7 +84,9 @@ public final class GFEDishes {
             STIR_FRIED_PORK, KUNG_PAO_CHICKEN, STIR_FRIED_VEGETABLES, FRIED_RICE_NOODLES,
             BEEF_CHOW_FUN,
             FRIES, POTATO_CHIPS, FRIED_CHICKEN_CUTS, FRIED_PEANUTS, FRIED_FISH_FILLET,
-            ONION_RINGS, SPRING_ROLL, RICE_CRACKER);
+            ONION_RINGS, SPRING_ROLL, RICE_CRACKER,
+            FRUIT_PLATTER, SUGAR_TOMATO, CHICKEN_COLD_NOODLES, FRIED_EGG, PLAIN_NOODLES,
+            HAND_FRIED_RICE, HAND_STEAMED_EGG, HAND_STEAMED_CORN);
 
     private static RegistryObject<Item> dish(String name, FoodProperties food) {
         return ITEMS.register(name, () -> new Item(new Item.Properties().food(food)));
@@ -108,6 +120,13 @@ public final class GFEDishes {
         return dish(name, food(hunger, saturation)
                 .effect(haste(), 1.0F)
                 .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 3600, 0), 1.0F)
+                .build());
+    }
+
+    // 基础档:无主增益,仅急迫 I 15 s(300 tick)
+    private static RegistryObject<Item> hand(String name, int hunger, float saturation) {
+        return dish(name, food(hunger, saturation)
+                .effect(() -> new MobEffectInstance(MobEffects.DIG_SPEED, 300, 0), 1.0F)
                 .build());
     }
 

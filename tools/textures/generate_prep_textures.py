@@ -41,6 +41,8 @@ PALETTES = {
     "rice_flour": {"K": "#8A8468", "M": "#F2EDDE", "L": "#FAF7EC", "D": "#D9D2B8"},
     "rice_dough": {"K": "#8A8058", "M": "#EDE7CE", "L": "#F7F3E4", "D": "#CFC6A4"},
     "rice_noodles": {"K": "#8A7A4E", "M": "#F0EAD0", "L": "#F9F5E6", "D": "#D4CBA6"},
+    "dish_pink": {"K": "#7A5030", "M": "#F0C0B8", "L": "#FAE0D8", "D": "#D09890"},
+    "noodle_white": {"K": "#8A8468", "M": "#F2EFE2", "L": "#FAF8EE", "D": "#D9D4BE"},
     "soup_red": {"K": "#6E1F16", "M": "#E04B3A", "L": "#F2836F", "D": "#C23325"},
     "soup_brown": {"K": "#5A4020", "M": "#C89A50", "L": "#E0BC78", "D": "#9A7038"},
     "soup_white": {"K": "#8A8468", "M": "#F2EDDE", "L": "#FAF7EC", "D": "#D9D2B8"},
@@ -80,6 +82,11 @@ FORMS = [
     ("noodle", "noodle", "dough"), ("dough_sheet", "sheet", "dough"),
     ("rice_flour", "powder", "rice_flour"), ("rice_dough", "flesh", "rice_dough"),
     ("rice_noodles", "noodle", "rice_noodles"),
+    # ---- 基础档手工菜肴 ----
+    ("fruit_platter", "stirfry", "dish_green"), ("sugar_tomato", "plate", "dish_red"),
+    ("chicken_cold_noodles", "noodle", "dish_pink"), ("fried_egg", "plate", "soup_yellow"),
+    ("plain_noodles", "noodle", "noodle_white"), ("hand_fried_rice", "stirfry", "soup_yellow"),
+    ("hand_steamed_egg", "plate", "soup_yellow"), ("hand_steamed_corn", "plate", "soup_yellow"),
     # ---- 精制档菜肴(c1 煮=碗 / c2 蒸=白盘 / c3 炒=盘+混炒 / c4 炸=金炸物) ----
     ("rice_noodle_soup", "soup", "rice_noodles"), ("tomato_soup", "soup", "soup_red"),
     ("vegetable_soup", "soup", "dish_green"), ("rib_soup", "soup", "soup_brown"),
@@ -347,6 +354,38 @@ def tool_mortar_pestle() -> Image.Image:
     return img
 
 
+def tool_kitchen_knife() -> Image.Image:
+    img = base()
+    d = ImageDraw.Draw(img)
+    d.rectangle([7, 2, 9, 9], fill=STEEL)
+    d.line([(7, 2), (7, 9)], fill="#FFFFFF")
+    d.line([(8, 9), (12, 13)], fill="#6E4A26", width=3)
+    return img
+
+
+def tool_wok() -> Image.Image:
+    img = base()
+    d = ImageDraw.Draw(img)
+    d.polygon([(2, 5), (14, 5), (12, 13), (4, 13)], fill="#3A3F46")
+    d.arc([3, 4, 13, 12], 180, 360, fill="#6A7076", width=2)
+    d.line([(2, 5), (14, 5)], fill="#8A929B", width=2)
+    d.line([(0, 4), (2, 5)], fill="#6E4A26", width=2)
+    d.line([(14, 5), (16, 4)], fill="#6E4A26", width=2)
+    return img
+
+
+def tool_steamer() -> Image.Image:
+    img = base()
+    d = ImageDraw.Draw(img)
+    d.rectangle([2, 3, 14, 7], fill="#C8A05A")
+    d.rectangle([2, 4, 14, 6], fill="#E0BC84")
+    for x in (5, 8, 11):
+        d.line([(x, 4), (x, 6)], fill="#9A7838")
+    d.rectangle([2, 8, 14, 13], fill="#B08A48")
+    d.line([(2, 10), (14, 10)], fill="#8A6A30")
+    return img
+
+
 def tool_rolling_pin() -> Image.Image:
     img = base()
     d = ImageDraw.Draw(img)
@@ -413,6 +452,7 @@ def main() -> None:
     for name, draw in {
         "cleaver": tool_cleaver, "peeler": tool_peeler,
         "mortar_pestle": tool_mortar_pestle, "rolling_pin": tool_rolling_pin,
+        "kitchen_knife": tool_kitchen_knife, "wok": tool_wok, "steamer": tool_steamer,
     }.items():
         img = draw()
         img.save(item_dir / f"{name}.png")
@@ -430,7 +470,8 @@ def main() -> None:
              "overlay_top", "overlay_top_active"]
             + ["cooker_" + n for n in ("overlay_front", "overlay_front_active", "overlay_side",
                                        "overlay_side_active", "overlay_top", "overlay_top_active")]
-            + ["cleaver", "peeler", "mortar_pestle", "rolling_pin"]
+            + ["cleaver", "peeler", "mortar_pestle", "rolling_pin",
+               "kitchen_knife", "wok", "steamer"]
             + [f[0] for f in FORMS])
     cols = 10
     rows = (len(keys) + cols - 1) // cols
@@ -451,7 +492,7 @@ def main() -> None:
 
     preview = ROOT / "tools/textures/preview_prep.png"
     sheet.save(preview)
-    print(f"written {12 + 4 + len(FORMS)} textures; preview: {preview}")
+    print(f"written {12 + 7 + len(FORMS)} textures; preview: {preview}")
 
 
 if __name__ == "__main__":

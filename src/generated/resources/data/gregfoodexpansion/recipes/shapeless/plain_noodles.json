@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gregfoodexpansion:wok"
+    },
+    {
+      "item": "gregfoodexpansion:noodle"
+    },
+    {
+      "item": "minecraft:water_bucket"
+    }
+  ],
+  "result": {
+    "item": "gregfoodexpansion:plain_noodles"
+  }
+}

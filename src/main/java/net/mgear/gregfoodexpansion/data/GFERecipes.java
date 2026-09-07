@@ -5,6 +5,8 @@ import java.util.function.Consumer;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 
 import net.mgear.gregfoodexpansion.GregFoodExpansion;
+import net.mgear.gregfoodexpansion.cooking.GFECookingTools;
+import net.mgear.gregfoodexpansion.cooking.GFEDishes;
 import net.mgear.gregfoodexpansion.prep.GFEFormItems;
 import net.mgear.gregfoodexpansion.prep.GFEPrepTools;
 import net.mgear.gregfoodexpansion.registry.GFECropItems;
@@ -17,6 +19,8 @@ public final class GFERecipes {
 
     public static void init(Consumer<FinishedRecipe> provider) {
         addToolRecipes(provider);
+        addCookingToolRecipes(provider);
+        addHandCookingRecipes(provider);
     }
 
     // 手工切配工具(food-processor.md §7):工作台 + 铁质,配方刻意少;
@@ -51,6 +55,57 @@ public final class GFERecipes {
         VanillaRecipeHelper.addShapelessRecipe(provider, id("rice_dough_manual"),
                 new net.minecraft.world.item.ItemStack(GFEFormItems.RICE_DOUGH.get()),
                 GFEFormItems.RICE_FLOUR.get(), Items.WATER_BUCKET);
+    }
+
+    // 手工烹饪工具(universal-cooker.md §7):厨刀/炒锅/蒸笼,铁系+竹木,炸无手工路径
+    private static void addCookingToolRecipes(Consumer<FinishedRecipe> provider) {
+        // 厨刀:铁锭 ×2 + 木棍(竖版窄刃,与菜刀/削皮刀形状区分)
+        VanillaRecipeHelper.addShapedRecipe(provider, id("kitchen_knife"),
+                new net.minecraft.world.item.ItemStack(GFECookingTools.KITCHEN_KNIFE.get()),
+                "I", "I", "S",
+                'I', Items.IRON_INGOT, 'S', Items.STICK);
+        // 炒锅:铁锭 ×5(碗形)
+        VanillaRecipeHelper.addShapedRecipe(provider, id("wok"),
+                new net.minecraft.world.item.ItemStack(GFECookingTools.WOK.get()),
+                "I I", "III",
+                'I', Items.IRON_INGOT);
+        // 蒸笼:竹 ×7(双层笼格)
+        VanillaRecipeHelper.addShapedRecipe(provider, id("steamer"),
+                new net.minecraft.world.item.ItemStack(GFECookingTools.STEAMER.get()),
+                "BBB", "B B", "BBB",
+                'B', Items.BAMBOO);
+    }
+
+    // 基础档菜肴(dishes-and-gains.md §5 手工名录,M1 原料可达 8 道;全部急迫 I 15 s)
+    private static void addHandCookingRecipes(Consumer<FinishedRecipe> provider) {
+        // 厨刀
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("fruit_platter"),
+                new net.minecraft.world.item.ItemStack(GFEDishes.FRUIT_PLATTER.get()),
+                GFECookingTools.KITCHEN_KNIFE.get(), Items.APPLE, GFECropItems.GRAPE.get(), Items.MELON_SLICE);
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("sugar_tomato"),
+                new net.minecraft.world.item.ItemStack(GFEDishes.SUGAR_TOMATO.get()),
+                GFECookingTools.KITCHEN_KNIFE.get(), GFECropItems.TOMATO.get(), Items.SUGAR);
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("chicken_cold_noodles"),
+                new net.minecraft.world.item.ItemStack(GFEDishes.CHICKEN_COLD_NOODLES.get()),
+                GFECookingTools.KITCHEN_KNIFE.get(), GFEFormItems.NOODLE.get(),
+                GFEFormItems.CHICKEN_SHRED.get());
+        // 炒锅
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("fried_egg"),
+                new net.minecraft.world.item.ItemStack(GFEDishes.FRIED_EGG.get()),
+                GFECookingTools.WOK.get(), Items.EGG);
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("plain_noodles"),
+                new net.minecraft.world.item.ItemStack(GFEDishes.PLAIN_NOODLES.get()),
+                GFECookingTools.WOK.get(), GFEFormItems.NOODLE.get(), Items.WATER_BUCKET);
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("hand_fried_rice"),
+                new net.minecraft.world.item.ItemStack(GFEDishes.HAND_FRIED_RICE.get()),
+                GFECookingTools.WOK.get(), GFECropItems.RICE.get(), Items.EGG);
+        // 蒸笼
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("hand_steamed_egg"),
+                new net.minecraft.world.item.ItemStack(GFEDishes.HAND_STEAMED_EGG.get()),
+                GFECookingTools.STEAMER.get(), Items.EGG, Items.EGG);
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("hand_steamed_corn"),
+                new net.minecraft.world.item.ItemStack(GFEDishes.HAND_STEAMED_CORN.get()),
+                GFECookingTools.STEAMER.get(), GFECropItems.CORN.get());
     }
 
     private static ResourceLocation id(String path) {

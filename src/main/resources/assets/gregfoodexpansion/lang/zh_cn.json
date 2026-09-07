@@ -151,5 +151,16 @@
   "item.gregfoodexpansion.rice_cracker": "米饼",
   "material.gregfoodexpansion.used_cooking_oil": "废食用油",
   "material.gregfoodexpansion.washed_cooking_oil": "水洗回油",
-  "material.gregfoodexpansion.neutralized_cooking_oil": "碱炼回油"
+  "material.gregfoodexpansion.neutralized_cooking_oil": "碱炼回油",
+  "item.gregfoodexpansion.fruit_platter": "水果拼盘",
+  "item.gregfoodexpansion.sugar_tomato": "糖拌番茄",
+  "item.gregfoodexpansion.chicken_cold_noodles": "鸡丝凉面",
+  "item.gregfoodexpansion.fried_egg": "煎蛋",
+  "item.gregfoodexpansion.plain_noodles": "清水面",
+  "item.gregfoodexpansion.hand_fried_rice": "手工蛋炒饭",
+  "item.gregfoodexpansion.hand_steamed_egg": "手工蒸蛋",
+  "item.gregfoodexpansion.hand_steamed_corn": "手工蒸玉米",
+  "item.gregfoodexpansion.kitchen_knife": "厨刀",
+  "item.gregfoodexpansion.wok": "炒锅",
+  "item.gregfoodexpansion.steamer": "蒸笼"
 }

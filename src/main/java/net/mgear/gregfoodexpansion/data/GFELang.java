@@ -147,10 +147,22 @@ public final class GFELang {
         add("item.gregfoodexpansion.spring_roll", "Spring Rolls");
         add("item.gregfoodexpansion.rice_cracker", "Rice Crackers");
 
-        // ---- 回油精炼产线(材料流体名) ----
-        add("material.gregfoodexpansion.used_cooking_oil", "Used Cooking Oil");
-        add("material.gregfoodexpansion.washed_cooking_oil", "Washed Cooking Oil");
-        add("material.gregfoodexpansion.neutralized_cooking_oil", "Neutralized Cooking Oil");
+        // ---- 基础档手工菜肴(dishes-and-gains.md §5,LV 前兜底) ----
+        add("item.gregfoodexpansion.fruit_platter", "Fruit Platter");
+        add("item.gregfoodexpansion.sugar_tomato", "Tomatoes with Sugar");
+        add("item.gregfoodexpansion.chicken_cold_noodles", "Cold Chicken Noodles");
+        add("item.gregfoodexpansion.fried_egg", "Fried Egg");
+        add("item.gregfoodexpansion.plain_noodles", "Plain Noodles");
+        add("item.gregfoodexpansion.hand_fried_rice", "Handmade Egg Fried Rice");
+        add("item.gregfoodexpansion.hand_steamed_egg", "Handmade Steamed Egg");
+        add("item.gregfoodexpansion.hand_steamed_corn", "Handmade Steamed Corn");
+
+        add("item.gregfoodexpansion.kitchen_knife", "Kitchen Knife");
+        add("item.gregfoodexpansion.wok", "Wok");
+        add("item.gregfoodexpansion.steamer", "Steamer");
+
+        // 注:自有材料(GTFEMaterials)的 en 名由 GTRegistrate 自动写入 lang;
+        // zh_cn 手工维护于 src/main/resources/assets/gregfoodexpansion/lang/zh_cn.json。
 
         // ---- 手工切配工具(food-processor.md §7) ----
         add("item.gregfoodexpansion.cleaver", "Cleaver");

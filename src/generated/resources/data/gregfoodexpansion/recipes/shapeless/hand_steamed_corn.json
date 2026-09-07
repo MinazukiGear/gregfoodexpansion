@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gregfoodexpansion:steamer"
+    },
+    {
+      "item": "gregfoodexpansion:corn"
+    }
+  ],
+  "result": {
+    "item": "gregfoodexpansion:hand_steamed_corn"
+  }
+}

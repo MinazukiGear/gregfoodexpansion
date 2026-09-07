@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gregfoodexpansion:kitchen_knife"
+    },
+    {
+      "item": "gregfoodexpansion:tomato"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "item": "gregfoodexpansion:sugar_tomato"
+  }
+}
