@@ -85,3 +85,12 @@ description='''${mod_description}'''
     versionRange="${gtceu_version_range}" #mandatory
     ordering="AFTER"
     side="BOTH"
+
+[[dependencies.${mod_id}]]
+    # SoL Carrot Edition is an optional synergy: the gain pipeline reads its
+    # diversity count for the duration multiplier (m0-content-audit.md #5.4).
+    modId="solcarrot" #optional
+    mandatory=false #optional
+    versionRange="[0,)" #optional
+    ordering="NONE"
+    side="BOTH"

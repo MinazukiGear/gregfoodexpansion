@@ -72,6 +72,8 @@ public final class GFEFormItems {
     public static final RegistryObject<Item> FRIES_BLANK = form("fries_blank");
     public static final RegistryObject<Item> CHILI_DICED = form("chili_diced");
     public static final RegistryObject<Item> POTATO_DICED = form("potato_diced");
+    // ---- 豆腐形态(soybean-chain.md 菜肴联动,2026-09-08):南北豆腐/千叶豆腐通用切块 ----
+    public static final RegistryObject<Item> TOFU_CUBE = form("tofu_cube");
     // ---- 非肉:绞碎/研磨/剥皮 ----
     public static final RegistryObject<Item> ONION_MINCED = form("onion_minced");
     public static final RegistryObject<Item> GARLIC_MINCED = form("garlic_minced");
@@ -80,6 +82,9 @@ public final class GFEFormItems {
     // ---- 非肉:压延 ----
     public static final RegistryObject<Item> NOODLE = form("noodle");
     public static final RegistryObject<Item> DOUGH_SHEET = form("dough_sheet");
+    // 发酵面团(2026-09-08:酵母接入烘焙,M1"烘焙工业化(酵母)"销账):
+    // GT 面团 + 酵母 → 发酵面团;发酵面食(面包族/馒头)改投本项,面条/面皮保持死面。
+    public static final RegistryObject<Item> LEAVENED_DOUGH = form("leavened_dough");
     // ---- 烘焙生坯(2026-09-08:面团与烘焙品之间的成型转换,压延/擀面杖承载) ----
     public static final RegistryObject<Item> RAW_BREAD = form("raw_bread");
     public static final RegistryObject<Item> RAW_TOAST = form("raw_toast");
@@ -108,7 +113,7 @@ public final class GFEFormItems {
     public static final RegistryObject<Item> BURGER_BUN = form("burger_bun");
     // ---- 切好件(2026-09-08:切片 ×2 工作台拼装为一份即用切片,装配基座与库存密度) ----
     public static final RegistryObject<Item> SLICED_BREAD = form("sliced_bread");
-    public static final RegistryObject<Item> SLICED_BAGUETTE = form("sliced_baguetted");
+    public static final RegistryObject<Item> SLICED_BAGUETTE = form("sliced_baguette");
     public static final RegistryObject<Item> SLICED_BURGER_BUN = form("sliced_burger_bun");
     // ---- 米制品链(2026-09-08 提案落地):水稻 → 研磨 → 大米粉 → +水 → 米粉团 → 压延 → 米粉条 ----
     public static final RegistryObject<Item> RICE_FLOUR = form("rice_flour");
@@ -125,8 +130,9 @@ public final class GFEFormItems {
             FISH_SLICE, FISH_CUBE, FISH_SURIMI, FISH_BONES,
             CHILI_RING, POTATO_SLICE, APPLE_SLICE, TOMATO_SLICE,
             POTATO_STRIP, CARROT_STRIP, CABBAGE_STRIP, CHILI_STRIP,
-            TOMATO_DICED, ONION_DICED, FRIES_BLANK, CHILI_DICED, POTATO_DICED,
+            TOMATO_DICED, ONION_DICED, FRIES_BLANK, CHILI_DICED, POTATO_DICED, TOFU_CUBE,
             ONION_MINCED, GARLIC_MINCED, CHILI_POWDER, APPLE_FLESH, NOODLE, DOUGH_SHEET,
+            LEAVENED_DOUGH,
             BREAD_SLICE, BAGUETTE_SLICE, BURGER_BUN,
             SLICED_BREAD, SLICED_BAGUETTE, SLICED_BURGER_BUN,
             RAW_BREAD, RAW_TOAST, RAW_BAGUETTE, RAW_DINNER_ROLL,

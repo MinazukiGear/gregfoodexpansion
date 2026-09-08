@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gregfoodexpansion:baguette_slice"
+    },
+    {
+      "item": "gregfoodexpansion:baguette_slice"
+    }
+  ],
+  "result": {
+    "item": "gregfoodexpansion:sliced_baguette"
+  }
+}

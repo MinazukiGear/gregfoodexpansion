@@ -5,16 +5,19 @@ import com.gregtechceu.gtceu.api.machine.MachineDefinition;
 import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import com.mojang.logging.LogUtils;
 import com.tterrag.registrate.providers.ProviderType;
+import net.mgear.gregfoodexpansion.alcohol.GFEAlcoholItems;
 import net.mgear.gregfoodexpansion.cooking.GFECookingTools;
 import net.mgear.gregfoodexpansion.cooking.GFEDishes;
 import net.mgear.gregfoodexpansion.data.GFEBlockStates;
 import net.mgear.gregfoodexpansion.data.GFEBlockTags;
+import net.mgear.gregfoodexpansion.data.GFEFluidTags;
 import net.mgear.gregfoodexpansion.data.GFEItemModels;
 import net.mgear.gregfoodexpansion.data.GFEItemTags;
 import net.mgear.gregfoodexpansion.data.GFELoot;
 import net.mgear.gregfoodexpansion.data.GFERecipes;
 import net.mgear.gregfoodexpansion.prep.GFEFormItems;
 import net.mgear.gregfoodexpansion.prep.GFEPrepTools;
+import net.mgear.gregfoodexpansion.gains.GFEGainConfigs;
 import net.mgear.gregfoodexpansion.registry.GFECreativeModeTabs;
 import net.mgear.gregfoodexpansion.registry.GFEBlocks;
 import net.mgear.gregfoodexpansion.registry.GFECropBlocks;
@@ -25,6 +28,7 @@ import net.mgear.gregfoodexpansion.registry.GFERecipeTypes;
 import net.mgear.gregfoodexpansion.registry.GFERegistration;
 import net.mgear.gregfoodexpansion.registry.GTFEMaterials;
 import net.mgear.gregfoodexpansion.registry.GFEWildCropBlocks;
+import net.mgear.gregfoodexpansion.soybean.GFESoybeanItems;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -43,6 +47,7 @@ public final class GregFoodExpansion {
 
     public GregFoodExpansion(final FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
+        GFEGainConfigs.register();
         GFERegistration.REGISTRATE.registerEventListeners(modEventBus);
         GFECreativeModeTabs.init();
         GFEBlocks.BLOCKS.register(modEventBus);
@@ -53,6 +58,8 @@ public final class GregFoodExpansion {
         GFEPrepTools.ITEMS.register(modEventBus);
         GFECookingTools.ITEMS.register(modEventBus);
         GFEDishes.ITEMS.register(modEventBus);
+        GFESoybeanItems.ITEMS.register(modEventBus);
+        GFEAlcoholItems.ITEMS.register(modEventBus);
         GFECropLootModifiers.SERIALIZERS.register(modEventBus);
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.RECIPE, GFERecipes::init);
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.BLOCKSTATE, GFEBlockStates::init);
@@ -60,6 +67,7 @@ public final class GregFoodExpansion {
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.LOOT, GFELoot::init);
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS, GFEBlockTags::init);
         GFERegistration.REGISTRATE.addDataGenerator(ProviderType.ITEM_TAGS, GFEItemTags::init);
+        GFERegistration.REGISTRATE.addDataGenerator(ProviderType.FLUID_TAGS, GFEFluidTags::init);
         modEventBus.addGenericListener(MachineDefinition.class, this::registerMachines);
         modEventBus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
         modEventBus.addListener(GTFEMaterials::createRegistry);
@@ -87,6 +95,8 @@ public final class GregFoodExpansion {
             GFEPrepTools.ALL.forEach(item -> event.accept(item.get()));
             GFECookingTools.ALL.forEach(item -> event.accept(item.get()));
             GFEDishes.ALL.forEach(item -> event.accept(item.get()));
+            GFESoybeanItems.ALL.forEach(item -> event.accept(item.get()));
+            GFEAlcoholItems.ALL.forEach(item -> event.accept(item.get()));
         }
     }
 

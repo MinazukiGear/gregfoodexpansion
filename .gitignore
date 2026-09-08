@@ -30,3 +30,7 @@ forge*changelog.txt
 
 # datagen 内部缓存(生成产物本体入库)
 /src/generated/resources/.cache/
+
+# python bytecode
+tools/**/__pycache__/
+*.pyc

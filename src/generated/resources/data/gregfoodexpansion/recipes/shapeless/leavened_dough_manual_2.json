@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "gtceu:dough"
+    },
+    {
+      "item": "gtceu:dough"
+    },
+    {
+      "item": "gregfoodexpansion:yeast"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "gregfoodexpansion:leavened_dough"
+  }
+}

@@ -28,8 +28,12 @@ PALETTES = {
     "pork": {"K": "#6E3030", "M": "#E8908A", "L": "#F5B5AE", "D": "#C46862"},
     "mutton": {"K": "#4A1E1E", "M": "#C04848", "L": "#E07870", "D": "#983430"},
     "chicken": {"K": "#7A5030", "M": "#F0D0B0", "L": "#FAE8D0", "D": "#D0A880"},
+    "mutton_cooked": {"K": "#3A1A10", "M": "#9A5A30", "L": "#C28250", "D": "#6E3E1E"},
+    "beef_cooked": {"K": "#34140C", "M": "#8A4A28", "L": "#B07040", "D": "#5E3018"},
+    "chicken_cooked": {"K": "#6E4018", "M": "#D8A060", "L": "#F0C890", "D": "#A87840"},
     "fish": {"K": "#5A6070", "M": "#D8DCE0", "L": "#F0F2F5", "D": "#B0B8C0"},
     "potato": {"K": "#6E5A20", "M": "#E8D598", "L": "#F5E8C0", "D": "#C9B070"},
+    "tofu_white": {"K": "#C9C2B0", "M": "#F7F4E8", "L": "#FDFCF6", "D": "#E0DACA"},
     "carrot": {"K": "#7A3A0E", "M": "#F28C1B", "L": "#FFB55A", "D": "#C96E10"},
     "cabbage": {"K": "#3E5C26", "M": "#A8C97A", "L": "#C9E09A", "D": "#7FA84F"},
     "chili": {"K": "#7A1810", "M": "#D93A2B", "L": "#F06A55", "D": "#B02417"},
@@ -57,6 +61,8 @@ PALETTES = {
     "dish_red": {"K": "#7A1810", "M": "#D93A2B", "L": "#F06A55", "D": "#B02417"},
     "dish_gold": {"K": "#8A5A10", "M": "#E8B44A", "L": "#F5D488", "D": "#C08A28"},
     "dish_cream": {"K": "#8A7440", "M": "#F0E0B8", "L": "#FAF0D8", "D": "#D4BC84"},
+    "soy_glaze": {"K": "#3E1A08", "M": "#8A4A18", "L": "#B86A2E", "D": "#5E3010"},
+    "kimchi": {"K": "#6E2A14", "M": "#D86840", "L": "#F0A080", "D": "#A84426"},
 }
 
 # (id, 模板, 配色源)
@@ -86,6 +92,7 @@ FORMS = [
     ("potato_strip", "strips", "potato"), ("carrot_strip", "strips", "carrot"),
     ("cabbage_strip", "strips", "cabbage"), ("chili_strip", "strips", "chili"),
     ("tomato_diced", "diced", "tomato"), ("onion_diced", "diced", "onion"),
+    ("tofu_cube", "diced", "tofu_white"),
     ("fries_blank", "fries", "potato"), ("chili_diced", "diced", "chili"),
     ("potato_diced", "diced", "potato"),
     ("onion_minced", "minced", "onion"), ("garlic_minced", "minced", "garlic"),
@@ -119,25 +126,39 @@ FORMS = [
     ("vegetable_sandwich", "stirfry", "dish_green"), ("egg_sandwich", "plate", "soup_yellow"),
     ("beef_sandwich", "stirfry", "beef"), ("chicken_sandwich", "stirfry", "chicken"),
     ("beef_burger", "nugget", "beef"), ("chicken_burger", "nugget", "chicken"),
-    # ---- 烧烤:木签(常规食材,营火基础档/烹饪机精制档)与铁签(精细食材,精制档) ----
-    ("wooden_skewer", "strips", "skewer_wood"), ("iron_skewer", "strips", "skewer_iron"),
-    ("raw_lamb_skewer", "fries", "mutton"), ("raw_beef_skewer", "fries", "beef"),
-    ("raw_chicken_skewer", "fries", "chicken"), ("raw_chili_skewer", "fries", "chili"),
-    ("campfire_lamb_skewer", "fries", "mutton"), ("campfire_beef_skewer", "fries", "beef"),
-    ("campfire_chicken_skewer", "fries", "chicken"), ("campfire_chili_skewer", "fries", "chili"),
-    ("iron_lamb_skewer", "fries", "mutton"), ("iron_beef_roll_skewer", "fries", "beef"),
-    ("iron_beef_skewer", "fries", "beef"),
-    ("raw_chicken_feet_skewer", "fries", "chicken"),
-    ("campfire_chicken_feet_skewer", "fries", "chicken"),
+    # ---- 烧烤:串类全家(2026-09-08 批次二)——斜签+签上食材,生/熟/调味/签种分化 ----
+    ("wooden_skewer", "skewer_wood", "skewer_wood"), ("iron_skewer", "skewer_iron", "skewer_iron"),
+    ("raw_lamb_skewer", "skewer_raw", "mutton"), ("raw_beef_skewer", "skewer_raw", "beef"),
+    ("raw_chicken_skewer", "skewer_raw", "chicken"),
+    ("raw_chili_skewer", "skewer_raw_long", "chili"),
+    ("raw_chicken_feet_skewer", "skewer_raw_long", "chicken"),
+    ("campfire_lamb_skewer", "skewer_cooked", "mutton_cooked"),
+    ("campfire_beef_skewer", "skewer_cooked", "beef_cooked"),
+    ("campfire_chicken_skewer", "skewer_cooked", "chicken_cooked"),
+    ("campfire_chili_skewer", "skewer_cooked_long", "chili"),
+    ("campfire_chicken_feet_skewer", "skewer_cooked_long", "chicken_cooked"),
+    ("grilled_lamb_skewer", "skewer_cooked", "mutton_cooked"),
+    ("grilled_beef_skewer", "skewer_cooked", "beef_cooked"),
+    ("grilled_chicken_skewer", "skewer_cooked", "chicken_cooked"),
+    ("salt_grilled_lamb_skewer", "skewer_cooked_salt", "mutton_cooked"),
+    ("salt_grilled_beef_skewer", "skewer_cooked_salt", "beef_cooked"),
+    ("salt_grilled_chicken_skewer", "skewer_cooked_salt", "chicken_cooked"),
+    ("chili_grilled_lamb_skewer", "skewer_cooked_chili", "mutton_cooked"),
+    ("chili_grilled_beef_skewer", "skewer_cooked_chili", "beef_cooked"),
+    ("chili_grilled_chicken_skewer", "skewer_cooked_chili", "chicken_cooked"),
+    ("soy_grilled_lamb_skewer", "skewer_cooked", "soy_glaze"),
+    ("soy_grilled_beef_skewer", "skewer_cooked", "soy_glaze"),
+    ("soy_grilled_chicken_skewer", "skewer_cooked", "soy_glaze"),
+    ("grilled_chili_skewer", "skewer_cooked_long", "chili"),
+    ("grilled_chicken_feet_skewer", "skewer_cooked_long", "chicken_cooked"),
+    ("iron_lamb_skewer", "skewer_iron_cooked", "mutton_cooked"),
+    ("iron_beef_roll_skewer", "skewer_iron_cooked_long", "beef_cooked"),
+    ("iron_beef_skewer", "skewer_iron_cooked", "beef_cooked"),
     ("grilled_fish", "fries", "fish"),
-    ("grilled_lamb_skewer", "fries", "baked"), ("grilled_beef_skewer", "fries", "beef"),
-    ("grilled_chicken_skewer", "fries", "chicken"),
-    ("salt_grilled_lamb_skewer", "fries", "baked"), ("salt_grilled_beef_skewer", "fries", "beef"),
-    ("salt_grilled_chicken_skewer", "fries", "chicken"),
-    ("chili_grilled_lamb_skewer", "fries", "chili"), ("chili_grilled_beef_skewer", "fries", "chili"),
-    ("chili_grilled_chicken_skewer", "fries", "chili"),
+    # ---- 酱烤口味串(2026-09-08 大豆链落地后补)与泡菜(发酵槽) ----
+    ("pickled_cabbage", "diced", "kimchi"),
     # ---- 切好件(切片拼装) ----
-    ("sliced_bread", "slices", "baked"), ("sliced_baguetted", "fries", "toast_brown"),
+    ("sliced_bread", "slices", "baked"), ("sliced_baguette", "fries", "toast_brown"),
     ("sliced_burger_bun", "plate", "dish_cream"),
     # ---- 基础档手工菜肴 ----
     ("fruit_platter", "stirfry", "dish_green"), ("sugar_tomato", "plate", "dish_red"),
@@ -311,12 +332,89 @@ def p_fried(d, pal):
         d.point((ox + 1, oy + 1), fill=pal["L"])
 
 
+def p_skewer_wood(d, pal):
+    """木签:单根斜置竹签,尖端朝右上、平头端面、竹节痕——与串类食品共用同一签身规格。"""
+    _stick_wood(d)
+    d.point([(5, 10), (5, 11), (9, 6), (9, 7)], fill=WOOD_K)  # 竹节痕
+    d.rectangle([1, 13, 2, 14], fill=WOOD_K)                  # 平头端面
+    d.point([(3, 12)], fill=WOOD_L)
+
+
+def p_skewer_iron(d, pal):
+    """铁签:斜置金属杆,尾部挂环,尖端朝右上。"""
+    d.ellipse([1, 11, 5, 15], outline=pal["K"], width=1)    # 尾环外廓
+    d.ellipse([2, 12, 4, 14], outline=pal["M"], width=1)    # 尾环内圈
+    d.line([(3, 12), (12, 3)], fill=pal["K"], width=3)      # 杆底廓
+    d.line([(3, 12), (12, 3)], fill=pal["M"], width=2)      # 杆身
+    d.line([(5, 11), (12, 4)], fill=pal["L"], width=1)      # 金属高光
+    d.line([(12, 3), (14, 1)], fill=pal["K"], width=1)      # 尖端收细
+    d.point([(14, 1)], fill=pal["M"])
+
+
+# ---- 串类食品专属模板(2026-09-08 批次二):斜签 + 签上食材,按生熟/签种/调味分化 ----
+WOOD_K, WOOD_M, WOOD_L = "#5E4426", "#A88048", "#D0A86E"
+
+def _stick_wood(d):
+    """木签骨架:斜置,尖朝右上,柄端左下。"""
+    d.line([(1, 14), (13, 2)], fill=WOOD_K, width=2)
+    d.line([(2, 13), (12, 3)], fill=WOOD_M, width=1)
+    d.line([(13, 2), (14, 1)], fill=WOOD_M, width=1)
+    d.point([(14, 1)], fill=WOOD_K)
+
+def _stick_iron(d):
+    """铁签骨架:斜置金属杆 + 尾部挂环。"""
+    d.ellipse([1, 11, 4, 14], outline="#4A4E55", width=1)
+    d.line([(3, 12), (12, 3)], fill="#3A3E44", width=2)
+    d.line([(3, 12), (12, 3)], fill="#9AA2AC", width=1)
+    d.line([(5, 11), (11, 5)], fill="#D0D6DC", width=1)
+    d.line([(12, 3), (14, 1)], fill="#9AA2AC", width=1)
+    d.point([(14, 1)], fill="#3A3E44")
+
+def _cubes(d, pal, char, speckle=None):
+    """签上 3 块食材(3x3,沿对角线排列);char=烤痕;speckle=调味点色。"""
+    for (x, y) in ((3, 9), (6, 6), (9, 3)):
+        d.rectangle([x, y, x + 2, y + 2], fill=pal["M"], outline=pal["K"])
+        d.point([(x + 1, y)], fill=pal["L"])                      # 顶面高光
+        if char:
+            d.line([(x + 1, y + 2), (x + 2, y + 1)], fill=pal["D"], width=1)  # 烤痕
+            d.point([(x, y + 2)], fill=pal["D"])                  # 边缘焦化
+        if speckle == "salt":
+            d.point([(x + 2, y), (x + 1, y + 2)], fill="#F4F6F8")  # 盐粒
+        elif speckle == "chili":
+            d.point([(x + 2, y), (x + 1, y + 2)], fill="#E04030")  # 辣椒面
+
+def _pods(d, pal, char):
+    """签上 2 段长条食材(整椒/鸡爪等长形),沿对角线。"""
+    for (x, y) in ((4, 8), (8, 4)):
+        d.rectangle([x, y, x + 2, y + 4], fill=pal["M"], outline=pal["K"])
+        d.line([(x + 1, y + 1), (x + 1, y + 3)], fill=pal["L"], width=1)
+        if char:
+            d.point([(x, y + 3), (x + 2, y + 1), (x + 1, y + 4)], fill=pal["D"])
+
+def _make_skewer(cooked, stick, shape, speckle=None):
+    def pat(d, pal):
+        (_stick_wood if stick == "wood" else _stick_iron)(d)
+        if shape == "cubes":
+            _cubes(d, pal, char=cooked, speckle=speckle)
+        else:
+            _pods(d, pal, char=cooked)
+    return pat
+
 PATTERNS = {
     "slices": p_slices, "strips": p_strips, "diced": p_diced, "minced": p_minced,
     "powder": p_powder, "ring": p_ring, "flesh": p_flesh, "fries": p_fries,
     "noodle": p_noodle, "sheet": p_sheet, "ribs": p_ribs, "nugget": p_nugget,
     "surimi": p_surimi,
     "soup": p_soup, "plate": p_plate, "stirfry": p_stirfry, "fried": p_fried,
+    "skewer_wood": p_skewer_wood, "skewer_iron": p_skewer_iron,
+    "skewer_raw": _make_skewer(False, "wood", "cubes"),
+    "skewer_raw_long": _make_skewer(False, "wood", "pods"),
+    "skewer_cooked": _make_skewer(True, "wood", "cubes"),
+    "skewer_cooked_salt": _make_skewer(True, "wood", "cubes", "salt"),
+    "skewer_cooked_chili": _make_skewer(True, "wood", "cubes", "chili"),
+    "skewer_cooked_long": _make_skewer(True, "wood", "pods"),
+    "skewer_iron_cooked": _make_skewer(True, "iron", "cubes"),
+    "skewer_iron_cooked_long": _make_skewer(True, "iron", "pods"),
 }
 
 # ---- 机器 overlay(灰钢面板 + 刀具图形) ----

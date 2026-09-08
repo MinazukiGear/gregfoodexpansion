@@ -9,6 +9,7 @@ import com.gregtechceu.gtceu.common.data.GTItems;
 import com.gregtechceu.gtceu.data.recipe.VanillaRecipeHelper;
 
 import net.mgear.gregfoodexpansion.GregFoodExpansion;
+import net.mgear.gregfoodexpansion.alcohol.GFEAlcoholItems;
 import net.mgear.gregfoodexpansion.cooking.GFECookingTools;
 import net.mgear.gregfoodexpansion.cooking.GFEDishes;
 import net.mgear.gregfoodexpansion.prep.GFEFormItems;
@@ -27,6 +28,20 @@ public final class GFERecipes {
         addCookingToolRecipes(provider);
         addHandCookingRecipes(provider);
         addCampfireSkewerRecipes(provider);
+        addMaltRecipes(provider);
+    }
+
+    // 麦芽:大麦烤一档(alcohol-line.md §7-4 定案单列中间品)。
+    // 原版熔炉配方 —— GTCEu 电炉自动兼容原式烟熏/熔炼配方,萌芽谷粒到麦芽的低温烘焙语义。
+    private static void addMaltRecipes(Consumer<FinishedRecipe> provider) {
+        net.minecraft.data.recipes.SimpleCookingRecipeBuilder.smelting(
+                        net.minecraft.world.item.crafting.Ingredient.of(GFECropItems.BARLEY.get()),
+                        net.minecraft.data.recipes.RecipeCategory.FOOD,
+                        GFEAlcoholItems.MALT.get(), 0.1F, 200)
+                .unlockedBy("has_barley",
+                        net.minecraft.advancements.critereon.InventoryChangeTrigger.TriggerInstance
+                                .hasItems(GFECropItems.BARLEY.get()))
+                .save(provider, GregFoodExpansion.id("smelting/malt"));
     }
 
     // 营火烤串(基础档,急迫 I 15s):原版营火烹饪,零机器依赖(LV 前可用)
@@ -76,18 +91,46 @@ public final class GFERecipes {
         // 米制品链手工路线(compatibility-boundary Q1:LV 前食品加工仅手搓):
         // 研钵 + 水稻 → 大米粉(研钵覆盖研磨);大米粉 + 水桶 → 米粉团
         // 擀面杖手工成型(切配机压延的对应手工路线):不同投入量成型不同生坯
+        // 酵母接入烘焙(2026-09-08):面包族生坯改投发酵面团;面条/面皮保持死面(GT 面团)
+        // 酵母按批计(2026-09-08 定案):死面 ×N + 酵母 ×1 → 发酵面团 ×N,总投入件数与旧路线持平(+1 酵母/批)。
+        // 香草无序合成按精确物品多重集匹配,×2/×3/×4 三档互不串扰。
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("leavened_dough_manual_2"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.LEAVENED_DOUGH.get(), 2),
+                GTItems.DOUGH, GTItems.DOUGH, GFEAlcoholItems.YEAST.get());
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("leavened_dough_manual_3"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.LEAVENED_DOUGH.get(), 3),
+                GTItems.DOUGH, GTItems.DOUGH, GTItems.DOUGH, GFEAlcoholItems.YEAST.get());
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("leavened_dough_manual_6"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.LEAVENED_DOUGH.get(), 6),
+                GTItems.DOUGH, GTItems.DOUGH, GTItems.DOUGH, GTItems.DOUGH, GTItems.DOUGH,
+                GTItems.DOUGH, GFEAlcoholItems.YEAST.get());
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("leavened_dough_manual_4"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.LEAVENED_DOUGH.get(), 4),
+                GTItems.DOUGH, GTItems.DOUGH, GTItems.DOUGH, GTItems.DOUGH, GFEAlcoholItems.YEAST.get());
         VanillaRecipeHelper.addShapelessRecipe(provider, id("dough_sheet_manual"),
                 new net.minecraft.world.item.ItemStack(GFEFormItems.DOUGH_SHEET.get()),
                 GFEPrepTools.ROLLING_PIN.get(), GTItems.DOUGH);
         VanillaRecipeHelper.addShapelessRecipe(provider, id("raw_toast_manual"),
                 new net.minecraft.world.item.ItemStack(GFEFormItems.RAW_TOAST.get()),
-                GFEPrepTools.ROLLING_PIN.get(), GTItems.DOUGH, GTItems.DOUGH);
+                GFEPrepTools.ROLLING_PIN.get(),
+                GFEFormItems.LEAVENED_DOUGH.get(), GFEFormItems.LEAVENED_DOUGH.get(),
+                GFEFormItems.LEAVENED_DOUGH.get(), GFEFormItems.LEAVENED_DOUGH.get());
         VanillaRecipeHelper.addShapelessRecipe(provider, id("raw_bread_manual"),
                 new net.minecraft.world.item.ItemStack(GFEFormItems.RAW_BREAD.get()),
-                GFEPrepTools.ROLLING_PIN.get(), GTItems.DOUGH, GTItems.DOUGH, GTItems.DOUGH);
+                GFEPrepTools.ROLLING_PIN.get(),
+                GFEFormItems.LEAVENED_DOUGH.get(), GFEFormItems.LEAVENED_DOUGH.get());
         VanillaRecipeHelper.addShapelessRecipe(provider, id("raw_baguette_manual"),
                 new net.minecraft.world.item.ItemStack(GFEFormItems.RAW_BAGUETTE.get()),
-                GFEPrepTools.ROLLING_PIN.get(), GTItems.DOUGH, GTItems.DOUGH, GTItems.DOUGH, GTItems.DOUGH);
+                GFEPrepTools.ROLLING_PIN.get(),
+                GFEFormItems.LEAVENED_DOUGH.get(), GFEFormItems.LEAVENED_DOUGH.get(),
+                GFEFormItems.LEAVENED_DOUGH.get());
+        // 餐包生坯(补缺口:raw_dinner_roll 此前无任何获取配方)
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("raw_dinner_roll_manual"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.RAW_DINNER_ROLL.get(), 4),
+                GFEPrepTools.ROLLING_PIN.get(),
+                GFEFormItems.LEAVENED_DOUGH.get(), GFEFormItems.LEAVENED_DOUGH.get(),
+                GFEFormItems.LEAVENED_DOUGH.get(), GFEFormItems.LEAVENED_DOUGH.get(),
+                GFEFormItems.LEAVENED_DOUGH.get(), GFEFormItems.LEAVENED_DOUGH.get());
 
         // 菜刀手切烘焙切分(切配机器的对应手工路线)
         VanillaRecipeHelper.addShapelessRecipe(provider, id("bread_slice_manual"),
@@ -104,7 +147,7 @@ public final class GFERecipes {
         VanillaRecipeHelper.addShapelessRecipe(provider, id("sliced_bread"),
                 new net.minecraft.world.item.ItemStack(GFEFormItems.SLICED_BREAD.get()),
                 GFEFormItems.BREAD_SLICE.get(), GFEFormItems.BREAD_SLICE.get());
-        VanillaRecipeHelper.addShapelessRecipe(provider, id("sliced_baguetted"),
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("sliced_baguette"),
                 new net.minecraft.world.item.ItemStack(GFEFormItems.SLICED_BAGUETTE.get()),
                 GFEFormItems.BAGUETTE_SLICE.get(), GFEFormItems.BAGUETTE_SLICE.get());
         VanillaRecipeHelper.addShapelessRecipe(provider, id("sliced_burger_bun"),

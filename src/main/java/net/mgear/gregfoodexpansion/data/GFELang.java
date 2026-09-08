@@ -158,6 +158,7 @@ public final class GFELang {
         add("item.gregfoodexpansion.onion_rings", "Onion Rings");
         add("item.gregfoodexpansion.spring_roll", "Spring Rolls");
         add("item.gregfoodexpansion.rice_cracker", "Rice Crackers");
+        add("item.gregfoodexpansion.pan_fried_tofu", "Pan-Fried Tofu");
 
         // ---- 烘焙(tunnel-oven.md) ----
         add("block.gregfoodexpansion.tunnel_oven_casing", "Tunnel Oven Casing");
@@ -190,7 +191,7 @@ public final class GFELang {
         add("item.gregfoodexpansion.beef_burger", "Beef Burger");
         add("item.gregfoodexpansion.chicken_burger", "Chicken Burger");
         add("item.gregfoodexpansion.sliced_bread", "Sliced Bread");
-        add("item.gregfoodexpansion.sliced_baguetted", "Sliced Baguette");
+        add("item.gregfoodexpansion.sliced_baguette", "Sliced Baguette");
         add("item.gregfoodexpansion.sliced_burger_bun", "Sliced Burger Bun");
 
         // ---- 烧烤(木签=常规食材,铁签=精细食材) ----
@@ -211,12 +212,17 @@ public final class GFELang {
         add("item.gregfoodexpansion.chicken_soup", "Chicken Soup");
         add("item.gregfoodexpansion.peanut_soup", "Peanut Soup");
         add("item.gregfoodexpansion.geda_soup", "Dough Drop Soup");
+        add("item.gregfoodexpansion.tofu_soup", "Tofu Soup");
+        add("item.gregfoodexpansion.braised_dried_tofu", "Braised Dried Tofu");
         add("item.gregfoodexpansion.steamed_fish", "Steamed Fish");
         add("item.gregfoodexpansion.steamed_meat_patty", "Steamed Meat Patty");
         add("item.gregfoodexpansion.tomato_beef", "Beef with Tomato");
         add("item.gregfoodexpansion.onion_fried_lamb", "Stir-Fried Lamb with Onion");
         add("item.gregfoodexpansion.cabbage_fried_pork", "Stir-Fried Pork with Cabbage");
         add("item.gregfoodexpansion.muxu_pork", "Mu Xu Pork");
+        add("item.gregfoodexpansion.home_style_tofu", "Home-Style Tofu");
+        add("item.gregfoodexpansion.dried_tofu_pork", "Stir-Fried Pork with Dried Tofu");
+        add("item.gregfoodexpansion.tofu_sheet_pork", "Shredded Pork with Tofu Sheets");
         add("item.gregfoodexpansion.grilled_fish", "Grilled Fish");
         add("item.gregfoodexpansion.raw_chicken_feet_skewer", "Raw Chicken Feet Skewer");
         add("item.gregfoodexpansion.campfire_chicken_feet_skewer", "Campfire Chicken Feet Skewer");
@@ -232,6 +238,17 @@ public final class GFELang {
         add("item.gregfoodexpansion.chili_grilled_lamb_skewer", "Chili-Grilled Lamb Skewer");
         add("item.gregfoodexpansion.chili_grilled_beef_skewer", "Chili-Grilled Beef Skewer");
         add("item.gregfoodexpansion.chili_grilled_chicken_skewer", "Chili-Grilled Chicken Skewer");
+        add("item.gregfoodexpansion.soy_grilled_lamb_skewer", "Soy-Glazed Lamb Skewer");
+        add("item.gregfoodexpansion.soy_grilled_beef_skewer", "Soy-Glazed Beef Skewer");
+        add("item.gregfoodexpansion.soy_grilled_chicken_skewer", "Soy-Glazed Chicken Skewer");
+        add("item.gregfoodexpansion.grilled_chili_skewer", "Grilled Chili Skewer");
+        add("item.gregfoodexpansion.grilled_chicken_feet_skewer", "Grilled Chicken Feet Skewer");
+        add("item.gregfoodexpansion.pickled_cabbage", "Pickled Cabbage");
+
+        // ---- 死面菜肴(2026-09-08) ----
+        add("item.gregfoodexpansion.scallion_pancake", "Scallion Pancake");
+        add("item.gregfoodexpansion.fried_dumplings", "Fried Dumplings");
+        add("item.gregfoodexpansion.beef_pie", "Beef Pie");
         add("gregfoodexpansion.multiblock.tunnel_oven.preheating", "Oven preheating...");
 
         // ---- 基础档手工菜肴(dishes-and-gains.md §5,LV 前兜底) ----
@@ -251,11 +268,44 @@ public final class GFELang {
         // 注:自有材料(GTFEMaterials)的 en 名由 GTRegistrate 自动写入 lang;
         // zh_cn 手工维护于 src/main/resources/assets/gregfoodexpansion/lang/zh_cn.json。
 
+        // ---- 大豆链(soybean-chain.md §2) ----
+        add("item.gregfoodexpansion.bran", "Wheat Bran");
+        add("item.gregfoodexpansion.cooked_soybean", "Cooked Soybeans");
+        add("item.gregfoodexpansion.koji", "Koji");
+        add("item.gregfoodexpansion.koji_starter", "Koji Starter");
+        add("item.gregfoodexpansion.koji_batch", "Koji Batch");
+        add("item.gregfoodexpansion.okara", "Okara");
+        add("item.gregfoodexpansion.soybean_meal", "Soybean Meal");
+        add("item.gregfoodexpansion.soybean_pomace", "Soybean Pomace");
+        add("item.gregfoodexpansion.firm_tofu", "Firm Tofu");
+        add("item.gregfoodexpansion.soft_tofu", "Soft Tofu");
+        add("item.gregfoodexpansion.tofu_cube", "Tofu Cube");
+        add("item.gregfoodexpansion.tofu_pudding", "Tofu Pudding");
+        add("item.gregfoodexpansion.qianye_tofu_blank", "Raw Qianye Tofu Block");
+        add("item.gregfoodexpansion.qianye_tofu", "Qianye Tofu");
+        add("item.gregfoodexpansion.dried_tofu", "Dried Tofu");
+        add("item.gregfoodexpansion.tofu_sheet_blank", "Raw Tofu Sheet Pulp");
+        add("item.gregfoodexpansion.tofu_sheet", "Tofu Sheets");
+
         // ---- 手工切配工具(food-processor.md §7) ----
         add("item.gregfoodexpansion.cleaver", "Cleaver");
         add("item.gregfoodexpansion.peeler", "Peeler");
         add("item.gregfoodexpansion.mortar_pestle", "Mortar and Pestle");
         add("item.gregfoodexpansion.rolling_pin", "Rolling Pin");
+
+        // ---- 酒线(alcohol-line.md,米酒/黄酒分线) ----
+        add("item.gregfoodexpansion.leavened_dough", "Leavened Dough");
+        add("item.gregfoodexpansion.yeast", "Yeast");
+        add("item.gregfoodexpansion.malt", "Malt");
+        add("item.gregfoodexpansion.bottled_beer", "Bottled Beer");
+        add("item.gregfoodexpansion.bottled_cider", "Bottled Cider");
+        add("item.gregfoodexpansion.bottled_mead", "Bottled Mead");
+        add("item.gregfoodexpansion.bottled_rice_wine", "Bottled Rice Wine");
+        add("item.gregfoodexpansion.bottled_wine", "Bottled Wine");
+        add("item.gregfoodexpansion.bottled_huangjiu", "Bottled Huangjiu");
+        add("item.gregfoodexpansion.bottled_brandy", "Bottled Brandy");
+        add("item.gregfoodexpansion.bottled_whisky", "Bottled Whisky");
+        add("item.gregfoodexpansion.bottled_baijiu", "Bottled Baijiu");
     }
 
     private static void add(String key, String value) {

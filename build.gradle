@@ -214,6 +214,11 @@ dependencies {
     // It remains optional for published builds and is not declared in mods.toml.
     runtimeOnly(fg.deobf("curse.maven:jade-324717:${jade_file_id}")) { transitive = false }
 
+    // SoL Carrot Edition: compile-time API for the gain pipeline's diversity
+    // multiplier (m0-content-audit.md §5). Runtime is a soft dependency —
+    // every call site is gated behind ModList.isLoaded("solcarrot").
+    implementation(fg.deobf("curse.maven:spice-of-life-carrot-edition-277616:${sol_file_id}")) { transitive = false }
+
     // JECh adds Chinese pinyin matching to search fields in the development client.
     // It is client-only tooling and is not included in published artifacts.
     if (mountClientDevAids) {

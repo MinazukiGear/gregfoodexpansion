@@ -6,6 +6,7 @@ import net.mgear.gregfoodexpansion.GregFoodExpansion;
 import net.mgear.gregfoodexpansion.prep.GFEFormItems;
 import net.mgear.gregfoodexpansion.registry.GFECropBlocks;
 import net.mgear.gregfoodexpansion.registry.GFECropItems;
+import net.mgear.gregfoodexpansion.soybean.GFESoybeanItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
@@ -37,6 +38,13 @@ public final class GFEItemTags {
         GFEFormItems.MEAT_STRIPS.forEach(item -> provider.addTag(forgeTag("meat_strips")).add(item.get()));
         GFEFormItems.MEAT_CUBES.forEach(item -> provider.addTag(forgeTag("meat_cubes")).add(item.get()));
         GFEFormItems.MINCED_MEATS.forEach(item -> provider.addTag(forgeTag("minced_meat")).add(item.get()));
+
+        // 豆腐体系(soybean-chain.md §2):#forge:tofu 通用引用,菜肴配方按品类标签取材。
+        provider.addTag(forgeTag("tofu")).add(GFESoybeanItems.FIRM_TOFU.get());
+        provider.addTag(forgeTag("tofu")).add(GFESoybeanItems.SOFT_TOFU.get());
+        provider.addTag(forgeTag("tofu")).add(GFESoybeanItems.QIANYE_TOFU.get());
+        provider.addTag(forgeTag("tofu")).add(GFESoybeanItems.DRIED_TOFU.get());
+        provider.addTag(forgeTag("tofu")).add(GFESoybeanItems.TOFU_SHEET.get());
 
         // 装配基座标签(③层内部分组):三明治/汉堡配方同时接受面包片或切好的面包、
         // 汉堡坯或切好的汉堡胚(2026-09-08 决议)。

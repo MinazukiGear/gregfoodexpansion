@@ -11,6 +11,7 @@ import net.mgear.gregfoodexpansion.cooking.GFEDishes;
 import net.mgear.gregfoodexpansion.prep.GFEFormItems;
 import net.mgear.gregfoodexpansion.registry.GFECropItems;
 import net.mgear.gregfoodexpansion.registry.GFERecipeTypes;
+import net.mgear.gregfoodexpansion.soybean.GFESoybeanItems;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
@@ -73,6 +74,10 @@ public final class GFEPrepRecipes {
         prep(provider, 3, 40, 4, Items.SALMON, GFEFormItems.FISH_CUBE.get());
         prep(provider, 3, 40, 4, GFECropItems.TOMATO.get(), GFEFormItems.TOMATO_DICED.get());
         prep(provider, 3, 40, 4, GFECropItems.ONION.get(), GFEFormItems.ONION_DICED.get());
+        // 豆腐块:北/南/千叶三源同电路,产出 ×2(soybean-chain.md 菜肴联动,2026-09-08)
+        prep(provider, 3, 40, 4, GFESoybeanItems.FIRM_TOFU.get(), 2, GFEFormItems.TOFU_CUBE.get());
+        prep(provider, 3, 40, 4, GFESoybeanItems.SOFT_TOFU.get(), 2, GFEFormItems.TOFU_CUBE.get());
+        prep(provider, 3, 40, 4, GFESoybeanItems.QIANYE_TOFU.get(), 2, GFEFormItems.TOFU_CUBE.get());
         prep(provider, 3, 40, 4, Items.POTATO, GFEFormItems.FRIES_BLANK.get());
         prep(provider, 3, 40, 4, GFECropItems.CHILI.get(), GFEFormItems.CHILI_DICED.get());
         // 土豆丁 = 薯条坯二次切配(2026-09-08 决议,规避同源同电路冲突)
@@ -107,6 +112,8 @@ public final class GFEPrepRecipes {
         prep(provider, 7, 100, 8, GTItems.DOUGH.get(), GFEFormItems.DOUGH_SHEET.get());
         // 米制品链:米粉团 → 米粉条(大米粉+水 → 米粉团见搅拌机/手工配方)
         prep(provider, 7, 100, 8, GFEFormItems.RICE_DOUGH.get(), GFEFormItems.RICE_NOODLES.get());
+        // 千张:点卤浆料压延成薄层(soybean-chain.md,2026-09-08)
+        prep(provider, 7, 100, 8, GFESoybeanItems.TOFU_SHEET_BLANK.get(), 2, GFESoybeanItems.TOFU_SHEET.get());
     }
 
     private static void prep(Consumer<FinishedRecipe> provider, int circuit, int duration,
