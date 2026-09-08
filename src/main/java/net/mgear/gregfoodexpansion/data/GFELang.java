@@ -206,6 +206,21 @@ public final class GFELang {
         add("item.gregfoodexpansion.campfire_chili_skewer", "Campfire Chili Skewer");
         add("item.gregfoodexpansion.iron_lamb_skewer", "Iron-Skewered Fatty Mutton Roll");
         add("item.gregfoodexpansion.iron_beef_roll_skewer", "Iron-Skewered Fatty Beef Roll");
+        add("item.gregfoodexpansion.tomato_egg_soup", "Tomato Egg Drop Soup");
+        add("item.gregfoodexpansion.beef_soup", "Beef Soup");
+        add("item.gregfoodexpansion.chicken_soup", "Chicken Soup");
+        add("item.gregfoodexpansion.peanut_soup", "Peanut Soup");
+        add("item.gregfoodexpansion.geda_soup", "Dough Drop Soup");
+        add("item.gregfoodexpansion.steamed_fish", "Steamed Fish");
+        add("item.gregfoodexpansion.steamed_meat_patty", "Steamed Meat Patty");
+        add("item.gregfoodexpansion.tomato_beef", "Beef with Tomato");
+        add("item.gregfoodexpansion.onion_fried_lamb", "Stir-Fried Lamb with Onion");
+        add("item.gregfoodexpansion.cabbage_fried_pork", "Stir-Fried Pork with Cabbage");
+        add("item.gregfoodexpansion.muxu_pork", "Mu Xu Pork");
+        add("item.gregfoodexpansion.grilled_fish", "Grilled Fish");
+        add("item.gregfoodexpansion.raw_chicken_feet_skewer", "Raw Chicken Feet Skewer");
+        add("item.gregfoodexpansion.campfire_chicken_feet_skewer", "Campfire Chicken Feet Skewer");
+        add("item.gregfoodexpansion.iron_beef_skewer", "Iron-Skewered Beef Skewer");
 
         // ---- 烧烤口味串(c6,精制档) ----
         add("item.gregfoodexpansion.grilled_lamb_skewer", "Plain Grilled Lamb Skewer");

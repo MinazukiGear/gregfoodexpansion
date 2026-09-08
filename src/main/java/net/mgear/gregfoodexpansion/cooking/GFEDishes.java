@@ -36,6 +36,11 @@ public final class GFEDishes {
     public static final RegistryObject<Item> SHABU_BEEF = soup("shabu_beef", 6, 0.5F);
     public static final RegistryObject<Item> SHABU_MUTTON = soup("shabu_mutton", 6, 0.5F);
     public static final RegistryObject<Item> BEEF_RICE_BOWL = soup("beef_rice_bowl", 8, 0.6F);
+    public static final RegistryObject<Item> TOMATO_EGG_SOUP = soup("tomato_egg_soup", 4, 0.4F);
+    public static final RegistryObject<Item> BEEF_SOUP = soup("beef_soup", 5, 0.4F);
+    public static final RegistryObject<Item> CHICKEN_SOUP = soup("chicken_soup", 5, 0.4F);
+    public static final RegistryObject<Item> PEANUT_SOUP = soup("peanut_soup", 4, 0.5F);
+    public static final RegistryObject<Item> GEDA_SOUP = soup("geda_soup", 5, 0.4F);
 
     // ---- c2 蒸 ----
     public static final RegistryObject<Item> STEAMED_RICE = steamed("steamed_rice", 4, 0.4F);
@@ -46,6 +51,8 @@ public final class GFEDishes {
     public static final RegistryObject<Item> RICE_CAKE = steamed("rice_cake", 5, 0.4F);
     public static final RegistryObject<Item> RICE_STEAMED_PORK = steamed("rice_steamed_pork", 10, 0.6F);
     public static final RegistryObject<Item> WHITE_CAKE = steamed("white_cake", 5, 0.4F);
+    public static final RegistryObject<Item> STEAMED_FISH = steamed("steamed_fish", 6, 0.5F);
+    public static final RegistryObject<Item> STEAMED_MEAT_PATTY = steamed("steamed_meat_patty", 6, 0.5F);
 
     // ---- c3 炒(急迫 II,大菜) ----
     public static final RegistryObject<Item> TOMATO_SCRAMBLED_EGG = stirfry("tomato_scrambled_egg", 6, 0.6F);
@@ -57,6 +64,10 @@ public final class GFEDishes {
     public static final RegistryObject<Item> STIR_FRIED_VEGETABLES = stirfry("stir_fried_vegetables", 5, 0.5F);
     public static final RegistryObject<Item> FRIED_RICE_NOODLES = stirfry("fried_rice_noodles", 8, 0.6F);
     public static final RegistryObject<Item> BEEF_CHOW_FUN = stirfry("beef_chow_fun", 10, 0.7F);
+    public static final RegistryObject<Item> TOMATO_BEEF = stirfry("tomato_beef", 7, 0.6F);
+    public static final RegistryObject<Item> ONION_FRIED_LAMB = stirfry("onion_fried_lamb", 7, 0.6F);
+    public static final RegistryObject<Item> CABBAGE_FRIED_PORK = stirfry("cabbage_fried_pork", 6, 0.5F);
+    public static final RegistryObject<Item> MUXU_PORK = stirfry("muxu_pork", 7, 0.6F);
 
     // ---- c4 炸(高饱和) ----
     public static final RegistryObject<Item> FRIES = fried("fries", 5, 0.8F);
@@ -116,27 +127,32 @@ public final class GFEDishes {
     public static final RegistryObject<Item> CAMPFIRE_BEEF_SKEWER = hand("campfire_beef_skewer", 3, 0.3F);
     public static final RegistryObject<Item> CAMPFIRE_CHICKEN_SKEWER = hand("campfire_chicken_skewer", 3, 0.3F);
     public static final RegistryObject<Item> CAMPFIRE_CHILI_SKEWER = hand("campfire_chili_skewer", 2, 0.3F);
+    public static final RegistryObject<Item> CAMPFIRE_CHICKEN_FEET_SKEWER = hand("campfire_chicken_feet_skewer", 2, 0.3F);
     public static final RegistryObject<Item> IRON_LAMB_SKEWER = baked("iron_lamb_skewer", 7, 0.6F);
     public static final RegistryObject<Item> IRON_BEEF_ROLL_SKEWER = baked("iron_beef_roll_skewer", 7, 0.6F);
+    public static final RegistryObject<Item> IRON_BEEF_SKEWER = baked("iron_beef_skewer", 8, 0.7F);
+    public static final RegistryObject<Item> GRILLED_FISH = baked("grilled_fish", 6, 0.6F);
 
     public static final List<RegistryObject<Item>> ALL = List.of(
             RICE_NOODLE_SOUP, TOMATO_SOUP, VEGETABLE_SOUP, RIB_SOUP, RICE_PORRIDGE,
             CORN_SOUP, DUMPLINGS, SHABU_BEEF, SHABU_MUTTON, BEEF_RICE_BOWL,
+            TOMATO_EGG_SOUP, BEEF_SOUP, CHICKEN_SOUP, PEANUT_SOUP, GEDA_SOUP,
             STEAMED_RICE, MANTOU, BAOZI, STEAMED_EGG, STEAMED_CORN, RICE_CAKE,
-            RICE_STEAMED_PORK, WHITE_CAKE,
+            RICE_STEAMED_PORK, WHITE_CAKE, STEAMED_FISH, STEAMED_MEAT_PATTY,
             TOMATO_SCRAMBLED_EGG, FRIED_RICE, FRIED_NOODLES, CHILI_SHREDDED_PORK,
             STIR_FRIED_PORK, KUNG_PAO_CHICKEN, STIR_FRIED_VEGETABLES, FRIED_RICE_NOODLES,
-            BEEF_CHOW_FUN,
+            BEEF_CHOW_FUN, TOMATO_BEEF, ONION_FRIED_LAMB, CABBAGE_FRIED_PORK, MUXU_PORK,
             FRIES, POTATO_CHIPS, FRIED_CHICKEN_CUTS, FRIED_PEANUTS, FRIED_FISH_FILLET,
             ONION_RINGS, SPRING_ROLL, RICE_CRACKER, CHICKEN_CUTLET, CHICKEN_TENDER,
             FRUIT_PLATTER, SUGAR_TOMATO, CHICKEN_COLD_NOODLES, FRIED_EGG, PLAIN_NOODLES,
             HAND_FRIED_RICE, HAND_STEAMED_EGG, HAND_STEAMED_CORN,
             BREAD, TOAST, SWEET_BREAD, CAKE, APPLE_PIE, BAGUETTE, DINNER_ROLL,
-            CORN_BREAD, BAKED_CORN, GARLIC_BAGUETTE,
+            CORN_BREAD, BAKED_CORN, GARLIC_BAGUETTE, GRILLED_FISH,
             VEGETABLE_SANDWICH, EGG_SANDWICH, BEEF_SANDWICH, CHICKEN_SANDWICH,
             BEEF_BURGER, CHICKEN_BURGER,
             CAMPFIRE_LAMB_SKEWER, CAMPFIRE_BEEF_SKEWER, CAMPFIRE_CHICKEN_SKEWER,
-            CAMPFIRE_CHILI_SKEWER, IRON_LAMB_SKEWER, IRON_BEEF_ROLL_SKEWER,
+            CAMPFIRE_CHILI_SKEWER, CAMPFIRE_CHICKEN_FEET_SKEWER,
+            IRON_LAMB_SKEWER, IRON_BEEF_ROLL_SKEWER, IRON_BEEF_SKEWER,
             GRILLED_LAMB_SKEWER, GRILLED_BEEF_SKEWER, GRILLED_CHICKEN_SKEWER,
             SALT_GRILLED_LAMB, SALT_GRILLED_BEEF, SALT_GRILLED_CHICKEN,
             CHILI_GRILLED_LAMB, CHILI_GRILLED_BEEF, CHILI_GRILLED_CHICKEN);

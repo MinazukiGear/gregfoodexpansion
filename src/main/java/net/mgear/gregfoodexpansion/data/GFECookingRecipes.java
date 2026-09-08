@@ -77,6 +77,24 @@ public final class GFECookingRecipes {
                 .inputItems(GFEFormItems.FATTY_MUTTON_ROLL.get())
                 .inputFluids(GTMaterials.Water, 200)
                 .outputItems(GFEDishes.SHABU_MUTTON.get()));
+        soup(provider, "tomato_egg_soup", 200, 8, b -> b
+                .inputItems(GFEFormItems.TOMATO_DICED.get()).inputItems(Items.EGG)
+                .inputFluids(GTMaterials.Water, 200)
+                .outputItems(GFEDishes.TOMATO_EGG_SOUP.get()));
+        soup(provider, "beef_soup", 300, 8, b -> b
+                .inputItems(GFEFormItems.BEEF_SLICE.get()).inputFluids(GTMaterials.Water, 250)
+                .outputItems(GFEDishes.BEEF_SOUP.get()));
+        soup(provider, "chicken_soup", 300, 8, b -> b
+                .inputItems(Items.CHICKEN).inputFluids(GTMaterials.Water, 250)
+                .outputItems(GFEDishes.CHICKEN_SOUP.get()));
+        soup(provider, "peanut_soup", 300, 8, b -> b
+                .inputItems(GFECropItems.PEANUT.get(), 2).inputItems(Items.SUGAR)
+                .inputFluids(GTMaterials.Water, 200)
+                .outputItems(GFEDishes.PEANUT_SOUP.get()));
+        soup(provider, "geda_soup", 200, 8, b -> b
+                .inputItems(GFEFormItems.DOUGH_SHEET.get()).inputItems(GFEFormItems.TOMATO_DICED.get())
+                .inputItems(Items.EGG).inputFluids(GTMaterials.Water, 200)
+                .outputItems(GFEDishes.GEDA_SOUP.get()));
         soup(provider, "beef_rice_bowl", 400, 12, b -> b
                 .inputItems(GFEDishes.STEAMED_RICE.get()).inputItems(GFEFormItems.FATTY_BEEF_ROLL.get())
                 .inputItems(GFEFormItems.ONION_DICED.get())
@@ -108,6 +126,12 @@ public final class GFECookingRecipes {
         steam(provider, "white_cake", 300, 12, b -> b
                 .inputItems(GFEFormItems.RICE_FLOUR.get(), 3).inputItems(Items.SUGAR, 2)
                 .outputItems(GFEDishes.WHITE_CAKE.get()));
+        steam(provider, "steamed_fish", 240, 12, b -> b
+                .inputItems(GFEFormItems.FISH_CUBE.get())
+                .outputItems(GFEDishes.STEAMED_FISH.get()));
+        steam(provider, "steamed_meat_patty", 240, 12, b -> b
+                .inputItems(GFEFormItems.CHICKEN_MINCED.get()).inputItems(Items.EGG)
+                .outputItems(GFEDishes.STEAMED_MEAT_PATTY.get()));
 
         // ---- c3 炒:200-250 tick / 16-20 EU/t + 食用油 10 mB ----
         stirfry(provider, "tomato_scrambled_egg", 200, 16, b -> b
@@ -139,6 +163,18 @@ public final class GFECookingRecipes {
                 .inputItems(GFEFormItems.RICE_NOODLES.get()).inputItems(GFEFormItems.BEEF_SLICE.get())
                 .inputItems(GFEFormItems.CABBAGE_STRIP.get())
                 .outputItems(GFEDishes.BEEF_CHOW_FUN.get()));
+        stirfry(provider, "tomato_beef", 200, 16, b -> b
+                .inputItems(GFEFormItems.TOMATO_DICED.get()).inputItems(GFEFormItems.BEEF_SLICE.get())
+                .outputItems(GFEDishes.TOMATO_BEEF.get()));
+        stirfry(provider, "onion_fried_lamb", 200, 16, b -> b
+                .inputItems(GFEFormItems.ONION_DICED.get()).inputItems(GFEFormItems.MUTTON_SLICE.get())
+                .outputItems(GFEDishes.ONION_FRIED_LAMB.get()));
+        stirfry(provider, "cabbage_fried_pork", 200, 16, b -> b
+                .inputItems(GFEFormItems.CABBAGE_STRIP.get()).inputItems(GFEFormItems.PORK_SLICE.get())
+                .outputItems(GFEDishes.CABBAGE_FRIED_PORK.get()));
+        stirfry(provider, "muxu_pork", 240, 20, b -> b
+                .inputItems(GFEFormItems.PORK_STRIP.get()).inputItems(Items.EGG)
+                .outputItems(GFEDishes.MUXU_PORK.get()));
 
         // ---- c4 炸:160-200 tick / 24-28 EU/t + 食用油 20-30 mB ----
         fry(provider, "fries", 160, 24, 100, b -> b
@@ -197,6 +233,9 @@ public final class GFECookingRecipes {
         bake(provider, "baked_corn", 3, 200, 20, b -> b
                 .inputItems(GFECropItems.CORN.get(), 2)
                 .outputItems(GFEDishes.BAKED_CORN.get(), 2));
+        bake(provider, "grilled_fish", 3, 200, 20, b -> b
+                .inputItems(GFEFormItems.FISH_CUBE.get())
+                .outputItems(GFEDishes.GRILLED_FISH.get()));
         bake(provider, "garlic_baguette", 3, 240, 20, b -> b
                 .inputItems(GFEFormItems.BAGUETTE_SLICE.get())
                 .inputItems(GFEFormItems.GARLIC_MINCED.get())
@@ -241,6 +280,10 @@ public final class GFECookingRecipes {
                 .inputItems(GFEFormItems.FATTY_BEEF_ROLL.get())
                 .inputItems(GFEFormItems.IRON_SKEWER.get())
                 .outputItems(GFEDishes.IRON_BEEF_ROLL_SKEWER.get()));
+        cook(provider, "iron_beef_skewer", 6, 200, 16, b -> b
+                .inputItems(GFEFormItems.BEEF_SLICE.get(), 2)
+                .inputItems(GFEFormItems.IRON_SKEWER.get())
+                .outputItems(GFEDishes.IRON_BEEF_SKEWER.get()));
 
         // ---- 熟牛肉饼(c3 煎):肉饼链生肉饼 → 熟肉饼(dishes-and-gains.md §5) ----
         GFERecipeTypes.COOKING.recipeBuilder(GregFoodExpansion.id("cooking/cooked_beef_patty"))

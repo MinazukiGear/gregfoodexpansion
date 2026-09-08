@@ -35,6 +35,7 @@ public final class GFERecipes {
         skewer(provider, "beef", GFEFormItems.RAW_BEEF_SKEWER.get(), GFEDishes.CAMPFIRE_BEEF_SKEWER.get());
         skewer(provider, "chicken", GFEFormItems.RAW_CHICKEN_SKEWER.get(), GFEDishes.CAMPFIRE_CHICKEN_SKEWER.get());
         skewer(provider, "chili", GFEFormItems.RAW_CHILI_SKEWER.get(), GFEDishes.CAMPFIRE_CHILI_SKEWER.get());
+        skewer(provider, "chicken_feet", GFEFormItems.RAW_CHICKEN_FEET_SKEWER.get(), GFEDishes.CAMPFIRE_CHICKEN_FEET_SKEWER.get());
     }
 
     private static void skewer(Consumer<FinishedRecipe> provider, String meat,
@@ -131,6 +132,9 @@ public final class GFERecipes {
         VanillaRecipeHelper.addShapelessRecipe(provider, id("raw_chili_skewer"),
                 new net.minecraft.world.item.ItemStack(GFEFormItems.RAW_CHILI_SKEWER.get()),
                 GFEFormItems.WOODEN_SKEWER.get(), GFECropItems.CHILI.get());
+        VanillaRecipeHelper.addShapelessRecipe(provider, id("raw_chicken_feet_skewer"),
+                new net.minecraft.world.item.ItemStack(GFEFormItems.RAW_CHICKEN_FEET_SKEWER.get()),
+                GFEFormItems.WOODEN_SKEWER.get(), GFEFormItems.CHICKEN_FEET.get());
 
         // 三明治/汉堡装配(dishes-and-gains.md §5):基座标签同时接受面包片与切好的面包
         VanillaRecipeHelper.addShapelessRecipe(provider, id("vegetable_sandwich"),
