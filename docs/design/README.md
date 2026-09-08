@@ -6,7 +6,7 @@
 
 1. [overview.md](overview.md) — **总纲**:定位、主线三问、十条设计原则、跨度与数量总账(必读)
 2. [tier-map.md](tier-map.md) — 电压铺排:ULV–ZPM 钥匙制、UV–OpV 顶档闭合、MAX 终局
-3. [machines.md](machines.md) — 机器体系:多方块优先,9 台多方块 + GT 复用清单
+3. [machines.md](machines.md) — 机器体系:多方块优先,17 台多方块 + GT 复用清单
 4. 内容体系:crops.md(作物)/ livestock.md(肉蛋奶)/ food-processing.md(食材处理与配料宇宙)/ fermentation-biochem.md(发酵·酶·菌种)
 5. 菜肴体系:cuisine-matrix.md(A 群矩阵)/ signature-cuisine.md(B 群签名与菜系包)/ gains-nutrition.md(增益·SoL)
 6. 支撑体系:gt-interlocks.md(化工咬合)/ content-pipeline.md(管线与治理)/ milestones.md(里程碑)
