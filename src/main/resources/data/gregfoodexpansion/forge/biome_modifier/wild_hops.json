@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#gregfoodexpansion:wild/temperate_cool",
-  "features": "gregfoodexpansion:wild_hops",
-  "step": "vegetal_decoration"
-}

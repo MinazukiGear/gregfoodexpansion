@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#gregfoodexpansion:wild/hot",
-  "features": "gregfoodexpansion:wild_chili",
-  "step": "vegetal_decoration"
-}

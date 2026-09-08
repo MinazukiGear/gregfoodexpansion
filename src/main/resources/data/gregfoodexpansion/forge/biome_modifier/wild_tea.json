@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#gregfoodexpansion:wild/temperate_humid",
-  "features": "gregfoodexpansion:wild_tea",
-  "step": "vegetal_decoration"
-}

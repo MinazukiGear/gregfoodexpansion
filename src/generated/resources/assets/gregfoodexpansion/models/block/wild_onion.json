@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "textures": {
-    "cross": "gregfoodexpansion:block/crop/stage_3"
-  }
-}

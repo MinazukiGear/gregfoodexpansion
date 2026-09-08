@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "gregfoodexpansion:block/casings/tunnel_oven_heater"
-  }
-}

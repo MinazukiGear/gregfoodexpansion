@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#gregfoodexpansion:wild/temperate_hot",
-  "features": "gregfoodexpansion:wild_peanut",
-  "step": "vegetal_decoration"
-}

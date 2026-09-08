@@ -1,6 +1,0 @@
-{
-  "type": "forge:add_features",
-  "biomes": "#gregfoodexpansion:wild/temperate",
-  "features": "gregfoodexpansion:wild_corn",
-  "step": "vegetal_decoration"
-}
