@@ -39,7 +39,8 @@
 
 - **跨模组边界**:原料与食品走 forge 通用标签族(`forge:crops/...`、`forge:grain`、`forge:milk`);
   LV 前食品加工仅可手搓,不接蒸汽机器(与姊妹项目"蒸汽不被电力架空"对称成双向单向门);
-- **高档模式契约**:`requiresHighTier()=true` 全局开启 GTCEu 高档模式(tier-map.md §2),
-  UHV+ 外壳/仓室对本整合包解禁——README 需明示;
+- **高档模式双态注册**:本模组不强制开启高档(`requiresHighTier()` 默认 false)——默认内容至 UV;
+  分子料理编译器(OpV)、造粮机(MAX)与 UHV+ 配料内容仅在 `GTCEuAPI.isHighTier()` 为真时注册,
+  整合包以 `machines.highTierContent=true` 或其他附属声明开启高档后自动补全;
 - **难度档位**:默认与姊妹项目各自独立,整合包可统一覆盖;
 - **UUM**:GTCEu 复制机三无状态(仅 lang 残留),终局食品走元素级合成,不依赖 UUM。

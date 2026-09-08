@@ -7,11 +7,12 @@ import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 /**
  * GTCEu 附属接入点。
  *
- * requiresHighTier()=true 是顶档政策的实现契约(tier-map.md §2):
- * 本模组内容铺排到 OpV、MAX 收尾,依赖 GTCEu 高档模式提供的 UHV+ 外壳/仓室
- * 与 OpV 档机器支持;该声明会为本整合包环境全局开启高档模式
- * (等价于 machines.highTierContent=true),副作用(解禁 GT 的 UHV+ 外壳与仓室)
- * 需在 README 面向整合包作者明示。
+ * 高档模式策略(tier-map.md §2):本模组**不强制开启**高档模式——
+ * requiresHighTier() 保持默认 false。默认环境内容实装至 UV 收口
+ * (元素膳造厂为 UV 机器,标准档位可用);UHV–OpV/MAX 后续内容
+ * (风味/质构/缓释配料、分子料理编译器、造粮机)在注册期检测
+ * {@code GTCEuAPI.isHighTier()},仅高档环境注册。整合包通过
+ * {@code machines.highTierContent=true} 开启高档后自动补全。
  */
 @GTAddon
 public final class GregFoodExpansionAddon implements IGTAddon {
@@ -23,11 +24,6 @@ public final class GregFoodExpansionAddon implements IGTAddon {
     @Override
     public void initializeAddon() {
         // 内容注册随实装批次重建(见 docs/design/milestones.md)
-    }
-
-    @Override
-    public boolean requiresHighTier() {
-        return true;
     }
 
     @Override
