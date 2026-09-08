@@ -115,7 +115,7 @@
 | 文档 | 内容 |
 | --- | --- |
 | [tier-map.md](tier-map.md) | 电压铺排全表:ULV–ZPM 钥匙制、UV–OpV 顶档闭合、MAX、供能 |
-| [machines.md](machines.md) | 多方块优先机器总表(17 台多方块 + GT 复用清单) |
+| [machines.md](machines.md) | 多方块优先机器总表(21 台多方块 + GT 复用清单) |
 | [crops.md](crops.md) | 作物体系:品位维度、三票制、家常覆盖批全清单、候选池、育种 |
 | [livestock.md](livestock.md) | 肉蛋奶畜牧:源层、分割转录、蛋系乳系、饲养品位闭环 |
 | [food-processing.md](food-processing.md) | 食材处理与配料宇宙:工艺总表、手工层、生熟分品 |
