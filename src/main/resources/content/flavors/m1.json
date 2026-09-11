@@ -1,0 +1,5 @@
+[
+  {"id": "scallion-oil", "name": {"zh": "葱油", "en": "Scallion Oil"}, "kind": "intermediate", "grades": ["fatty-acid"], "tier": "LV", "batch": "M1"},
+  {"id": "dried-tofu", "name": {"zh": "豆腐干", "en": "Dried Tofu"}, "kind": "intermediate", "grades": ["protein"], "tier": "LV", "batch": "M1"},
+  {"id": "chicken-stock", "name": {"zh": "高汤底", "en": "Chicken Stock"}, "kind": "intermediate", "grades": ["umami"], "tier": "ULV", "batch": "M1"}
+]

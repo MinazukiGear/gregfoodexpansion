@@ -1,0 +1,14 @@
+[
+  {"id": "hand-cut", "name": {"zh": "切配(刀具组)", "en": "Hand Cutting"}, "tier": "ULV", "carrier": "工作台刀具组(菜刀/削皮刀/研钵/擀面杖)"},
+  {"id": "wrap-shape", "name": {"zh": "包制成型", "en": "Wrapping & Shaping"}, "tier": "ULV", "carrier": "工作台(擀面杖)"},
+  {"id": "mix", "name": {"zh": "拌制", "en": "Tossing"}, "tier": "ULV", "carrier": "工作台"},
+  {"id": "pot-boil", "name": {"zh": "水煮", "en": "Clay Pot Boiling"}, "tier": "ULV", "carrier": "陶罐(篝火加热)"},
+  {"id": "pot-stew", "name": {"zh": "炖煮", "en": "Clay Pot Stewing"}, "tier": "ULV", "carrier": "陶罐(篝火加热)"},
+  {"id": "campfire-roast", "name": {"zh": "篝火烤", "en": "Campfire Roasting"}, "tier": "ULV", "carrier": "篝火(单料)"},
+  {"id": "pot-ferment", "name": {"zh": "常温发酵", "en": "Ambient Fermentation"}, "tier": "ULV", "carrier": "陶罐(常温放置)"},
+  {"id": "stirfry", "name": {"zh": "炒制", "en": "Stir-frying"}, "tier": "LV", "carrier": "烹饪工坊·炒模式(手工不收编炒锅)"},
+  {"id": "steam", "name": {"zh": "蒸制", "en": "Steaming"}, "tier": "LV", "carrier": "烹饪工坊·蒸模式"},
+  {"id": "bakery", "name": {"zh": "烘焙(基础)", "en": "Baking (Basic)"}, "tier": "LV", "carrier": "烹饪工坊·烤模式(量产上位=隧道烤炉 MV)"},
+  {"id": "press-extract", "name": {"zh": "磨浆/榨汁/榨油", "en": "Pulping / Juicing / Oil Pressing"}, "tier": "LV", "carrier": "切配工坊 + GT 提取机(油类全在电力时代后)"},
+  {"id": "cure", "name": {"zh": "腌制", "en": "Curing"}, "tier": "HV", "carrier": "酿窖·固态发酵模块"}
+]

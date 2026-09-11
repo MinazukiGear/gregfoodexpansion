@@ -1,0 +1,3 @@
+[
+  {"id": "braised-shredded-tofu", "name": {"zh": "大煮干丝", "en": "Braised Shredded Tofu"}, "cuisine": "huaiyang", "level": "standard", "ingredients": ["b2:dried-tofu", "animal:ham", "b2:chicken-stock", "crop:bamboo-shoot"], "craft": ["hand-cut", "pot-stew"], "exclusive": null, "naturalGate": null, "gradeResponse": "scaled", "source": {"tier": 2, "ref": "淮扬菜谱(百科可检索)"}, "textureLevel": "ai-refined", "batch": "M1"}
+]

@@ -1,0 +1,12 @@
+[
+  {"id": "chicken", "name": {"zh": "鸡", "en": "Chicken"}, "source": "vanilla", "products": [
+    {"id": "egg", "name": {"zh": "鸡蛋", "en": "Egg"}, "grades": ["protein"], "tier": "ULV", "via": null},
+    {"id": "chicken-meat", "name": {"zh": "生鸡肉", "en": "Raw Chicken"}, "grades": ["protein"], "tier": "ULV", "via": null},
+    {"id": "chicken-cut", "name": {"zh": "鸡肉丁", "en": "Diced Chicken"}, "grades": ["protein"], "tier": "ULV", "via": "hand-cut"}
+  ]},
+  {"id": "cow", "name": {"zh": "牛", "en": "Cow"}, "source": "vanilla", "products": [
+    {"id": "beef", "name": {"zh": "生牛肉", "en": "Raw Beef"}, "grades": ["protein"], "tier": "ULV", "via": null},
+    {"id": "beef-mince", "name": {"zh": "牛肉末", "en": "Minced Beef"}, "grades": ["protein"], "tier": "ULV", "via": "hand-cut"},
+    {"id": "ham", "name": {"zh": "火腿", "en": "Ham"}, "grades": ["protein", "umami"], "tier": "HV", "via": "cure"}
+  ]}
+]

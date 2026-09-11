@@ -335,3 +335,39 @@ tasks.withType(JavaCompile).configureEach {
     dependsOn tasks.named('extractGtceuEmbeddedDependencies')
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
+
+// ---------------------------------------------------------------------------
+// 内容管线(content-pipeline.md):表 lint(构建期断言)+ 贴图管线。
+// 表的权威存放 = src/main/resources/content(2026-09-12 定案);
+// 内容增删改 = 数据表 PR + contentLint 通过,错误级问题使构建失败。
+// ---------------------------------------------------------------------------
+def contentDir = file('src/main/resources/content')
+
+tasks.register('contentLint', JavaExec) {
+    group = 'verification'
+    description = '内容表 lint:规则 1~10(content-pipeline.md §5),错误级 = 构建失败,警告级 = 缺口报告'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'net.mgear.gregfoodexpansion.content.lint.ContentLintMain'
+    args contentDir.absolutePath,
+            file('src/generated/resources/assets').absolutePath,
+            file('src/main/resources/assets').absolutePath,
+            layout.buildDirectory.file('reports/content-lint.txt').get().asFile.absolutePath
+    jvmArgs '-Dfile.encoding=UTF-8'
+}
+tasks.named('check') { dependsOn contentLint }
+
+// runData 前先过 lint:表坏则不产出脏 datagen 结果
+tasks.matching { it.name == 'runData' }.configureEach { dependsOn contentLint }
+
+tasks.register('generateTextures', JavaExec) {
+    group = 'content pipeline'
+    description = '贴图管线:模板调色(作物生长期)+ 分层合成(菜肴碗基底×内容物层);占位模板缺失时自动生成'
+    dependsOn tasks.named('classes')
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'net.mgear.gregfoodexpansion.content.textures.TexturesGenMain'
+    args contentDir.absolutePath,
+            file('src/templates').absolutePath,
+            file('src/generated/resources/assets').absolutePath
+    jvmArgs '-Dfile.encoding=UTF-8'
+}

@@ -1,0 +1,3 @@
+[
+  {"id": "chive-egg-dumplings", "name": {"zh": "韭菜鸡蛋饺", "en": "Chive & Egg Dumplings"}, "aliases": ["韭菜饺"], "main": ["base:dough-skin", "crop:chive", "animal:egg"], "aux": ["crop:ginger"], "flavor": null, "craft": ["wrap-shape", "pot-boil"], "quality": "basic", "variant": "含素变体(韭菜粉丝饺)", "batch": "M1", "source": {"tier": 2, "ref": "家常菜谱(百科可检索)"}}
+]

@@ -2,9 +2,10 @@
 
 基于 Minecraft 1.20.1 Forge 的**生物工业主线**附属模组,围绕 GregTech CEu Modern 展开玩法设计。
 
-> **⚠ 设计重置中(代码未开始实装)**:2026-09-09 完成设计 v2.0 全量重写——旧版设计文档、
-> 内容代码与贴图已整体废弃删除(git 历史可考古)。新设计概要见
-> [`docs/design/overview.md`](docs/design/overview.md),当前仓库为工程骨架 + 完整设计文档集。
+> **⚠ 设计 v2.0 重置完成,内容管线已落地(2026-09-12)**:旧版设计文档、内容代码与贴图
+> 已整体废弃删除(git 历史可考古)。新设计概要见
+> [`docs/design/overview.md`](docs/design/overview.md);内容管线(M1' 第 7 项:三张核心表 +
+> lint 全清单 + 贴图管线)已实装,内容本身随 M1'(家常覆盖批)起分批入库。
 >
 > **⚠ 本项目大量使用 AI 辅助开发**:设计文档与后续代码、贴图均在 AI 协助下完成,产出经人工审核合入。
 > 一切以设计文档标注"方向已定案/已定案"的内容为准,未标注数值均为草案。
@@ -60,9 +61,15 @@ EMI、Jade、JECh(拼音搜索)、精妙背包/存储、Modern UI、GTM Things(�
 ```powershell
 .\gradlew.bat genIntellijRuns   # 生成 IDEA 运行配置(JDK 17)
 .\gradlew.bat runClient         # 启动开发客户端
-.\gradlew.bat build -x test     # 构建发布 JAR(build/libs/)
-.\gradlew.bat runData           # 重新生成数据(资源/配方/语言)
+.\gradlew.bat build -x test     # 构建发布 JAR(build/libs/,含内容 lint)
+.\gradlew.bat runData           # 重新生成数据(语言/资源/配方,先过内容 lint)
+.\gradlew.bat contentLint       # 内容表 lint(规则 1~10,报告见 build/reports/)
+.\gradlew.bat generateTextures  # 贴图管线(模板调色 + 菜肴分层合成)
 ```
+
+内容增删改走数据表(`src/main/resources/content/`,规则见
+[`docs/design/content-pipeline.md`](docs/design/content-pipeline.md)):改表 →
+`contentLint` 通过 → `runData`/`generateTextures` 重新生成,生成产物入库提交。
 
 若系统默认 Java 不是 17,先设置 `$env:JAVA_HOME` 指向 JDK 17。
 

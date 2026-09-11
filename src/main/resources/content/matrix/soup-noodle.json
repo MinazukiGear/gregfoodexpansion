@@ -1,0 +1,4 @@
+[
+  {"id": "tomato-egg-noodles", "name": {"zh": "番茄鸡蛋面", "en": "Tomato & Egg Noodles"}, "aliases": [], "main": ["base:noodles", "crop:tomato", "animal:egg"], "aux": ["crop:scallion"], "flavor": null, "craft": ["hand-cut", "pot-boil"], "quality": "basic", "variant": null, "batch": "M1", "source": {"tier": 2, "ref": "家常菜谱(百科可检索)"}},
+  {"id": "yangchun-noodles", "name": {"zh": "阳春面", "en": "Yangchun Noodles"}, "aliases": ["清汤面", "光面"], "main": ["base:noodles", "b2:scallion-oil"], "aux": ["crop:scallion"], "flavor": null, "craft": ["pot-boil", "mix"], "quality": "basic", "variant": null, "batch": "M1", "source": {"tier": 2, "ref": "家常菜谱(百科可检索,沪式传统)"}}
+]

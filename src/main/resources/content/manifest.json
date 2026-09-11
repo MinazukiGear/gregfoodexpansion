@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "languages": ["zh_cn", "en_us", "en_ud"],
+  "tiers": ["ULV", "LV", "MV", "HV", "EV", "IV", "LuV", "ZPM", "UV"],
+  "defaultRegisteredCeiling": "UV",
+  "gainCeiling": {"tier": "MAX", "owner": "造粮机"},
+  "gates": {
+    "sampleReachableRate": 0.5,
+    "sampleTargetRate": 0.75,
+    "ingredientRedundancyMin": 3,
+    "leverBand": {"min": 10, "max": 13}
+  }
+}

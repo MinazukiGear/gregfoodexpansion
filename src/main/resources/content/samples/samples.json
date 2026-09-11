@@ -1,0 +1,9 @@
+[
+  {"name": {"zh": "番茄炒蛋", "en": "Stir-fried Tomato & Egg"}, "ingredients": ["crop:tomato", "animal:egg", "base:cooking-oil"], "craft": ["stirfry"]},
+  {"name": {"zh": "蛋炒饭", "en": "Egg Fried Rice"}, "ingredients": ["base:cooked-rice", "animal:egg", "crop:scallion", "base:cooking-oil"], "craft": ["stirfry"]},
+  {"name": {"zh": "韭菜炒蛋", "en": "Stir-fried Chive & Egg"}, "ingredients": ["crop:chive", "animal:egg", "base:cooking-oil"], "craft": ["stirfry"]},
+  {"name": {"zh": "阳春面", "en": "Yangchun Noodles"}, "ingredients": ["base:noodles", "b2:scallion-oil", "crop:scallion"], "craft": ["pot-boil", "mix"]},
+  {"name": {"zh": "香菇炖鸡", "en": "Stewed Chicken with Shiitake"}, "ingredients": ["crop:shiitake", "animal:chicken-meat"], "craft": ["pot-stew"]},
+  {"name": {"zh": "大煮干丝", "en": "Braised Shredded Tofu"}, "ingredients": ["b2:dried-tofu", "animal:ham", "b2:chicken-stock", "crop:bamboo-shoot"], "craft": ["pot-stew"]},
+  {"name": {"zh": "麻婆豆腐", "en": "Mapo Tofu"}, "ingredients": ["b2:dried-tofu", "animal:beef-mince", "b2:doubanjiang", "crop:huajiao", "crop:garlic"], "craft": ["stirfry"]}
+]
