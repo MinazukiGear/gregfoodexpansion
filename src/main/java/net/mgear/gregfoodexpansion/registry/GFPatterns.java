@@ -79,17 +79,17 @@ public final class GFPatterns {
         return builder.build();
     }
 
-    /** 预览布局(EMI/Jade 结构预览):仓室以实际机器渲染。 */
+    /** 预览布局(EMI/Jade 结构预览):仓室以实际机器渲染,示例仓室取机器同档。 */
     public static MultiblockShapeInfo workshopShape(MultiblockMachineDefinition definition, Block casing) {
-        return boxShape(WORKSHOP_LAYERS, casing, definition);
+        return boxShape(WORKSHOP_LAYERS, casing, definition, GTValues.LV);
     }
 
     public static MultiblockShapeInfo tunnelOvenShape(MultiblockMachineDefinition definition, Block casing) {
-        return boxShape(TUNNEL_LAYERS, casing, definition);
+        return boxShape(TUNNEL_LAYERS, casing, definition, GTValues.MV);
     }
 
     private static MultiblockShapeInfo boxShape(String[][] layers, Block casing,
-                                                MultiblockMachineDefinition definition) {
+                                                MultiblockMachineDefinition definition, int hatchTier) {
         // 层约定 → 预览坐标系换算与姊妹项目一致:自前向后逐行,行内自下而上取各层同位字符。
         int height = layers.length;
         int width = layers[0][0].length();
@@ -107,9 +107,9 @@ public final class GFPatterns {
             builder.aisle(previewRows);
         }
         builder.where('C', casing);
-        builder.where('I', GTMachines.ITEM_IMPORT_BUS[GTValues.LV], Direction.NORTH);
-        builder.where('O', GTMachines.ITEM_EXPORT_BUS[GTValues.LV], Direction.NORTH);
-        builder.where('E', GTMachines.ENERGY_INPUT_HATCH[GTValues.LV], Direction.NORTH);
+        builder.where('I', GTMachines.ITEM_IMPORT_BUS[hatchTier], Direction.NORTH);
+        builder.where('O', GTMachines.ITEM_EXPORT_BUS[hatchTier], Direction.NORTH);
+        builder.where('E', GTMachines.ENERGY_INPUT_HATCH[hatchTier], Direction.NORTH);
         builder.where('A', Blocks.AIR);
         builder.where('#', Blocks.AIR);
         builder.where('D', definition, Direction.NORTH);
