@@ -4,6 +4,8 @@ import com.gregtechceu.gtceu.api.addon.GTAddon;
 import com.gregtechceu.gtceu.api.addon.IGTAddon;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 
+import net.mgear.gregfoodexpansion.registry.GFERegistration;
+
 /**
  * GTCEu 附属接入点。
  *
@@ -18,7 +20,7 @@ import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 public final class GregFoodExpansionAddon implements IGTAddon {
     @Override
     public GTRegistrate getRegistrate() {
-        return GTRegistrate.create(GregFoodExpansion.MOD_ID);
+        return GFERegistration.REGISTRATE;
     }
 
     @Override

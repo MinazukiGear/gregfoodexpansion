@@ -1,4 +1,8 @@
 {
+  "block.gregfoodexpansion.cooking_workshop": "Cooking Workshop",
+  "block.gregfoodexpansion.prep_workshop": "Prep Workshop",
+  "block.gregfoodexpansion.tunnel_oven": "Tunnel Oven",
+  "gregfoodexpansion.machine.skeleton_note": "Skeleton build: structure first; recipes arrive with the M1' content batches.",
   "item.gregfoodexpansion.bamboo-shoot": "Bamboo Shoot",
   "item.gregfoodexpansion.beef": "Raw Beef",
   "item.gregfoodexpansion.beef-mince": "Minced Beef",

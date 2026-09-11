@@ -21,6 +21,7 @@ import net.mgear.gregfoodexpansion.content.ContentTypes.AnimalEntry;
 import net.mgear.gregfoodexpansion.content.ContentTypes.BaseIngredientEntry;
 import net.mgear.gregfoodexpansion.content.ContentTypes.CropEntry;
 import net.mgear.gregfoodexpansion.content.ContentTypes.FlavorEntry;
+import net.mgear.gregfoodexpansion.content.ContentTypes.MachineEntry;
 import net.mgear.gregfoodexpansion.content.ContentTypes.Manifest;
 import net.mgear.gregfoodexpansion.content.ContentTypes.MatrixTable;
 import net.mgear.gregfoodexpansion.content.ContentTypes.ProcessEntry;
@@ -36,6 +37,7 @@ public final class ContentTables {
 
     public final Manifest manifest;
     public final List<ProcessEntry> processes;
+    public final List<MachineEntry> machines;
     public final List<CropEntry> crops;
     public final List<FlavorEntry> flavors;
     public final List<BaseIngredientEntry> baseIngredients;
@@ -44,12 +46,14 @@ public final class ContentTables {
     public final List<RegistryTable> registryTables;
     public final List<SampleRow> samples;
 
-    private ContentTables(Manifest manifest, List<ProcessEntry> processes, List<CropEntry> crops,
-                          List<FlavorEntry> flavors, List<BaseIngredientEntry> baseIngredients,
-                          List<AnimalEntry> animals, List<MatrixTable> matrixTables,
-                          List<RegistryTable> registryTables, List<SampleRow> samples) {
+    private ContentTables(Manifest manifest, List<ProcessEntry> processes, List<MachineEntry> machines,
+                          List<CropEntry> crops, List<FlavorEntry> flavors,
+                          List<BaseIngredientEntry> baseIngredients, List<AnimalEntry> animals,
+                          List<MatrixTable> matrixTables, List<RegistryTable> registryTables,
+                          List<SampleRow> samples) {
         this.manifest = manifest;
         this.processes = processes;
+        this.machines = machines;
         this.crops = crops;
         this.flavors = flavors;
         this.baseIngredients = baseIngredients;
@@ -77,6 +81,8 @@ public final class ContentTables {
                     new TypeToken<Manifest>() {}.getType());
             List<ProcessEntry> processes = read(source, "processes.json",
                     new TypeToken<List<ProcessEntry>>() {}.getType());
+            List<MachineEntry> machines = readDir(source, "machines",
+                    new TypeToken<List<MachineEntry>>() {}.getType());
             List<CropEntry> crops = readDir(source, "crops",
                     new TypeToken<List<CropEntry>>() {}.getType());
             List<FlavorEntry> flavors = readDir(source, "flavors",
@@ -102,9 +108,9 @@ public final class ContentTables {
             if (manifest == null) {
                 throw new IOException("缺少 content/manifest.json");
             }
-            return new ContentTables(manifest, nullSafe(processes), nullSafe(crops), nullSafe(flavors),
-                    nullSafe(bases), nullSafe(animals), List.copyOf(matrix), List.copyOf(registry),
-                    nullSafe(samples));
+            return new ContentTables(manifest, nullSafe(processes), nullSafe(machines), nullSafe(crops),
+                    nullSafe(flavors), nullSafe(bases), nullSafe(animals), List.copyOf(matrix),
+                    List.copyOf(registry), nullSafe(samples));
         }
     }
 

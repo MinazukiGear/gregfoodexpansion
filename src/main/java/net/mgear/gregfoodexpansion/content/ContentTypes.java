@@ -52,6 +52,9 @@ public final class ContentTypes {
     /** 处理侧工艺钥匙(food-processing.md §3):tier = 最早可达档位。 */
     public record ProcessEntry(String id, BilingualName name, String tier, String carrier) {}
 
+    /** 多方块机器总表行(machines.md §1):tier ∈ manifest.tiers;purpose = 单一用途描述。 */
+    public record MachineEntry(String id, BilingualName name, String tier, String purpose, String batch) {}
+
     /** 组合表行(cuisine-matrix.md §3)。品质轨 quality ∈ basic/refined/synthetic。 */
     public record MatrixRow(String id, BilingualName name, List<String> aliases, List<String> main,
                             List<String> aux, String flavor, List<String> craft, String quality,

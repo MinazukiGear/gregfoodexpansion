@@ -1,14 +1,19 @@
 package net.mgear.gregfoodexpansion;
 
 import com.mojang.logging.LogUtils;
+import com.gregtechceu.gtceu.api.GTCEuAPI;
+import com.gregtechceu.gtceu.api.machine.MachineDefinition;
+import com.gregtechceu.gtceu.api.recipe.GTRecipeType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.mgear.gregfoodexpansion.registry.GFMachines;
+import net.mgear.gregfoodexpansion.registry.GFRecipeTypes;
 import org.slf4j.Logger;
 
 /**
- * 模组入口。设计文档 v2 重置后为空骨架:内容注册随各专项文档实装批次重建,
+ * 模组入口。设计文档 v2 重置后重建:内容管线(docs/design/content-pipeline.md)+ M1' 机器骨架,
  * 架构与批次见 docs/design/(总纲:overview.md)。
  */
 @Mod(GregFoodExpansion.MOD_ID)
@@ -20,6 +25,17 @@ public final class GregFoodExpansion {
     public GregFoodExpansion(final FMLJavaModLoadingContext context) {
         var modEventBus = context.getModEventBus();
         modEventBus.addListener(this::commonSetup);
+        // GTCEu 附属注册时机(镜像姊妹项目):配方类型先于机器注册
+        modEventBus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
+        modEventBus.addGenericListener(MachineDefinition.class, this::registerMachines);
+    }
+
+    private void registerRecipeTypes(final GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {
+        GFRecipeTypes.init(event);
+    }
+
+    private void registerMachines(final GTCEuAPI.RegisterEvent<?, MachineDefinition> event) {
+        GFMachines.init();
     }
 
     private void commonSetup(final net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent event) {

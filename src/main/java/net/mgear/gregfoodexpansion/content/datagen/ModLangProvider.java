@@ -10,6 +10,7 @@ import net.mgear.gregfoodexpansion.content.ContentTypes.BaseIngredientEntry;
 import net.mgear.gregfoodexpansion.content.ContentTypes.BilingualName;
 import net.mgear.gregfoodexpansion.content.ContentTypes.CropEntry;
 import net.mgear.gregfoodexpansion.content.ContentTypes.FlavorEntry;
+import net.mgear.gregfoodexpansion.content.ContentTypes.MachineEntry;
 import net.mgear.gregfoodexpansion.content.ContentTypes.MatrixTable;
 import net.mgear.gregfoodexpansion.content.ContentTypes.RegistryTable;
 import net.mgear.gregfoodexpansion.content.lang.EnglishUpsideDown;
@@ -44,6 +45,12 @@ public final class ModLangProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
+        for (MachineEntry machine : tables.machines) {
+            add("block." + GregFoodExpansion.MOD_ID + "." + machine.id(), pick(machine.name()));
+        }
+        add("gregfoodexpansion.machine.skeleton_note", pick(new BilingualName(
+                "骨架实装阶段:结构先行,配方随 M1' 内容批次开放",
+                "Skeleton build: structure first; recipes arrive with the M1' content batches.")));
         for (CropEntry crop : tables.crops) {
             add("item." + GregFoodExpansion.MOD_ID + "." + crop.id(), pick(crop.name()));
         }

@@ -1,0 +1,5 @@
+[
+  {"id": "prep_workshop", "name": {"zh": "切配工坊", "en": "Prep Workshop"}, "tier": "LV", "purpose": "切配六式/绞碎/香料现磨/剥皮/压延(五段结构化模块,段随内容批次交付)", "batch": "M1"},
+  {"id": "cooking_workshop", "name": {"zh": "烹饪工坊", "en": "Cooking Workshop"}, "tier": "LV", "purpose": "煮(含巴氏低温档)/蒸/炒/炸(四段结构化模块)", "batch": "M1"},
+  {"id": "tunnel_oven", "name": {"zh": "隧道烤炉", "en": "Tunnel Oven"}, "tier": "MV", "purpose": "连续烘烤:基础机架+炉温段模块(低温/中温/高温,段数=并行,强制预热)", "batch": "M1"}
+]

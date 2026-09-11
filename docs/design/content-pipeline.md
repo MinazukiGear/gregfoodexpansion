@@ -45,7 +45,8 @@ id / 类别 / 环境参数(温·湿·光) / 工业归属(类别链模板 + 单�
 辅助表(首版已定案):味型表 `flavors/`(B2 复合味型/中间品,kind 区分)、加工基料表
 `ingredients/`、动物源分割表 `animals/`(产物带 via 最早工艺)、原版接链表 `vanilla-links/`
 (随 M1' 首批实装)、工艺总表 `processes.json`(food-processing.md §3 的机器可读镜像,
-工艺=最早可达档位)、家常样本集 `samples/`(菜名+配料依赖+工艺,可达率审计输入);
+工艺=最早可达档位)、家常样本集 `samples/`(菜名+配料依赖+工艺,可达率审计输入)、
+机器总表 `machines/`(machines.md §1 的表化:id/中英名/档位/单一用途,驱动机器语言生成);
 配料引用语法:`crop:<id>` / `b2:<id>` / `base:<id>` / `animal:<id>` / `vanilla:<id>`。
 
 ## 3. datagen 管线

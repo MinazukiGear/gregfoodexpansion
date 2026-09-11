@@ -1,4 +1,8 @@
 {
+  "block.gregfoodexpansion.cooking_workshop": "烹饪工坊",
+  "block.gregfoodexpansion.prep_workshop": "切配工坊",
+  "block.gregfoodexpansion.tunnel_oven": "隧道烤炉",
+  "gregfoodexpansion.machine.skeleton_note": "骨架实装阶段:结构先行,配方随 M1' 内容批次开放",
   "item.gregfoodexpansion.bamboo-shoot": "竹笋",
   "item.gregfoodexpansion.beef": "生牛肉",
   "item.gregfoodexpansion.beef-mince": "牛肉末",
