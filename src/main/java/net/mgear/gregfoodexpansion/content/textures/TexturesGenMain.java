@@ -36,8 +36,16 @@ public final class TexturesGenMain {
             System.exit(2);
         }
         ContentTables tables = ContentTables.load(new FsSource(java.nio.file.Path.of(args[0])));
-        File templatesDir = new File(args[1]);
-        File outRoot = new File(args[2], "gregfoodexpansion/textures");
+        generate(tables, new File(args[1]), new File(args[2]), TexturesGenMain::write);
+    }
+
+    @FunctionalInterface
+    public interface ImageWriter {
+        void write(File file, BufferedImage image) throws IOException;
+    }
+
+    public static void generate(ContentTables tables, File templatesDir, File assetsRoot, ImageWriter writer) throws IOException {
+        File outRoot = new File(assetsRoot, "gregfoodexpansion/textures");
 
         ensureTemplates(templatesDir);
 
@@ -48,7 +56,7 @@ public final class TexturesGenMain {
                 BufferedImage mask = ImageIO.read(new File(templatesDir, family + "/stage_" + stage + ".png"));
                 int tint = stageColor(crop, stage);
                 File out = new File(outRoot, "item/crop/" + crop.id() + "_stage_" + stage + ".png");
-                write(out, tint(mask, tint));
+                writer.write(out, tint(mask, tint));
             }
             crops++;
         }
@@ -60,7 +68,7 @@ public final class TexturesGenMain {
             for (MatrixRow row : table.rows()) {
                 int contentTint = firstProduceColor(tables, row);
                 BufferedImage composed = compose(bowl, contentMask, contentTint);
-                write(new File(outRoot, "item/dish/" + row.id() + ".png"), composed);
+                writer.write(new File(outRoot, "item/dish/" + row.id() + ".png"), composed);
                 dishes++;
             }
         }

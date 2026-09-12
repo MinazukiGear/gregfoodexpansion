@@ -53,6 +53,11 @@ public final class ContentLint {
     }
 
     public List<LintIssue> run() {
+        try {
+            new net.mgear.gregfoodexpansion.content.GameplayAudit(t).errors().forEach(message -> err(3, "gameplay", message));
+        } catch (IllegalArgumentException | NullPointerException e) {
+            err(3, "gameplay", "Invalid gameplay schema/references: " + e.getMessage());
+        }
         rule1ThreeVotes();
         rule2Source();
         rule3Universe();
@@ -184,6 +189,9 @@ public final class ContentLint {
         Set<String> used = new HashSet<>();
         t.matrixTables.forEach(tb -> tb.rows().forEach(r -> used.addAll(refs(r))));
         t.registryTables.forEach(tb -> tb.rows().forEach(r -> used.addAll(nullList(r.ingredients()))));
+        if (t.gameplay != null && t.gameplay.crafting() != null) {
+            t.gameplay.crafting().forEach(recipe -> used.addAll(nullList(recipe.inputs())));
+        }
         Set<String> universe = new LinkedHashSet<>();
         t.crops.forEach(c -> universe.add("crop:" + c.id()));
         t.flavors.forEach(f -> universe.add("b2:" + f.id()));
@@ -309,12 +317,21 @@ public final class ContentLint {
                 unreachable.add(row.name().zh());
             }
         }
+        if (samples.size() < 100) warn(6, "samples", "正式 M1 验收需 100 道固定样本;当前 " + samples.size() + " 道仅为开发样本");
+        try {
+            var audit = new net.mgear.gregfoodexpansion.content.GameplayAudit(t);
+            long implemented = samples.stream().filter(audit::sampleReachable).count();
+            info(6, "samples", "已实现手工获取链覆盖 %d/%d(%.0f%%);表引用覆盖不等于游戏内验收"
+                    .formatted(implemented, samples.size(), implemented * 100.0 / samples.size()));
+        } catch (RuntimeException e) {
+            warn(6, "samples", "实装链统计不可用: " + e.getMessage());
+        }
         double rate = (samples.size() - unreachable.size()) / (double) samples.size();
         double gate = t.manifest.gates() != null && t.manifest.gates().sampleReachableRate() != null
                 ? t.manifest.gates().sampleReachableRate() : 0.5;
         double target = t.manifest.gates() != null && t.manifest.gates().sampleTargetRate() != null
                 ? t.manifest.gates().sampleTargetRate() : 0.75;
-        info(6, "samples", "家常样本集可达率 %.0f%%(%d/%d),门槛 ≥%.0f%%、目标 %.0f%%"
+        info(6, "samples", "家常样本集表引用覆盖率 %.0f%%(%d/%d),门槛 ≥%.0f%%、目标 %.0f%%"
                 .formatted(rate * 100, samples.size() - unreachable.size(), samples.size(),
                         gate * 100, target * 100));
         if (rate < gate) {
@@ -481,7 +498,9 @@ public final class ContentLint {
                             p.name() != null ? p.name().zh() : id,
                             p.grades() == null ? List.of() : p.grades(), p.tier()), null))
                     .orElseGet(() -> new Resolution(null, "动物源分割表无此 id"));
-            case "vanilla" -> new Resolution(null, "原版接链表未登记该条目");
+            case "vanilla" -> t.vanillaLinks.stream().filter(v -> v.id().equals(id)).findFirst()
+                    .map(v -> new Resolution(new Resolved(ref, v.name().zh(), nullList(v.grades()), v.tier()), null))
+                    .orElseGet(() -> new Resolution(null, "原版接链表未登记该条目"));
             default -> new Resolution(null, "未知 kind '%s'".formatted(kind));
         };
     }

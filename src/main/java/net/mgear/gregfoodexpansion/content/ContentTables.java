@@ -45,12 +45,14 @@ public final class ContentTables {
     public final List<MatrixTable> matrixTables;
     public final List<RegistryTable> registryTables;
     public final List<SampleRow> samples;
+    public final List<ContentTypes.VanillaLink> vanillaLinks;
+    public final ContentTypes.Gameplay gameplay;
 
     private ContentTables(Manifest manifest, List<ProcessEntry> processes, List<MachineEntry> machines,
                           List<CropEntry> crops, List<FlavorEntry> flavors,
                           List<BaseIngredientEntry> baseIngredients, List<AnimalEntry> animals,
                           List<MatrixTable> matrixTables, List<RegistryTable> registryTables,
-                          List<SampleRow> samples) {
+                          List<SampleRow> samples, List<ContentTypes.VanillaLink> vanillaLinks, ContentTypes.Gameplay gameplay) {
         this.manifest = manifest;
         this.processes = processes;
         this.machines = machines;
@@ -61,6 +63,8 @@ public final class ContentTables {
         this.matrixTables = matrixTables;
         this.registryTables = registryTables;
         this.samples = samples;
+        this.vanillaLinks = vanillaLinks;
+        this.gameplay = gameplay;
     }
 
     /** 表数据来源抽象:文件系统(lint/贴图任务)或类路径(datagen)。 */
@@ -105,12 +109,16 @@ public final class ContentTables {
             }
             List<SampleRow> samples = readDir(source, "samples",
                     new TypeToken<List<SampleRow>>() {}.getType());
+            List<ContentTypes.VanillaLink> vanillaLinks = readDir(source, "vanilla-links",
+                    new TypeToken<List<ContentTypes.VanillaLink>>() {}.getType());
+            ContentTypes.Gameplay gameplay = read(source, "gameplay.json",
+                    new TypeToken<ContentTypes.Gameplay>() {}.getType());
             if (manifest == null) {
                 throw new IOException("缺少 content/manifest.json");
             }
             return new ContentTables(manifest, nullSafe(processes), nullSafe(machines), nullSafe(crops),
                     nullSafe(flavors), nullSafe(bases), nullSafe(animals), List.copyOf(matrix),
-                    List.copyOf(registry), nullSafe(samples));
+                    List.copyOf(registry), nullSafe(samples), vanillaLinks, gameplay);
         }
     }
 

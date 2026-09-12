@@ -24,6 +24,14 @@ public final class GregFoodExpansion {
 
     public GregFoodExpansion(final FMLJavaModLoadingContext context) {
         var modEventBus = context.getModEventBus();
+        net.mgear.gregfoodexpansion.registry.GFERegistration.REGISTRATE.registerEventListeners(modEventBus);
+        net.mgear.gregfoodexpansion.registry.GFERegistration.REGISTRATE.creativeModeTab(
+                com.gregtechceu.gtceu.common.data.GTCreativeModeTabs.MACHINE);
+        net.mgear.gregfoodexpansion.registry.GFERegistration.REGISTRATE.addDataGenerator(
+                com.tterrag.registrate.providers.ProviderType.BLOCK_TAGS,
+                provider -> provider.addTag(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE)
+                        .add(net.mgear.gregfoodexpansion.content.runtime.GFContent.CLAY_POT.get()));
+        net.mgear.gregfoodexpansion.content.runtime.GFContent.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         // GTCEu 附属注册时机(镜像姊妹项目):配方类型先于机器注册
         modEventBus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
@@ -39,6 +47,14 @@ public final class GregFoodExpansion {
     }
 
     private void commonSetup(final net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+            for (var link : net.mgear.gregfoodexpansion.content.runtime.GFContent.TABLES.vanillaLinks) {
+                var itemId = ResourceLocation.parse(link.item());
+                if (!net.minecraftforge.registries.ForgeRegistries.ITEMS.containsKey(itemId) || link.item().equals("minecraft:air")) {
+                    throw new IllegalStateException("Unknown vanilla link target: " + link.item());
+                }
+            }
+        });
         LOGGER.info("{} initialized with GTCEu {}.", MOD_NAME, loadedVersion("gtceu"));
     }
 

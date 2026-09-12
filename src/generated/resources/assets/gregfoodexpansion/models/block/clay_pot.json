@@ -1,0 +1,169 @@
+{
+  "parent": "minecraft:block/block",
+  "elements": [
+    {
+      "faces": {
+        "down": {
+          "texture": "#clay"
+        },
+        "east": {
+          "texture": "#clay"
+        },
+        "north": {
+          "texture": "#clay"
+        },
+        "south": {
+          "texture": "#clay"
+        },
+        "up": {
+          "texture": "#clay"
+        },
+        "west": {
+          "texture": "#clay"
+        }
+      },
+      "from": [
+        2,
+        0,
+        2
+      ],
+      "to": [
+        14,
+        2,
+        14
+      ]
+    },
+    {
+      "faces": {
+        "down": {
+          "texture": "#clay"
+        },
+        "east": {
+          "texture": "#clay"
+        },
+        "north": {
+          "texture": "#clay"
+        },
+        "south": {
+          "texture": "#clay"
+        },
+        "up": {
+          "texture": "#clay"
+        },
+        "west": {
+          "texture": "#clay"
+        }
+      },
+      "from": [
+        2,
+        2,
+        2
+      ],
+      "to": [
+        4,
+        12,
+        14
+      ]
+    },
+    {
+      "faces": {
+        "down": {
+          "texture": "#clay"
+        },
+        "east": {
+          "texture": "#clay"
+        },
+        "north": {
+          "texture": "#clay"
+        },
+        "south": {
+          "texture": "#clay"
+        },
+        "up": {
+          "texture": "#clay"
+        },
+        "west": {
+          "texture": "#clay"
+        }
+      },
+      "from": [
+        12,
+        2,
+        2
+      ],
+      "to": [
+        14,
+        12,
+        14
+      ]
+    },
+    {
+      "faces": {
+        "down": {
+          "texture": "#clay"
+        },
+        "east": {
+          "texture": "#clay"
+        },
+        "north": {
+          "texture": "#clay"
+        },
+        "south": {
+          "texture": "#clay"
+        },
+        "up": {
+          "texture": "#clay"
+        },
+        "west": {
+          "texture": "#clay"
+        }
+      },
+      "from": [
+        4,
+        2,
+        2
+      ],
+      "to": [
+        12,
+        12,
+        4
+      ]
+    },
+    {
+      "faces": {
+        "down": {
+          "texture": "#clay"
+        },
+        "east": {
+          "texture": "#clay"
+        },
+        "north": {
+          "texture": "#clay"
+        },
+        "south": {
+          "texture": "#clay"
+        },
+        "up": {
+          "texture": "#clay"
+        },
+        "west": {
+          "texture": "#clay"
+        }
+      },
+      "from": [
+        4,
+        2,
+        12
+      ],
+      "to": [
+        12,
+        12,
+        14
+      ]
+    }
+  ],
+  "textures": {
+    "clay": "minecraft:block/terracotta",
+    "particle": "minecraft:block/terracotta"
+  }
+}

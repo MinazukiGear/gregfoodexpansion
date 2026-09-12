@@ -1,4 +1,5 @@
 [
+  {"name":{"zh":"番茄鸡蛋面","en":"Tomato & Egg Noodles"},"ingredients":["base:noodles","crop:tomato","animal:egg","crop:scallion"],"craft":["hand-cut","pot-boil"]},
   {"name": {"zh": "番茄炒蛋", "en": "Stir-fried Tomato & Egg"}, "ingredients": ["crop:tomato", "animal:egg", "base:cooking-oil"], "craft": ["stirfry"]},
   {"name": {"zh": "蛋炒饭", "en": "Egg Fried Rice"}, "ingredients": ["base:cooked-rice", "animal:egg", "crop:scallion", "base:cooking-oil"], "craft": ["stirfry"]},
   {"name": {"zh": "韭菜炒蛋", "en": "Stir-fried Chive & Egg"}, "ingredients": ["crop:chive", "animal:egg", "base:cooking-oil"], "craft": ["stirfry"]},

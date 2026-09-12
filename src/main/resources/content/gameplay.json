@@ -1,0 +1,18 @@
+{
+  "cultivation": ["tomato", "scallion"],
+  "crafting": [
+    {"id":"mortar","inputs":["vanilla:cobblestone","vanilla:cobblestone","vanilla:stick"],"output":"tool:mortar","count":1},
+    {"id":"rolling_pin","inputs":["vanilla:stick","vanilla:stick","vanilla:stick"],"output":"tool:rolling_pin","count":1},
+    {"id":"kitchen_knife","inputs":["vanilla:flint","vanilla:stick"],"output":"tool:kitchen_knife","count":1},
+    {"id":"unfired_clay_pot","inputs":["vanilla:clay_ball","vanilla:clay_ball","vanilla:clay_ball","vanilla:clay_ball","vanilla:clay_ball"],"output":"utensil:unfired_clay_pot","count":1},
+    {"id":"flour","inputs":["vanilla:wheat","tool:mortar"],"output":"base:flour","count":1},
+    {"id":"dough","inputs":["base:flour","utensil:water_bowl"],"output":"base:dough","count":1},
+    {"id":"noodles","inputs":["base:dough","tool:rolling_pin","tool:kitchen_knife"],"output":"base:noodles","count":1}
+  ],
+  "potDishes": [
+    {"id":"tomato-egg-noodles","duration":1200,"servings":2,"nutrition":5,"saturation":0.5}
+  ],
+  "machineDishes": [
+    {"id":"tomato-egg-noodles-refined","source":"tomato-egg-noodles","duration":400,"water":500,"nutrition":7,"saturation":0.6}
+  ]
+}

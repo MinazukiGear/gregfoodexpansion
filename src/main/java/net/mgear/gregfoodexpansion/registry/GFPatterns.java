@@ -20,35 +20,14 @@ import java.util.Map;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-/**
- * 多方块结构图案(骨架首版:基础机架,结构化模块段随内容批次追加,machines.md §5.0)。
- *
- * <p>层约定沿用姊妹项目实证语法:层自下而上、层内行自后向前、字符自西向东;
- * 预览符号(输入总线/输出总线/能源仓)在运行时图案中归一为"外壳或仓室"候选谓词,
- * 使任意仓室可砌入任意外壳位(最小结构 = 全外壳 + 控制器,仓室可缺省空转)。</p>
- */
+/** Existing MV tunnel oven skeleton; LV layouts live in WorkshopPatterns. */
 public final class GFPatterns {
-    /** 3×3×3 厨房工坊级(切配工坊/烹饪工坊共用骨架)。预览中仓室砌于正面与底面。 */
-    private static final String[][] WORKSHOP_LAYERS = {
-            {"CCC", "CEC", "CCC"},
-            {"CCC", "CCC", "IDO"},
-            {"CCC", "CCC", "CCC"},
-    };
-
-    /** 5×3×3 隧道机架级(隧道烤炉:长度方向 = 物流方向,炉温段沿长向扩展)。 */
+    // Layers run bottom to top; rows within a layer run rear to front.
     private static final String[][] TUNNEL_LAYERS = {
             {"CCCCC", "CCCCC", "CCCCC"},
             {"CACAC", "CA#AC", "CIDOC"},
             {"CCCCC", "CCCCC", "CCCCC"},
     };
-
-    public static BlockPattern prepWorkshop(MultiblockMachineDefinition definition, Block casing) {
-        return boxPattern(WORKSHOP_LAYERS, casing, definition);
-    }
-
-    public static BlockPattern cookingWorkshop(MultiblockMachineDefinition definition, Block casing) {
-        return boxPattern(WORKSHOP_LAYERS, casing, definition);
-    }
 
     public static BlockPattern tunnelOven(MultiblockMachineDefinition definition, Block casing) {
         return boxPattern(TUNNEL_LAYERS, casing, definition);
@@ -77,11 +56,6 @@ public final class GFPatterns {
             }
         }
         return builder.build();
-    }
-
-    /** 预览布局(EMI/Jade 结构预览):仓室以实际机器渲染,示例仓室取机器同档。 */
-    public static MultiblockShapeInfo workshopShape(MultiblockMachineDefinition definition, Block casing) {
-        return boxShape(WORKSHOP_LAYERS, casing, definition, GTValues.LV);
     }
 
     public static MultiblockShapeInfo tunnelOvenShape(MultiblockMachineDefinition definition, Block casing) {

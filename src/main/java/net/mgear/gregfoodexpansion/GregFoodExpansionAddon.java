@@ -29,6 +29,11 @@ public final class GregFoodExpansionAddon implements IGTAddon {
     }
 
     @Override
+    public void addRecipes(java.util.function.Consumer<net.minecraft.data.recipes.FinishedRecipe> provider) {
+        net.mgear.gregfoodexpansion.registry.GFMachineRecipes.register(provider);
+    }
+
+    @Override
     public String addonModId() {
         return GregFoodExpansion.MOD_ID;
     }

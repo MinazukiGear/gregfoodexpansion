@@ -70,6 +70,15 @@ public final class ContentTypes {
     /** 家常菜样本集行(cuisine-matrix.md §5):仅名称 + 配料依赖 + 工艺,用于可达率审计。 */
     public record SampleRow(BilingualName name, List<String> ingredients, List<String> craft) {}
 
+    public record VanillaLink(String id, BilingualName name, String item, List<String> grades,
+                              String tier, List<String> aliases) {}
+    public record HandRecipe(String id, List<String> inputs, String output, int count) {}
+    public record PotDish(String id, int duration, int servings, int nutrition, float saturation) {}
+    /** Explicitly playable subset; table presence alone does not unlock a recipe. */
+    public record MachineDish(String id, String source, int duration, int water, int nutrition, float saturation) {}
+    public record Gameplay(List<String> cultivation, List<HandRecipe> crafting, List<PotDish> potDishes,
+                           List<MachineDish> machineDishes) {}
+
     public record GainCeiling(String tier, String owner) {}
     public record LeverBand(Integer min, Integer max) {}
     public record Gates(Double sampleReachableRate, Double sampleTargetRate,

@@ -14,20 +14,7 @@ import net.minecraft.network.chat.Component;
 
 import net.mgear.gregfoodexpansion.GregFoodExpansion;
 
-/**
- * M1' 三台多方块骨架(machines.md §1 #1/#2/#5,结构细则 §5.1–§5.3):
- *
- * <ul>
- *   <li>切配工坊(LV)/烹饪工坊(LV):3×3×3 工坊级骨架,结构化模块段(刀工/绞碎/…、
- *       煮/蒸/炒/炸)随配方批次以结构段形式追加;</li>
- *   <li>隧道烤炉(MV):5×3×3 隧道机架,炉温段模块沿长向扩展(段数=并行,强制预热待配方逻辑)。</li>
- * </ul>
- *
- * <p>骨架阶段:配方类型已注册、机器可放置成行并空转;控制器贴图暂复用 GTCEu 既有
- * overlay(机器贴图按 content-pipeline.md §4 属全手绘管线,随美术批次替换)。
- * 外壳选型受材料档位约束:LV 两台用钢机壳(钢自蒸汽时代原爆炉即可得),MV 隧道烤炉用
- * 洁净不锈钢(不锈钢 MV 可制,正好同档)——专属外壳随美术批次定案。</p>
- */
+/** LV workshops with structural processing segments; the MV tunnel oven remains a skeleton. */
 public final class GFMachines {
     public static MultiblockMachineDefinition PREP_WORKSHOP;
     public static MultiblockMachineDefinition COOKING_WORKSHOP;
@@ -38,9 +25,10 @@ public final class GFMachines {
     public static void init() {
         // LV 厨房两台用钢机壳:不锈钢为 MV 档材料,LV 时代不可制作
         PREP_WORKSHOP = GFERegistration.REGISTRATE
-                .multiblock("prep_workshop", WorkableElectricMultiblockMachine::new)
+                .multiblock("prep_workshop", holder -> new net.mgear.gregfoodexpansion.content.runtime.WorkshopMachine(holder, "rolling"))
                 .rotationState(RotationState.NON_Y_AXIS)
                 .recipeType(GFRecipeTypes.PREP_WORKSHOP_RECIPES)
+                .recipeModifier(net.mgear.gregfoodexpansion.content.runtime.WorkshopMachine::modify, true)
                 .tier(GTValues.LV)
                 .appearanceBlock(GTBlocks.CASING_STEEL_SOLID)
                 .blockProp(properties -> properties.strength(5.0F, 6.0F).sound(net.minecraft.world.level.block.SoundType.METAL))
@@ -48,19 +36,18 @@ public final class GFMachines {
                 .model(GTMachineModels.createWorkableCasingMachineModel(
                         GregFoodExpansion.gtceuId("block/casings/solid/machine_casing_solid_steel"),
                         GregFoodExpansion.gtceuId("block/multiblock/steam_grinder")))
-                .pattern(definition -> GFPatterns.prepWorkshop(definition,
-                        GTBlocks.CASING_STEEL_SOLID.get()))
-                .shapeInfos(definition -> java.util.List.of(
-                        GFPatterns.workshopShape(definition, GTBlocks.CASING_STEEL_SOLID.get())))
+                .pattern(definition -> WorkshopPatterns.pattern(definition, false))
+                .shapeInfos(definition -> java.util.List.of(WorkshopPatterns.shape(definition, false, 1), WorkshopPatterns.shape(definition, false, 4)))
                 .langValue("Prep Workshop")
-                .tooltips(skeletonNote())
+                .tooltips(Component.translatable("gregfoodexpansion.workshop.rolling_help"))
                 .allowCoverOnFront(false)
                 .register();
 
         COOKING_WORKSHOP = GFERegistration.REGISTRATE
-                .multiblock("cooking_workshop", WorkableElectricMultiblockMachine::new)
+                .multiblock("cooking_workshop", holder -> new net.mgear.gregfoodexpansion.content.runtime.WorkshopMachine(holder, "boiling"))
                 .rotationState(RotationState.NON_Y_AXIS)
                 .recipeType(GFRecipeTypes.COOKING_WORKSHOP_RECIPES)
+                .recipeModifier(net.mgear.gregfoodexpansion.content.runtime.WorkshopMachine::modify, true)
                 .tier(GTValues.LV)
                 .appearanceBlock(GTBlocks.CASING_STEEL_SOLID)
                 .blockProp(properties -> properties.strength(5.0F, 6.0F).sound(net.minecraft.world.level.block.SoundType.METAL))
@@ -68,12 +55,10 @@ public final class GFMachines {
                 .model(GTMachineModels.createWorkableCasingMachineModel(
                         GregFoodExpansion.gtceuId("block/casings/solid/machine_casing_solid_steel"),
                         GregFoodExpansion.gtceuId("block/multiblock/multi_furnace")))
-                .pattern(definition -> GFPatterns.cookingWorkshop(definition,
-                        GTBlocks.CASING_STEEL_SOLID.get()))
-                .shapeInfos(definition -> java.util.List.of(
-                        GFPatterns.workshopShape(definition, GTBlocks.CASING_STEEL_SOLID.get())))
+                .pattern(definition -> WorkshopPatterns.pattern(definition, true))
+                .shapeInfos(definition -> java.util.List.of(WorkshopPatterns.shape(definition, true, 1), WorkshopPatterns.shape(definition, true, 4)))
                 .langValue("Cooking Workshop")
-                .tooltips(skeletonNote())
+                .tooltips(Component.translatable("gregfoodexpansion.workshop.boiling_help"))
                 .allowCoverOnFront(false)
                 .register();
 

@@ -1,4 +1,6 @@
 [
+  {"id":"flour","name":{"zh":"面粉","en":"Flour"},"grades":["starch","gluten-protein"],"tier":"ULV","note":"研钵手工制粉;数值草案,三档一致","batch":"M1"},
+  {"id":"dough","name":{"zh":"面团","en":"Dough"},"grades":["starch","gluten-protein"],"tier":"ULV","note":"面粉与一碗水和面;数值草案,三档一致","batch":"M1"},
   {"id": "noodles", "name": {"zh": "面条", "en": "Noodles"}, "grades": ["starch"], "tier": "ULV", "note": "手工擀制可达(数值草案,收口时确认与压延/磨坊链的档位衔接)", "batch": "M1"},
   {"id": "dough-skin", "name": {"zh": "面皮(饺皮)", "en": "Dough Wrapper"}, "grades": ["starch", "gluten-protein"], "tier": "ULV", "note": "手工擀制可达", "batch": "M1"},
   {"id": "cooked-rice", "name": {"zh": "米饭", "en": "Cooked Rice"}, "grades": ["starch"], "tier": "ULV", "note": "陶罐炖煮产出", "batch": "M1"},

@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_features",
+  "biomes": [
+    "minecraft:plains",
+    "minecraft:sunflower_plains",
+    "minecraft:forest"
+  ],
+  "features": "gregfoodexpansion:wild_tomato",
+  "step": "vegetal_decoration"
+}

@@ -10,6 +10,15 @@
 > **⚠ 本项目大量使用 AI 辅助开发**:设计文档与后续代码、贴图均在 AI 协助下完成,产出经人工审核合入。
 > 一切以设计文档标注"方向已定案/已定案"的内容为准,未标注数值均为草案。
 
+## 当前可玩内容
+
+M1′ 首条手工食物链已接入：野生番茄/大葱 → 种植收获，小麦 → 面粉 → 面团 → 面条，
+陶罐加热 → 番茄鸡蛋面 → 正常进食返碗。LV 切配工坊的压延段、烹饪工坊的煮段已接入电力升级链，最多四段并行，生产独立的精制番茄鸡蛋面；隧道烤炉仍为骨架。
+
+操作与数值、首批范围和验收边界见 [M1′ 运行时接入记录](docs/design/m1-runtime.md)。
+LV 结构、控制器获取与自动生产链见 [LV 工坊说明](docs/design/lv-workshops.md)。
+开发样本的表引用覆盖率不等于游戏内可达率，完整 M1′ 尚未验收。
+
 ## 设计概要(详见 docs/design/)
 
 - **生物工业主线**:作物/畜牧 → 食材处理 → 发酵·酶·菌种 → 化工输出(与 GT 主线必需咬合)+ 食品终端;
@@ -64,7 +73,8 @@ EMI、Jade、JECh(拼音搜索)、精妙背包/存储、Modern UI、GTM Things(�
 .\gradlew.bat build -x test     # 构建发布 JAR(build/libs/,含内容 lint)
 .\gradlew.bat runData           # 重新生成数据(语言/资源/配方,先过内容 lint)
 .\gradlew.bat contentLint       # 内容表 lint(规则 1~10,报告见 build/reports/)
-.\gradlew.bat generateTextures  # 贴图管线(模板调色 + 菜肴分层合成)
+.\gradlew.bat generateTextures  # 独立贴图迭代(runData 已包含贴图)
+.\gradlew.bat runGameTestServer # 专用服务器食物链回归测试(build/gametest/)
 ```
 
 内容增删改走数据表(`src/main/resources/content/`,规则见

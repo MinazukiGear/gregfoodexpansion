@@ -1,0 +1,10 @@
+[
+  {"id":"wheat","name":{"zh":"小麦","en":"Wheat"},"item":"minecraft:wheat","grades":["starch","gluten-protein"],"tier":"ULV","aliases":[]},
+  {"id":"egg","name":{"zh":"鸡蛋","en":"Egg"},"item":"minecraft:egg","grades":["protein"],"tier":"ULV","aliases":["animal:egg"]},
+  {"id":"chicken","name":{"zh":"生鸡肉","en":"Raw Chicken"},"item":"minecraft:chicken","grades":["protein"],"tier":"ULV","aliases":["animal:chicken-meat"]},
+  {"id":"beef","name":{"zh":"生牛肉","en":"Raw Beef"},"item":"minecraft:beef","grades":["protein"],"tier":"ULV","aliases":["animal:beef"]},
+  {"id":"stick","name":{"zh":"木棍","en":"Stick"},"item":"minecraft:stick","grades":[],"tier":"ULV","aliases":[]},
+  {"id":"flint","name":{"zh":"燧石","en":"Flint"},"item":"minecraft:flint","grades":[],"tier":"ULV","aliases":[]},
+  {"id":"cobblestone","name":{"zh":"圆石","en":"Cobblestone"},"item":"minecraft:cobblestone","grades":[],"tier":"ULV","aliases":[]},
+  {"id":"clay_ball","name":{"zh":"黏土球","en":"Clay Ball"},"item":"minecraft:clay_ball","grades":[],"tier":"ULV","aliases":[]}
+]

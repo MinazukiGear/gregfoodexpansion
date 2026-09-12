@@ -16,6 +16,15 @@ base {
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
+sourceSets {
+    gameTest {
+        java.setSrcDirs(['src/gametest/java'])
+        resources.setSrcDirs(['src/gametest/resources'])
+        compileClasspath = sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath = sourceSets.main.runtimeClasspath + output
+    }
+}
+
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
     // The mappings can be changed at any time and must be in the following format.
@@ -89,6 +98,12 @@ minecraft {
         }
 
         client {
+            if (project.hasProperty('gameplaySmoke')) {
+                workingDirectory project.file('build/client-smoke')
+                property 'gregfoodexpansion.clientSmoke', 'true'
+                property 'forge.logging.console.level', 'info'
+                mods { "${mod_id}" { source sourceSets.gameTest } }
+            }
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', mod_id
         }
@@ -102,10 +117,16 @@ minecraft {
         // By default, the server will crash when no gametests are provided.
         // The gametest system is also enabled by default for other run configs under the /test command.
         gameTestServer {
+            workingDirectory project.file('build/gametest')
+            property 'forge.logging.console.level', 'info'
+            mods {
+                "${mod_id}" { source sourceSets.gameTest }
+            }
             property 'forge.enabledGameTestNamespaces', mod_id
         }
 
         data {
+            property 'gregfoodexpansion.templates', file('src/templates').absolutePath
             // example of overriding the workingDirectory set in configureEach above
             workingDirectory project.file('run-data')
 
@@ -202,7 +223,7 @@ dependencies {
     // crash a dedicated server during mod construction; mount them only when
     // the invocation targets a client run. Jade has a common side and stays
     // mounted everywhere.
-    def mountClientDevAids = gradle.startParameter.taskNames.any { it.toLowerCase().contains('client') }
+    def mountClientDevAids = !project.hasProperty('gameplaySmoke') && gradle.startParameter.taskNames.any { it.toLowerCase().contains('client') }
 
     // EMI is only a development runtime aid for browsing content in test clients.
     // It is never required at runtime and stays mounted only in client dev runs.
@@ -212,6 +233,7 @@ dependencies {
 
     // Jade is a development runtime aid for inspecting machines in client runs.
     // It remains optional for published builds and is not declared in mods.toml.
+    compileOnly(fg.deobf("curse.maven:jade-324717:${jade_file_id}")) { transitive = false }
     runtimeOnly(fg.deobf("curse.maven:jade-324717:${jade_file_id}")) { transitive = false }
 
     // SoL Carrot Edition: compile-time API for the gain pipeline's diversity
@@ -370,4 +392,34 @@ tasks.register('generateTextures', JavaExec) {
             file('src/templates').absolutePath,
             file('src/generated/resources/assets').absolutePath
     jvmArgs '-Dfile.encoding=UTF-8'
+}
+
+// Forge may exit 0 after a mod-loading failure. Require an actual completed test run.
+tasks.matching { it.name == 'runGameTestServer' }.configureEach { gameTestTask ->
+    doFirst { gameTestTask.ext.gameplayStartedAt = System.currentTimeMillis() }
+    doLast {
+        def log = file('build/gametest/logs/latest.log')
+        def body = log.isFile() ? log.getText('UTF-8') : ''
+        if (!log.isFile() || log.lastModified() < gameTestTask.ext.gameplayStartedAt ||
+                !(body =~ /[1-9][0-9]* GAME TESTS COMPLETE/) ||
+                !(body =~ /All [1-9][0-9]* required tests passed/)) {
+            throw new GradleException('GameTest did not complete successfully; inspect build/gametest/logs/latest.log')
+        }
+        def report = file('build/reports/gameplay-gametest.txt')
+        report.parentFile.mkdirs()
+        report.setText(body.readLines().findAll { it.contains('GAME TESTS COMPLETE') ||
+                it.contains('required tests passed') }.join('\n') + '\n', 'UTF-8')
+    }
+}
+if (project.hasProperty('gameplaySmoke')) {
+    tasks.matching { it.name == 'runClient' }.configureEach { smokeTask ->
+        doFirst { smokeTask.ext.smokeStartedAt = System.currentTimeMillis() }
+        doLast {
+            def log = file('build/client-smoke/logs/latest.log')
+            if (!log.isFile() || log.lastModified() < smokeTask.ext.smokeStartedAt ||
+                    !log.getText('UTF-8').contains('GFE_CLIENT_SMOKE_PASSED')) {
+                throw new GradleException('Client smoke failed; inspect build/client-smoke/logs/latest.log')
+            }
+        }
+    }
 }

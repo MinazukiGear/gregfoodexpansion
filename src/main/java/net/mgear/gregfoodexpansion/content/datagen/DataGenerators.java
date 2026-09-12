@@ -11,7 +11,7 @@ import net.mgear.gregfoodexpansion.content.ContentTables.ClasspathSource;
 
 /**
  * runData 入口:内容表 → datagen 一键生成(content-pipeline.md §3)。
- * 首批管线仅语言三件套;物品/方块/配方/标签 provider 随各实装批次补充。
+ * 语言与首批玩法资源由同一组内容表生成。
  */
 @Mod.EventBusSubscriber(modid = GregFoodExpansion.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public final class DataGenerators {
@@ -27,5 +27,7 @@ public final class DataGenerators {
                 ModLangProvider.english(event.getGenerator().getPackOutput(), tables));
         event.getGenerator().addProvider(event.includeClient(),
                 ModLangProvider.upsideDownEnglish(event.getGenerator().getPackOutput(), tables));
+        event.getGenerator().addProvider(true, new GameplayDataProvider(event.getGenerator().getPackOutput(), tables));
+        event.getGenerator().addProvider(event.includeClient(), new TextureDataProvider(event.getGenerator().getPackOutput(), tables));
     }
 }

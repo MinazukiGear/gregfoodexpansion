@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "gregfoodexpansion:dough"
+    },
+    {
+      "item": "gregfoodexpansion:rolling_pin"
+    },
+    {
+      "item": "gregfoodexpansion:kitchen_knife"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "gregfoodexpansion:noodles"
+  }
+}

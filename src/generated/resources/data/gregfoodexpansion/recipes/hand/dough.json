@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "gregfoodexpansion:flour"
+    },
+    {
+      "item": "gregfoodexpansion:water_bowl"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "gregfoodexpansion:dough"
+  }
+}

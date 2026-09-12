@@ -1,0 +1,22 @@
+{
+  "type": "gregfoodexpansion:clay_pot_cooking",
+  "duration": 1200,
+  "ingredients": [
+    {
+      "item": "gregfoodexpansion:noodles"
+    },
+    {
+      "item": "gregfoodexpansion:tomato"
+    },
+    {
+      "item": "minecraft:egg"
+    },
+    {
+      "item": "gregfoodexpansion:scallion"
+    }
+  ],
+  "result": {
+    "item": "gregfoodexpansion:tomato-egg-noodles"
+  },
+  "servings": 2
+}

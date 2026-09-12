@@ -35,6 +35,23 @@ public final class EnglishUpsideDown {
 
     /** 翻转整串:先逐字符映射,再反转顺序(等价于视觉 180° 旋转)。 */
     public static String flip(String text) {
+        // Format tokens must remain syntactically intact and retain their argument identity.
+        var matcher = java.util.regex.Pattern.compile("%(?:(\\d+)\\$)?s|%%").matcher(text);
+        var chunks = new java.util.ArrayList<String>();
+        int cursor = 0;
+        int argument = 1;
+        while (matcher.find()) {
+            chunks.add(flipLiteral(text.substring(cursor, matcher.start())));
+            chunks.add(matcher.group().equals("%%") ? "%%"
+                    : "%" + (matcher.group(1) == null ? argument++ : matcher.group(1)) + "$s");
+            cursor = matcher.end();
+        }
+        chunks.add(flipLiteral(text.substring(cursor)));
+        java.util.Collections.reverse(chunks);
+        return String.join("", chunks);
+    }
+
+    private static String flipLiteral(String text) {
         StringBuilder sb = new StringBuilder(text.length());
         for (int i = text.length() - 1; i >= 0; i--) {
             String mapped = FLIP.get(text.charAt(i));

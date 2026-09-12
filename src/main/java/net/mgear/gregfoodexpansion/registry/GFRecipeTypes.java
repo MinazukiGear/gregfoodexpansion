@@ -12,18 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 
 import net.mgear.gregfoodexpansion.GregFoodExpansion;
 
-/**
- * 自建配方类型(机器骨架首版,数值为草案,随 M1' 配方批次收口):
- *
- * <ul>
- *   <li>{@link #PREP_WORKSHOP_RECIPES} 切配工坊(LV):形态配料/香料现磨/压延(品位保真);</li>
- *   <li>{@link #COOKING_WORKSHOP_RECIPES} 烹饪工坊(LV):煮(含巴氏低温档)/蒸/炒/炸;</li>
- *   <li>{@link #TUNNEL_OVEN_RECIPES} 隧道烤炉(MV):连续烘烤,炉温段模块决定配方门槛(强制预热)。</li>
- * </ul>
- *
- * <p>默认 EUt/时长为骨架占位基准,实际配方在数据表 PR 中逐条标注;
- * 预热(隧道烤炉)与段位门槛(结构化模块,machines.md §5.0)在配方逻辑接通时实装。</p>
- */
+/** Recipe types for structural LV processing and the reserved MV tunnel oven. */
 public final class GFRecipeTypes {
     public static GTRecipeType PREP_WORKSHOP_RECIPES;
     public static GTRecipeType COOKING_WORKSHOP_RECIPES;
@@ -36,6 +25,13 @@ public final class GFRecipeTypes {
                 builder -> builder.duration(100).EUt(30), event);
         COOKING_WORKSHOP_RECIPES = register("cooking_workshop",
                 builder -> builder.duration(100).EUt(30), event);
+        COOKING_WORKSHOP_RECIPES.setMaxIOSize(6, 4, 1, 1);
+        PREP_WORKSHOP_RECIPES.addDataInfo(data -> net.minecraft.network.chat.Component.translatable(
+                "gregfoodexpansion.workshop.requires", net.minecraft.network.chat.Component.translatable(
+                        "gregfoodexpansion.module." + data.getString("gfe_module"))).getString());
+        COOKING_WORKSHOP_RECIPES.addDataInfo(data -> net.minecraft.network.chat.Component.translatable(
+                "gregfoodexpansion.workshop.requires", net.minecraft.network.chat.Component.translatable(
+                        "gregfoodexpansion.module." + data.getString("gfe_module"))).getString());
         TUNNEL_OVEN_RECIPES = register("tunnel_oven",
                 builder -> builder.duration(200).EUt(120), event);
     }
