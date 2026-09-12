@@ -147,8 +147,11 @@ public final class WorkshopTests {
     public static void rebuiltSegmentsRecountAndInterrupt(GameTestHelper h) {
         var machine = form(h, false, 1);
         machine.onStructureInvalid();
+        // 原封底层(z=3)补上模块即成为新加工层:封底 ≡ 加工层去掉模块,固定件本就同位。
         h.setBlock(ORIGIN.offset(1, 1, 3), WorkshopPatterns.moduleBlock(false));
+        // 新封底层(z=4):钢机壳 + 同位固定件。
         for (int y=0;y<3;y++) for (int x=0;x<3;x++) h.setBlock(ORIGIN.offset(x,y,4), GTBlocks.CASING_STEEL_SOLID.get());
+        h.setBlock(ORIGIN.offset(1,0,4), WorkshopPatterns.fixtureBlock(false));
         h.assertTrue(machine.checkPatternWithLock(), "Expanded structure should form");
         machine.onStructureFormed();
         h.assertTrue(machine.segments() == 2, "Expansion must update this controller's segment count");
